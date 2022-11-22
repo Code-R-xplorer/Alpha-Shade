@@ -22,6 +22,8 @@ namespace Utilities
         // }
 
         public event BaseAction OnStartJump;
+        public event BoolBaseAction OnSprint;
+        public event BoolBaseAction OnCrouch;
 
         
         private void Awake()
@@ -34,6 +36,10 @@ namespace Utilities
         {
             CursorLock(true);
             _playerControls.Controls.Jump.performed += context => StartJumpPrimary();
+            _playerControls.Controls.Sprint.started += context => SprintPrimary(context.canceled);
+            _playerControls.Controls.Sprint.canceled += context => SprintPrimary(context.canceled);
+            _playerControls.Controls.Crouch.started += context => CrouchPrimary(context.canceled);
+            _playerControls.Controls.Crouch.canceled += context => CrouchPrimary(context.canceled);
         }
 
         private void CursorLock(bool locked)
@@ -60,6 +66,16 @@ namespace Utilities
         private void StartJumpPrimary()
         {
             OnStartJump?.Invoke();
+        }
+
+        private void SprintPrimary(bool canceled)
+        {
+            OnSprint?.Invoke(canceled);
+        }
+
+        private void CrouchPrimary(bool canceled)
+        {
+            OnCrouch?.Invoke(canceled);
         }
 
         private void OnEnable()

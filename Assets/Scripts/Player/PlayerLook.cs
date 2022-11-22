@@ -30,8 +30,6 @@ namespace Player
             _yRot += _inputManager.LookInput.x * sensX * _multiplier;
             _xRot -= _inputManager.LookInput.y * sensY * _multiplier;
 
-            Debug.Log("xRot: " + _xRot + " | yRot: " + _yRot);
-
             _xRot = Mathf.Clamp(_xRot, -70f, 70f);
 
             _camera.transform.localRotation = Quaternion.Euler(_xRot,_yRot,0);
