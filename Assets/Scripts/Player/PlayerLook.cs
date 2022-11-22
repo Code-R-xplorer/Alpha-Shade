@@ -6,9 +6,9 @@ namespace Player
 {
     public class PlayerLook : MonoBehaviour
     {
-        [SerializeField] private float sensX;
+        [SerializeField] private float sensX = 15f;
 
-        [SerializeField] private float sensY;
+        [SerializeField] private float sensY = 15f;
 
         [SerializeField] private Transform _camera;
         [SerializeField] private Transform orientation;
@@ -29,6 +29,8 @@ namespace Player
         {
             _yRot += _inputManager.LookInput.x * sensX * _multiplier;
             _xRot -= _inputManager.LookInput.y * sensY * _multiplier;
+
+            Debug.Log("xRot: " + _xRot + " | yRot: " + _yRot);
 
             _xRot = Mathf.Clamp(_xRot, -70f, 70f);
 
