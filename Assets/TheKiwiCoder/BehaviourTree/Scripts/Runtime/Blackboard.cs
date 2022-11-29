@@ -10,6 +10,19 @@ namespace TheKiwiCoder {
     [System.Serializable]
     public class Blackboard {
 
+        [HideInInspector]
         public Vector3 moveToPosition;
+        
+        public bool canSeePlayer;
+        public bool isChasing;
+        
+        public Vector3 playerPosition;
+        
+        public List<Vector3> searchPositions;
+        public int searchIndex;
+        public bool generateSearchPoints;
+
+        public List<Transform> patrolPoints;
+        public int patrolIndex;
     }
 }
