@@ -22,8 +22,6 @@ namespace Guards
         
         private void Start() 
         {
-            // eyesCollider = GetComponent<Collider>();
-            // player = GameObject.FindGameObjectWithTag("Player");
             _guardController = GetComponentInParent<GuardController>();
         }
         private void Update() 
@@ -59,34 +57,19 @@ namespace Guards
         // This function is called when something enters the guards view frustrum, a mesh collider used as the first stage in seeing the player.
         private void OnProcessViewFrustrum(Collider other)
         {
-            // if (other.CompareTag("Player"))  // Is the object that just entered the player? 
-            // {
-            //     // Debug.Log("Hello");
-            //     // if (CheckSightForPlayer(other.transform.position + playerEyeOffset))   // Does the guard have a line of sight to the player?
-            //     // {
-            //     //     Debug.Log("Hello");
-            //     //     canSeePlayer = true;    // This system works because we return immediately afterwards to stop the function running any further.
-            //     //     return; 
-            //     // }
-            //     // canSeePlayer = false;
-            // }
             canSeePlayer = CheckSightForPlayer(other.transform.position + playerEyeOffset);
         }
 
 
 
-        // This function checks if the Guard has a straight line of sight to the player. (NOTE: Only looks for the center of the player, allows player to look around corners a tiny bit.)
+        // Performs a raycast to the center of the player to check for line of sight
+        // May want to change this to do multiple casts at different points on the player
         public bool CheckSightForPlayer(Vector3 position)
         {
-            // Debug.DrawRay(guardEyes.position, (position - guardEyes.position).normalized * 20);
             if (Physics.Raycast(guardEyes.position, (position - guardEyes.position).normalized, out var info, 100000f, 7)) // Can the guard see something in between him and the player transform?
             {
-                // Debug.DrawLine(guardEyes.position, info.point);
-                // Debug.Log(info.collider.CompareTag("Player"));
-                return info.collider.CompareTag("Player"); // Is the object he saw the player?
+                return info.collider.CompareTag("Player");
             }
-
-            Debug.Log("VAR");
             return false;
         }
 

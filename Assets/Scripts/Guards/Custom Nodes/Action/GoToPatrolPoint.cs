@@ -9,7 +9,7 @@ public class GoToPatrolPoint : ActionNode
     public float tolerance = 1.0f;
     protected override void OnStart()
     {
-        context.agent.destination = blackboard.patrolPoints[blackboard.patrolIndex].position;
+        // context.agent.destination = blackboard.patrolPoints[blackboard.patrolIndex].position;
     }
 
     protected override void OnStop() {

@@ -8,7 +8,7 @@ public class GoToSearchPoint : ActionNode
 {
     public float tolerance = 1.0f;
     protected override void OnStart() {
-        context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
+        // context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
     }
 
     protected override void OnStop() {

@@ -35,7 +35,6 @@ MonoBehaviour:
   - rid: 2765563782596395028
   - rid: 2765563782596395030
   - rid: 2765563782596395031
-  - rid: 2765563782596395032
   - rid: 2765563782596395033
   - rid: 2765563782596395034
   - rid: 2765563782596395035
@@ -44,12 +43,13 @@ MonoBehaviour:
   - rid: 2765563785597157376
   - rid: 2765563785597157377
   - rid: 2765563785597157378
-  - rid: 2765563785597157379
   - rid: 2765563785597157380
   - rid: 2765563785597157381
   - rid: 2765563785597157382
   - rid: 2765563785844097024
   - rid: 2765563785844097025
+  - rid: 3470478289200480256
+  - rid: 3470478289200480257
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -65,8 +65,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     patrolIndex: 0
-  viewPosition: {x: -180, y: -1071, z: 0}
-  viewScale: {x: 1, y: 1, z: 1}
+  viewPosition: {x: 546, y: -37, z: 0}
+  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
   references:
     version: 2
     RefIds:
@@ -305,7 +305,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2765563782596395020
-        - rid: 2765563782596395032
+        - rid: 3470478289200480257
     - rid: 2765563782596395020
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -329,13 +329,14 @@ MonoBehaviour:
         - rid: 2765563782596395021
         - rid: 2765563782596395022
         - rid: 2765563785597157380
+        - rid: 3470478289200480256
     - rid: 2765563782596395021
       type: {class: CheckBool, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: c6474244be1937547a7c106d8e234e72
-        position: {x: -286.6675, y: 1070}
+        position: {x: -365, y: 1103}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -355,7 +356,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 962c22997085cd54f96b752fc191216d
-        position: {x: -97.6675, y: 1070}
+        position: {x: -176, y: 1103}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -497,28 +498,6 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         tolerance: 1
-    - rid: 2765563782596395032
-      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 94c70dbd83438bf489b787272acf65e5
-        position: {x: 529, y: 903}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          canSeePlayer: 0
-          isChasing: 0
-          playerPosition: {x: 0, y: 0, z: 0}
-          searchPositions: []
-          searchIndex: 0
-          generateSearchPoints: 0
-          patrolPoints: []
-          patrolIndex: 0
-        description: Search Tree
-        drawGizmos: 0
-        children:
-        - rid: 2765563782596395028
-        - rid: 2765563782596395034
     - rid: 2765563782596395033
       type: {class: ResetSearchTree, ns: , asm: Assembly-CSharp}
       data:
@@ -560,7 +539,6 @@ MonoBehaviour:
         children:
         - rid: 2765563782596395033
         - rid: 2765563782596395035
-        - rid: 2765563785597157379
     - rid: 2765563782596395035
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
       data:
@@ -688,34 +666,13 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         tolerance: 1
-    - rid: 2765563785597157379
-      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
-      data:
-        state: 0
-        started: 0
-        guid: 7d6fec0252fa5e64994c3e4c870a1adb
-        position: {x: 1122.74, y: 1183}
-        blackboard:
-          moveToPosition: {x: 0, y: 0, z: 0}
-          canSeePlayer: 0
-          isChasing: 0
-          playerPosition: {x: 0, y: 0, z: 0}
-          searchPositions: []
-          searchIndex: 0
-          generateSearchPoints: 0
-          patrolPoints: []
-          patrolIndex: 0
-        description: 
-        drawGizmos: 0
-        newValue: 0
-        blackboardValues: 0
     - rid: 2765563785597157380
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
         guid: ae4e1b322af18264e930d137e203bdf8
-        position: {x: 150, y: 1070}
+        position: {x: 12, y: 1103}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -815,3 +772,44 @@ MonoBehaviour:
         drawGizmos: 0
         newValue: 0
         blackboardValues: 2
+    - rid: 3470478289200480256
+      type: {class: ResetSearchTree, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 153f580a7cff24746888f951a5bcb0be
+        position: {x: 172, y: 1103}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+        description: 
+        drawGizmos: 0
+    - rid: 3470478289200480257
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 6f4aa2fcc8df8e247874665e3edf6f53
+        position: {x: 517, y: 890}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395028
+        - rid: 2765563782596395034
