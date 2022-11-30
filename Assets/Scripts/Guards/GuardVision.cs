@@ -16,6 +16,7 @@ namespace Guards
         public bool canLookLeftRight = true;
         [FormerlySerializedAs("_player")] [SerializeField] private GameObject player;
         private GuardController _guardController;
+        private Transform _startingTransform;
 
         [SerializeField] private bool canSeePlayer;
 
@@ -23,6 +24,7 @@ namespace Guards
         private void Start() 
         {
             _guardController = GetComponentInParent<GuardController>();
+            _startingTransform = transform;
         }
         private void Update() 
         {
@@ -49,6 +51,13 @@ namespace Guards
             {
                 transform.LookAt(player.transform.position + playerEyeOffset);
                 
+            }
+
+            if (!canSeePlayer)
+            {
+                var transform1 = transform;
+                transform1.position = _startingTransform.position;
+                transform1.rotation = _startingTransform.rotation;
             }
             _guardController.CanSeePlayer(canSeePlayer);
 

@@ -65,8 +65,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     patrolIndex: 0
-  viewPosition: {x: 546, y: -37, z: 0}
-  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
+  viewPosition: {x: 41, y: -854, z: 0}
+  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -477,7 +477,7 @@ MonoBehaviour:
         description: 
         drawGizmos: 0
         searchPoints: 5
-        searchRadius: 20
+        searchRadius: 5
     - rid: 2765563782596395031
       type: {class: GoToSearchPoint, ns: , asm: Assembly-CSharp}
       data:
