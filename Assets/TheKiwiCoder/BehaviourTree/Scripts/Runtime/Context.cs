@@ -46,6 +46,7 @@ namespace TheKiwiCoder {
             CanSeePlayer,
             IsChasing,
             GenerateSearchPoints,
+            Investigate,
             Default
         }
     }

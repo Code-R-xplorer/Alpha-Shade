@@ -7,7 +7,7 @@ using TheKiwiCoder;
 public class ChangeBool : ActionNode
 {
     public bool newValue;
-    public Context.BlackboardValues blackboardValues;
+    public Context.BlackboardValues blackboardValues = Context.BlackboardValues.Default;
     protected override void OnStart() {
     }
 
@@ -25,6 +25,9 @@ public class ChangeBool : ActionNode
                 break;
             case Context.BlackboardValues.GenerateSearchPoints:
                 blackboard.generateSearchPoints = newValue;
+                break;
+            case Context.BlackboardValues.Investigate:
+                blackboard.investigate = newValue;
                 break;
             case Context.BlackboardValues.Default:
                 Debug.LogWarning("Bool can't be changed, no case provided");

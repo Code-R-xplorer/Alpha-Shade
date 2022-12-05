@@ -26,6 +26,7 @@ namespace TheKiwiCoder {
         public int patrolIndex;
 
         public bool investigate;
-        
+        public Vector3 investigatePosition;
+
     }
 }

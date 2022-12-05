@@ -4,23 +4,24 @@ using UnityEngine;
 using TheKiwiCoder;
 
 [System.Serializable]
-public class GoToSearchPoint : ActionNode
+public class GoInvestigate : ActionNode
 {
     public float tolerance = 1.0f;
+    
     protected override void OnStart() {
-        // context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
+        context.agent.destination = blackboard.playerPosition;
     }
 
     protected override void OnStop() {
     }
 
     protected override State OnUpdate() {
+        if (context.agent.pathPending) {
+            return State.Running;
+        }
 
         if (context.agent.remainingDistance < tolerance)
         {
-            blackboard.searchIndex++;
-            if (blackboard.searchIndex > blackboard.patrolPoints.Count - 1) return State.Failure;
-            context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
             return State.Success;
         }
 
@@ -28,11 +29,6 @@ public class GoToSearchPoint : ActionNode
             return State.Failure;
         }
 
-        if (blackboard.searchIndex > blackboard.searchPositions.Count - 1) return State.Failure;
-        
-        if (context.agent.pathPending) {
-            return State.Running;
-        }
         return State.Running;
     }
 }
