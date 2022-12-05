@@ -29,7 +29,12 @@ public class GoToSearchPoint : ActionNode
         }
 
         if (blackboard.searchIndex > blackboard.searchPositions.Count - 1) return State.Failure;
+        
+        if (context.agent.pathPending) {
+            return State.Running;
+        }
 
-        return State.Success;
+        bool ttest = blackboard.isChasing;
+        return State.Running;
     }
 }

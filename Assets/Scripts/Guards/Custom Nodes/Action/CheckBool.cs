@@ -7,6 +7,7 @@ using TheKiwiCoder;
 public class CheckBool : ActionNode
 {
     public Context.BlackboardValues blackboardValues;
+    // public string name;
     protected override void OnStart() {
     }
 
@@ -17,18 +18,16 @@ public class CheckBool : ActionNode
         switch (blackboardValues)
         {
             case Context.BlackboardValues.CanSeePlayer:
-                if (blackboard.canSeePlayer) return State.Success;
-                return State.Failure;
+                return blackboard.canSeePlayer ? State.Success : State.Failure;
             case Context.BlackboardValues.IsChasing:
-                if (blackboard.isChasing) return State.Success;
-                return State.Failure;
+                return blackboard.isChasing ? State.Success : State.Failure;
             case Context.BlackboardValues.GenerateSearchPoints:
-                if (blackboard.generateSearchPoints) return State.Success;
-                return State.Failure;
+                return blackboard.generateSearchPoints ? State.Success : State.Failure;
             case Context.BlackboardValues.Default:
                 Debug.LogWarning("Bool can't be changed, no case provided");
                 return State.Failure;
         }
         return State.Success;
     }
+
 }

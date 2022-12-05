@@ -24,5 +24,8 @@ namespace TheKiwiCoder {
 
         public List<Transform> patrolPoints;
         public int patrolIndex;
+
+        public bool investigate;
+        
     }
 }

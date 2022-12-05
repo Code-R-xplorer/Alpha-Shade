@@ -50,6 +50,8 @@ MonoBehaviour:
   - rid: 2765563785844097025
   - rid: 3470478289200480256
   - rid: 3470478289200480257
+  - rid: 3490959439064989696
+  - rid: 3490959439064989697
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -65,8 +67,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     patrolIndex: 0
-  viewPosition: {x: 41, y: -854, z: 0}
-  viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
+    investigate: 0
+  viewPosition: {x: -39, y: -454, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -87,6 +90,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         child:
@@ -108,6 +112,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Check Is Chasing
         drawGizmos: 0
         children:
@@ -131,11 +136,13 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Root Selector
         drawGizmos: 0
         children:
         - rid: 2765563782596395009
         - rid: 2765563782596395017
+        - rid: 3490959439064989696
         - rid: 2765563782596395036
     - rid: 2765563782596395011
       type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -154,7 +161,8 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
-        description: 
+          investigate: 0
+        description: Inverse of Is Chasing
         drawGizmos: 0
         child:
           rid: 2765563782596395014
@@ -175,7 +183,8 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
-        description: 
+          investigate: 0
+        description: Run Forever
         drawGizmos: 0
         child:
           rid: 2765563782596395010
@@ -198,6 +207,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Is Chasing
         drawGizmos: 0
         blackboardValues: 1
@@ -218,6 +228,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -238,6 +249,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Is Chasing
         drawGizmos: 0
         newValue: 1
@@ -259,6 +271,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Chasing Player Sequence
         drawGizmos: 0
         children:
@@ -281,6 +294,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Is Chasing
         drawGizmos: 0
         blackboardValues: 1
@@ -301,6 +315,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Find Player Selector
         drawGizmos: 0
         children:
@@ -323,6 +338,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Chase Sequence
         drawGizmos: 0
         children:
@@ -347,6 +363,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -367,6 +384,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         tolerance: 1
@@ -387,6 +405,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Searching
         drawGizmos: 0
         children:
@@ -410,6 +429,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         child:
@@ -431,6 +451,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -451,6 +472,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         child:
@@ -474,6 +496,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         searchPoints: 5
@@ -495,6 +518,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         tolerance: 1
@@ -515,6 +539,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
     - rid: 2765563782596395034
@@ -534,6 +559,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Search Tree Cleanup
         drawGizmos: 0
         children:
@@ -556,6 +582,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Is Chasing
         drawGizmos: 0
         newValue: 0
@@ -566,7 +593,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 446413636f44c9f4ebdb59981c69b955
-        position: {x: 1365, y: 599}
+        position: {x: 1910.994, y: 600.5209}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -577,6 +604,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         child:
@@ -589,7 +617,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a56cf7ccc22c55244831dfef5d7b8ab1
-        position: {x: 1365, y: 753}
+        position: {x: 1910.994, y: 754.5209}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -600,6 +628,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Patrol Sequence
         drawGizmos: 0
         children:
@@ -611,7 +640,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: db5a0d43ff5075a4a93d6598592a190c
-        position: {x: 1246, y: 1011}
+        position: {x: 1791.994, y: 1012.5208}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -622,7 +651,8 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
-        description: 
+          investigate: 0
+        description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
     - rid: 2765563785597157377
@@ -631,7 +661,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 079d876907cc65b4c92677deb21455e8
-        position: {x: 1246, y: 905}
+        position: {x: 1791.994, y: 906.5209}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -642,6 +672,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         child:
@@ -652,7 +683,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 78d254a670640cb4d8d569d26622c072
-        position: {x: 1465, y: 905}
+        position: {x: 2010.9941, y: 906.5209}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -663,6 +694,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         tolerance: 1
@@ -683,6 +715,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         newValue: 1
@@ -704,6 +737,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: Search Points Generation
         drawGizmos: 0
         children:
@@ -727,6 +761,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         blackboardValues: 2
@@ -747,6 +782,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         child:
@@ -768,6 +804,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         newValue: 0
@@ -789,6 +826,7 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
     - rid: 3470478289200480257
@@ -808,8 +846,52 @@ MonoBehaviour:
           generateSearchPoints: 0
           patrolPoints: []
           patrolIndex: 0
+          investigate: 0
         description: 
         drawGizmos: 0
         children:
         - rid: 2765563782596395028
         - rid: 2765563782596395034
+    - rid: 3490959439064989696
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 093f73d2f70a6ca419d2ce4be02d1b48
+        position: {x: 545, y: 461}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 3490959439064989697
+    - rid: 3490959439064989697
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: f2767b37e0966e149bb8b43139f9c783
+        position: {x: 482, y: 623}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+        description: isChasing
+        drawGizmos: 0
+        blackboardValues: 0
