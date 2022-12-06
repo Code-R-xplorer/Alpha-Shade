@@ -34,6 +34,8 @@ namespace Player
 
             _camera.transform.localRotation = Quaternion.Euler(_xRot,_yRot,0);
             orientation.transform.rotation = Quaternion.Euler(0, _yRot, 0);
+            
+            if(orientation.GetChild(0).childCount > 0) orientation.GetChild(0).GetChild(0).transform.position = orientation.GetChild(0).transform.position;
         }
     }
 }
