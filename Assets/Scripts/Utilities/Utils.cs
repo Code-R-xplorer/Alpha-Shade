@@ -43,5 +43,23 @@ namespace Utilities
         
             return navHit.position;
         }
+        
+        /*************************************************************************************************
+            *    Title: NavMeshPath.corners
+            *    Author: Unity Technologies
+            *    Date: 2022
+            *    Code version: 1.0
+            *    Availability: https://docs.unity3d.com/ScriptReference/AI.NavMeshPath-corners.html
+            **************************************************************************************************/
+        public static float CalculatePathLength(NavMeshPath path) {
+            if (path.corners.Length < 2)
+                return 0;
+        
+            float lengthSoFar = 0.0F;
+            for (int i = 1; i < path.corners.Length; i++) {
+                lengthSoFar += Vector3.Distance(path.corners[i - 1], path.corners[i]);
+            }
+            return lengthSoFar;
+        }
     }
 }
