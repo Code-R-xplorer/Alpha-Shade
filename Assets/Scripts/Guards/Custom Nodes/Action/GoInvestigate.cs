@@ -9,7 +9,7 @@ public class GoInvestigate : ActionNode
     public float tolerance = 1.0f;
     
     protected override void OnStart() {
-        context.agent.destination = blackboard.playerPosition;
+        context.agent.destination = blackboard.investigatePosition;
     }
 
     protected override void OnStop() {

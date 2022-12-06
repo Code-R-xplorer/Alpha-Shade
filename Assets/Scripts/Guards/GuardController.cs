@@ -39,14 +39,17 @@ namespace Guards
 
             if (investigate)
             {
+                Debug.Log("Investigate");
                 NavMeshPath path = new NavMeshPath();
                 NavMesh.CalculatePath(transform.position, 
                     investigateTransform.position, NavMesh.AllAreas, path);
                 if (path.status == NavMeshPathStatus.PathComplete)
                 {
                     float pathLength = Utils.CalculatePathLength(path);
+                    Debug.Log("Path Length = " + pathLength);
                     if (pathLength <= hearingDistance)
                     {
+                        Debug.Log("Hello");
                         _blackboard.investigatePosition = investigateTransform.position;
                         _blackboard.investigate = true;
                         return;

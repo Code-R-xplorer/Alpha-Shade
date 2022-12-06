@@ -55,6 +55,8 @@ MonoBehaviour:
   - rid: 2418071392341983232
   - rid: 2418071392341983233
   - rid: 2418071392341983234
+  - rid: 3490959462784565248
+  - rid: 3490959462784565249
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -72,7 +74,7 @@ MonoBehaviour:
     patrolIndex: 0
     investigate: 0
     investigatePosition: {x: 0, y: 0, z: 0}
-  viewPosition: {x: 300, y: -117, z: 0}
+  viewPosition: {x: 257, y: 10, z: 0}
   viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
   references:
     version: 2
@@ -729,6 +731,7 @@ MonoBehaviour:
         drawGizmos: 0
         children:
         - rid: 2765563785597157377
+        - rid: 3490959462784565248
         - rid: 2765563785597157378
     - rid: 2765563785597157376
       type: {class: CheckBool, ns: , asm: Assembly-CSharp}
@@ -781,7 +784,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 78d254a670640cb4d8d569d26622c072
-        position: {x: 1571, y: 746}
+        position: {x: 1775, y: 746}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -1004,5 +1007,50 @@ MonoBehaviour:
           investigate: 0
           investigatePosition: {x: 0, y: 0, z: 0}
         description: Investigate
+        drawGizmos: 0
+        blackboardValues: 3
+    - rid: 3490959462784565248
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 950ad37f84b89a649af7bec7c5fb91a4
+        position: {x: 1556, y: 746}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 3490959462784565249
+    - rid: 3490959462784565249
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 39acaf0c7e9859a4ea698a95f641f79d
+        position: {x: 1556, y: 865}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+        description: 
         drawGizmos: 0
         blackboardValues: 3
