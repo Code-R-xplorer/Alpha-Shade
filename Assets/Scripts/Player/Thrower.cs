@@ -21,19 +21,9 @@ namespace Player
         {
             _inputManager = InputManager.Instance;
             _inputManager.OnThrow += ThrowItem;
+            _currentItems = maxItems;
         }
-
-        public bool PickUpItem()
-        {
-            if (_currentItems < maxItems)
-            {
-                _currentItems++;
-                return true;
-            }
-
-            return false;
-        }
-
+        
         private void ThrowItem(bool canceled)
         {
             if (!canceled)
@@ -41,24 +31,23 @@ namespace Player
                 if (_currentItems > 0 && !_itemHeld)
                 {
                     _currentItem = Instantiate(itemPrefab, hand.position, UnityEngine.Random.rotation);
-                    _currentItem.GetComponent<Throwable>().active = true;
                     _currentItem.transform.parent = hand;
                     _currentItem.transform.localPosition = Vector3.zero;
                     _currentItems--;
                     _itemHeld = true;
                 }
             }
-            // else
-            // {
-            //     if (_itemHeld)
-            //     {
-            //         _currentItem.transform.parent = null;
-            //         Rigidbody itemRB = _currentItem.GetComponent<Rigidbody>();
-            //         itemRB.isKinematic = false;
-            //         itemRB.AddForce(hand.forward * throwForce, ForceMode.Impulse);
-            //         _itemHeld = false;
-            //     }
-            // }
+            else
+            {
+                if (_itemHeld)
+                {
+                    _currentItem.transform.parent = null;
+                    Rigidbody itemRB = _currentItem.GetComponent<Rigidbody>();
+                    itemRB.AddForce(Camera.main.transform.up * 5f, ForceMode.Impulse);
+                    itemRB.AddForce(hand.forward * throwForce, ForceMode.Impulse);
+                    _itemHeld = false;
+                }
+            }
             
         }
     }

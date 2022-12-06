@@ -27,7 +27,6 @@ namespace Interactables
                 Debug.Log(hit.tag);
                 if (hit.CompareTag(Tags.Player))
                 {
-                    Debug.Log("Interact");
                     CanInteract = true;
                     Player = hit.transform.parent.gameObject;
                     return;
