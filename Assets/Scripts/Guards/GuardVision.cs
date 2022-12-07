@@ -20,6 +20,8 @@ namespace Guards
 
         [SerializeField] private bool canSeePlayer;
 
+        private bool _seenPlayer;
+
         private LayerMask _layerMask;
 
         
@@ -27,6 +29,7 @@ namespace Guards
         {
             _guardController = GetComponentInParent<GuardController>();
             _startingTransform = transform;
+            Debug.Log(_startingTransform.rotation);
             _layerMask = LayerMask.GetMask("Guard");
             _layerMask = ~_layerMask;
         }
@@ -54,14 +57,21 @@ namespace Guards
             if(canSeePlayer)
             {
                 transform.LookAt(player.transform.position + playerEyeOffset);
-                
             }
 
-            if (!canSeePlayer)
+            if (_seenPlayer)
             {
-                var transform1 = transform;
-                transform1.position = _startingTransform.position;
-                transform1.rotation = _startingTransform.rotation;
+                if (!_lookedLeftRight)
+                {
+                    eyesCollider.transform.localRotation = Quaternion.Euler(leftTarget);
+                    _lookedLeftRight = true;
+                }
+                else
+                {
+                    eyesCollider.transform.localRotation = Quaternion.Euler(rightTarget);
+                    _lookedLeftRight = false;
+                }
+                _seenPlayer = false;
             }
             _guardController.CanSeePlayer(canSeePlayer);
 
@@ -82,7 +92,6 @@ namespace Guards
             // Debug.DrawRay(guardEyes.position, ((position - guardEyes.position).normalized) * 100f, Color.blue, 10f);
             if (Physics.Raycast(guardEyes.position, (position - guardEyes.position).normalized, out var info, 100000f, _layerMask)) // Can the guard see something in between him and the player transform?
             {
-                Debug.Log(info.collider.tag);
                 return info.collider.CompareTag("Player");
             }
             return false;
@@ -92,7 +101,6 @@ namespace Guards
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("GuardVision Trigger Enter");
             OnProcessViewFrustrum(other);
         }
 
@@ -106,6 +114,7 @@ namespace Guards
             if (other.CompareTag("Player"))
             {
                 canSeePlayer = false;
+                _seenPlayer = true;
             }
         }
     }
