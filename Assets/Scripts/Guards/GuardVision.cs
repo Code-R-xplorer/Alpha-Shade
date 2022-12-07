@@ -29,7 +29,6 @@ namespace Guards
         {
             _guardController = GetComponentInParent<GuardController>();
             _startingTransform = transform;
-            Debug.Log(_startingTransform.rotation);
             _layerMask = LayerMask.GetMask("Guard");
             _layerMask = ~_layerMask;
         }

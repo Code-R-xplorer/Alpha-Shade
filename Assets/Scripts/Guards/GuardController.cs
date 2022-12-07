@@ -1,40 +1,35 @@
-using System.Collections.Generic;
 using TheKiwiCoder;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 using Utilities;
 
 namespace Guards
 {
     public class GuardController : MonoBehaviour
     {
-    
         private BehaviourTreeRunner _behaviourTreeRunner;
 
         private GameObject _player;
-
-        [SerializeField] private List<Transform> patrolPoints;
+        
         [SerializeField] private float hearingDistance = 5f;
 
-        private Blackboard _blackboard;
-        // Start is called before the first frame update
-        void Start()
+        protected Blackboard blackboard;
+        
+        protected virtual void Start()
         {
             _behaviourTreeRunner = GetComponent<BehaviourTreeRunner>();
             _player = GameObject.FindWithTag("Player");
-            _blackboard = _behaviourTreeRunner.tree.blackboard;
-            _blackboard.patrolPoints = patrolPoints;
+            blackboard = _behaviourTreeRunner.tree.blackboard;
             GameEvents.Instance.onHeardSomething += Investigate;
         }
 
         public void CanSeePlayer(bool canSeePlayer)
         {
-            if (canSeePlayer) _blackboard.playerPosition = _player.transform.position;
-            _blackboard.canSeePlayer = canSeePlayer;
+            if (canSeePlayer) blackboard.playerPosition = _player.transform.position;
+            blackboard.canSeePlayer = canSeePlayer;
         }
 
-        public void Investigate(Transform investigateTransform, bool investigate)
+        private void Investigate(Transform investigateTransform, bool investigate)
         {
 
             if (investigate)
@@ -50,14 +45,14 @@ namespace Guards
                     if (pathLength <= hearingDistance)
                     {
                         Debug.Log("Hello");
-                        _blackboard.investigatePosition = investigateTransform.position;
-                        _blackboard.investigate = true;
+                        blackboard.investigatePosition = investigateTransform.position;
+                        blackboard.investigate = true;
                         return;
                     }
                 }
                 
             }
-            _blackboard.investigate = false;
+            blackboard.investigate = false;
         }
     }
 }

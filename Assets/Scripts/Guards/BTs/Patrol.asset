@@ -68,15 +68,11 @@ MonoBehaviour:
     searchPositions: []
     searchIndex: 0
     generateSearchPoints: 0
-    patrolPoints:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    patrolPoints: []
     patrolIndex: 0
     investigate: 0
     investigatePosition: {x: 0, y: 0, z: 0}
-  viewPosition: {x: 265, y: -876, z: 0}
+  viewPosition: {x: 529, y: -229, z: 0}
   viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
@@ -664,7 +660,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
         description: 
         drawGizmos: 0
-        tolerance: 0.1
+        tolerance: 0.2
     - rid: 2765563782596395033
       type: {class: ResetSearchTree, ns: , asm: Assembly-CSharp}
       data:
