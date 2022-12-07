@@ -9,18 +9,21 @@ public class GoToPatrolPoint : ActionNode
     public float tolerance = 1.0f;
     protected override void OnStart()
     {
-        // context.agent.destination = blackboard.patrolPoints[blackboard.patrolIndex].position;
+        context.agent.destination = blackboard.patrolPoints[blackboard.patrolIndex].position;
     }
 
     protected override void OnStop() {
     }
 
     protected override State OnUpdate() {
+        if (context.agent.pathPending) {
+            return State.Running;
+        }
+
         if (context.agent.remainingDistance < tolerance)
         {
             blackboard.patrolIndex++;
             if (blackboard.patrolIndex > blackboard.patrolPoints.Count - 1) blackboard.patrolIndex = 0;
-            context.agent.destination = blackboard.patrolPoints[blackboard.patrolIndex].position;
             return State.Success;
         }
 
@@ -28,6 +31,11 @@ public class GoToPatrolPoint : ActionNode
             return State.Failure;
         }
 
-        return State.Success;
+        if (blackboard.canSeePlayer || blackboard.investigate)
+        {
+            return State.Failure;
+        }
+
+        return State.Running;
     }
 }

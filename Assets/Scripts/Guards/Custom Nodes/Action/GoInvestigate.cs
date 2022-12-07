@@ -29,6 +29,12 @@ public class GoInvestigate : ActionNode
             return State.Failure;
         }
 
+        if (blackboard.canSeePlayer)
+        {
+            blackboard.investigate = false;
+            return State.Failure;
+        }
+
         return State.Running;
     }
 }

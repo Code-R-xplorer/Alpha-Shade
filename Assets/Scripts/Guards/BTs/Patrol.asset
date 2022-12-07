@@ -54,9 +54,11 @@ MonoBehaviour:
   - rid: 3490959439064989697
   - rid: 2418071392341983232
   - rid: 2418071392341983233
-  - rid: 2418071392341983234
   - rid: 3490959462784565248
   - rid: 3490959462784565249
+  - rid: 2418071427721986073
+  - rid: 2418071427721986074
+  - rid: 2418071427721986075
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -74,8 +76,8 @@ MonoBehaviour:
     patrolIndex: 0
     investigate: 0
     investigatePosition: {x: 0, y: 0, z: 0}
-  viewPosition: {x: 122, y: 68, z: 0}
-  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
+  viewPosition: {x: 265, y: -876, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -100,7 +102,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
         description: 
         drawGizmos: 0
-        tolerance: 1
+        tolerance: 0.1
     - rid: 2418071392341983233
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
       data:
@@ -124,13 +126,13 @@ MonoBehaviour:
         drawGizmos: 0
         newValue: 0
         blackboardValues: 3
-    - rid: 2418071392341983234
-      type: {class: Wait, ns: TheKiwiCoder, asm: Assembly-CSharp}
+    - rid: 2418071427721986073
+      type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
       data:
         state: 0
         started: 0
-        guid: 17314d833cdfdb241bc545de5e9ea8cd
-        position: {x: 759.99994, y: 640}
+        guid: fe475e5278a13c54cba87049b8ff0768
+        position: {x: 760, y: 640}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -145,7 +147,54 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
         description: 
         drawGizmos: 0
-        duration: 5
+        duration: 2.5
+        guardPositions: 0
+    - rid: 2418071427721986074
+      type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8338d768094d1a346834b97cae5acb77
+        position: {x: 1971.44, y: 746}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+        description: 
+        drawGizmos: 0
+        duration: 2.5
+        guardPositions: 1
+    - rid: 2418071427721986075
+      type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8306fa1d83554e84fbb5372715ef491b
+        position: {x: 731, y: 1369}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+        description: 
+        drawGizmos: 0
+        duration: 2.5
+        guardPositions: 2
     - rid: 2765563782596395008
       type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -500,6 +549,7 @@ MonoBehaviour:
         - rid: 2765563782596395024
         - rid: 2765563785844097024
         - rid: 2765563782596395031
+        - rid: 2418071427721986075
     - rid: 2765563782596395024
       type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -614,7 +664,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
         description: 
         drawGizmos: 0
-        tolerance: 1
+        tolerance: 0.1
     - rid: 2765563782596395033
       type: {class: ResetSearchTree, ns: , asm: Assembly-CSharp}
       data:
@@ -733,6 +783,7 @@ MonoBehaviour:
         - rid: 2765563785597157377
         - rid: 3490959462784565248
         - rid: 2765563785597157378
+        - rid: 2418071427721986074
     - rid: 2765563785597157376
       type: {class: CheckBool, ns: , asm: Assembly-CSharp}
       data:
@@ -799,7 +850,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
         description: 
         drawGizmos: 0
-        tolerance: 1
+        tolerance: 0.1
     - rid: 2765563785597157380
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
       data:
@@ -985,7 +1036,7 @@ MonoBehaviour:
         children:
         - rid: 3490959439064989697
         - rid: 2418071392341983232
-        - rid: 2418071392341983234
+        - rid: 2418071427721986073
         - rid: 2418071392341983233
     - rid: 3490959439064989697
       type: {class: CheckBool, ns: , asm: Assembly-CSharp}
