@@ -20,11 +20,15 @@ namespace Guards
 
         [SerializeField] private bool canSeePlayer;
 
+        private LayerMask _layerMask;
+
         
         private void Start() 
         {
             _guardController = GetComponentInParent<GuardController>();
             _startingTransform = transform;
+            _layerMask = LayerMask.GetMask("Guard");
+            _layerMask = ~_layerMask;
         }
         private void Update() 
         {
@@ -75,8 +79,10 @@ namespace Guards
         // May want to change this to do multiple casts at different points on the player
         public bool CheckSightForPlayer(Vector3 position)
         {
-            if (Physics.Raycast(guardEyes.position, (position - guardEyes.position).normalized, out var info, 100000f, 7)) // Can the guard see something in between him and the player transform?
+            // Debug.DrawRay(guardEyes.position, ((position - guardEyes.position).normalized) * 100f, Color.blue, 10f);
+            if (Physics.Raycast(guardEyes.position, (position - guardEyes.position).normalized, out var info, 100000f, _layerMask)) // Can the guard see something in between him and the player transform?
             {
+                Debug.Log(info.collider.tag);
                 return info.collider.CompareTag("Player");
             }
             return false;
@@ -86,6 +92,7 @@ namespace Guards
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("GuardVision Trigger Enter");
             OnProcessViewFrustrum(other);
         }
 
