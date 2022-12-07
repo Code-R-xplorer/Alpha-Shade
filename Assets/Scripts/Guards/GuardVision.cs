@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace Guards
 {
@@ -29,6 +30,7 @@ namespace Guards
         {
             _guardController = GetComponentInParent<GuardController>();
             _startingTransform = transform;
+            player = GameObject.FindGameObjectWithTag(Tags.Player).transform.parent.gameObject;
             _layerMask = LayerMask.GetMask("Guard");
             _layerMask = ~_layerMask;
         }
