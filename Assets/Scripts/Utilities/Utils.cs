@@ -19,13 +19,13 @@ namespace Utilities
             for (int i = 0; i < searchPoints; i++)
             {
                 Vector3 newPos = RandomNavSphere(origin, searchRadius, -1);
-                searchPositions.Add(newPos);
+                if(newPos != Vector3.zero) searchPositions.Add(newPos);
             }
 
             return searchPositions;
         }
-        
-        public static Vector3 RandomNavSphere (Vector3 origin, float distance, int layermask) 
+
+        private static Vector3 RandomNavSphere (Vector3 origin, float distance, int layermask) 
         {
             /*************************************************************************************************
             *    Title: Random "Wander" AI using NavMesh
@@ -39,9 +39,13 @@ namespace Utilities
         
             randomDirection += origin;
 
-            NavMesh.SamplePosition (randomDirection, out var navHit, distance, layermask);
-        
-            return navHit.position;
+            if (NavMesh.SamplePosition(randomDirection, out var navHit, distance, layermask))
+            {
+                return navHit.position;
+            }
+
+            return Vector3.zero;
+
         }
         
         /*************************************************************************************************

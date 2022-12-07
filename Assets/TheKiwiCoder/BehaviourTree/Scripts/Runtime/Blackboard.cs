@@ -28,5 +28,8 @@ namespace TheKiwiCoder {
         public bool investigate;
         public Vector3 investigatePosition;
 
+        public Vector3 homePosition;
+        public Quaternion homeRotation;
+
     }
 }

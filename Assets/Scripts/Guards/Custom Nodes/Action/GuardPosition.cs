@@ -4,17 +4,27 @@ using UnityEngine;
 using TheKiwiCoder;
 
 [System.Serializable]
-public class GoToSearchPoint : ActionNode
+public class GuardPosition : ActionNode
 {
-    public float tolerance = 1.0f;
+    public float tolerance = 1f;
     protected override void OnStart() {
-        context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
+        if (context.transform.position != blackboard.homePosition)
+        {
+            context.agent.destination = blackboard.homePosition;
+        }
+        else
+        {
+            context.agent.isStopped = true;
+            context.agent.ResetPath();
+        }
     }
 
     protected override void OnStop() {
     }
 
-    protected override State OnUpdate() {
+    protected override State OnUpdate()
+    {
+        if (context.transform.position == blackboard.homePosition) return State.Success;
         
         if (context.agent.pathPending) {
             return State.Running;
@@ -22,8 +32,8 @@ public class GoToSearchPoint : ActionNode
 
         if (context.agent.remainingDistance < tolerance)
         {
-            blackboard.searchIndex++;
-            if (blackboard.searchIndex > blackboard.searchPositions.Count - 1) return State.Failure;
+            context.transform.position = blackboard.homePosition;
+            context.transform.rotation = blackboard.homeRotation;
             return State.Success;
         }
 
