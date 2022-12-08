@@ -19,7 +19,7 @@ namespace Guards
         private GuardController _guardController;
         private Transform _startingTransform;
 
-        [SerializeField] private bool canSeePlayer;
+        public bool canSeePlayer;
 
         private bool _seenPlayer;
 

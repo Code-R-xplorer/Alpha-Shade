@@ -39,6 +39,8 @@ namespace Player
         private float _startScaleY;
         private float _startPlayerHeight;
 
+        [SerializeField] private bool canBeKilled;
+
         private enum PlayerState
         {
             Walking,
@@ -172,6 +174,13 @@ namespace Player
             else if(_isGrounded && OnSlope()) _rb.AddForce(_slopeMoveDirection.normalized * (_moveSpeed * _movementMultiplier), ForceMode.Acceleration);
             else _rb.AddForce(_moveDirection.normalized * (_moveSpeed * _movementMultiplier * _airMovementMultiplier), ForceMode.Acceleration);
             
+        }
+
+        public void KillPlayer()
+        {
+            if (!canBeKilled) return;
+            gameObject.SetActive(false);
+            GameEvents.Instance.PlayerDeath();
         }
         
     }

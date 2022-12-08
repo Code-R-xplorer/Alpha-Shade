@@ -12,13 +12,16 @@ namespace Utilities
             Instance = this;
         }
 
-        public event Action<Transform,bool> onHeardSomething;
+        public event Action<Transform,bool> OnHeardSomething;
         public void HeardSomething(Transform input, bool agent)
         {
-            if(onHeardSomething != null)
-            {
-                onHeardSomething(input, agent);
-            }
+            OnHeardSomething?.Invoke(input, agent);
+        }
+
+        public event Action OnPlayerDeath;
+        public void PlayerDeath()
+        {
+            OnPlayerDeath?.Invoke();
         }
     }
 }

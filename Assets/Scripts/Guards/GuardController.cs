@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using Player;
 using TheKiwiCoder;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,17 +13,32 @@ namespace Guards
         private BehaviourTreeRunner _behaviourTreeRunner;
 
         private GameObject _player;
-        
+
         [SerializeField] private float hearingDistance = 5f;
 
         protected Blackboard blackboard;
-        
+
+        [SerializeField] private float health = 100;
+        private bool _dead;
+
+        private GuardVision _guardVision;
+        private NavMeshAgent _navMeshAgent;
+        private Rigidbody _rigidbody;
+
+        private bool _deathSequence;
+
+        private float _agentSpeed;
+
         protected virtual void Start()
         {
             _behaviourTreeRunner = GetComponent<BehaviourTreeRunner>();
+            _guardVision = GetComponentInChildren<GuardVision>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _rigidbody = GetComponent<Rigidbody>();
             _player = GameObject.FindWithTag("Player");
             blackboard = _behaviourTreeRunner.tree.blackboard;
-            GameEvents.Instance.onHeardSomething += Investigate;
+            GameEvents.Instance.OnHeardSomething += Investigate;
+            _agentSpeed = _navMeshAgent.speed;
         }
 
         public void CanSeePlayer(bool canSeePlayer)
@@ -31,28 +49,84 @@ namespace Guards
 
         private void Investigate(Transform investigateTransform, bool investigate)
         {
-
             if (investigate)
             {
-                Debug.Log("Investigate");
                 NavMeshPath path = new NavMeshPath();
-                NavMesh.CalculatePath(transform.position, 
+                NavMesh.CalculatePath(transform.position,
                     investigateTransform.position, NavMesh.AllAreas, path);
                 if (path.status == NavMeshPathStatus.PathComplete)
                 {
                     float pathLength = Utils.CalculatePathLength(path);
-                    Debug.Log("Path Length = " + pathLength);
                     if (pathLength <= hearingDistance)
                     {
-                        Debug.Log("Hello");
                         blackboard.investigatePosition = investigateTransform.position;
                         blackboard.investigate = true;
                         return;
                     }
                 }
-                
+
             }
+
             blackboard.investigate = false;
+        }
+
+        private void Update()
+        {
+            if (_dead)
+            {
+                if (!_deathSequence) StartCoroutine(DeathSequence());
+            }
+        }
+
+        private IEnumerator DeathSequence()
+        {
+            _deathSequence = true;
+            _behaviourTreeRunner.enabled = false;
+            _guardVision.enabled = false;
+            _navMeshAgent.enabled = false;
+            _rigidbody.AddForce(Vector3.forward * 2f, ForceMode.Impulse);
+            yield return new WaitForSeconds(5f);
+            Destroy(gameObject);
+
+        }
+
+        public void DecreaseHealth(float damage)
+        {
+            _guardVision.canSeePlayer = true;
+            health -= damage;
+            _dead = health <= 0;
+        }
+
+        public void TakeDown()
+        {
+            _dead = true;
+        }
+
+        public void HoldGuard()
+        {
+            if (_dead) return;
+            _navMeshAgent.speed = 0;
+            _navMeshAgent.isStopped = true;
+        }
+
+        public void FreeGuard()
+        {
+            if (_dead) return;
+            _navMeshAgent.speed = _agentSpeed;
+            _navMeshAgent.isStopped = false;
+        }
+
+        private void OnDestroy()
+        {
+            GameEvents.Instance.OnHeardSomething -= Investigate;
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.CompareTag(Tags.Player))
+            {
+                _player.transform.parent.GetComponent<PlayerMovement>().KillPlayer();
+            }
         }
     }
 }

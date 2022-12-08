@@ -10,6 +10,7 @@ namespace Utilities
 
         public delegate void BaseAction();
         public delegate void BoolBaseAction(bool canceled);
+        public delegate void BoolDoubleBaseAction(bool canceled, double duration);
 
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
@@ -25,6 +26,7 @@ namespace Utilities
         public event BoolBaseAction OnSprint;
         public event BoolBaseAction OnCrouch;
         public event BoolBaseAction OnThrow;
+        public event BoolDoubleBaseAction OnMelee;
 
         public event BaseAction OnStartInteract;
 
@@ -45,6 +47,8 @@ namespace Utilities
             _playerControls.Controls.Crouch.canceled += context => CrouchPrimary(context.canceled);
             _playerControls.Controls.Throw.started += context => ThrowPrimary(context.canceled);
             _playerControls.Controls.Throw.canceled += context => ThrowPrimary(context.canceled);
+            _playerControls.Controls.Melee.started += context => MeleePrimary(context.canceled, context.duration);
+            _playerControls.Controls.Melee.canceled += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Interact.performed += context => StartInteractPrimary();
         }
 
@@ -82,6 +86,10 @@ namespace Utilities
         private void CrouchPrimary(bool canceled)
         {
             OnCrouch?.Invoke(canceled);
+        }
+        private void MeleePrimary(bool canceled, double duration)
+        {
+            OnMelee?.Invoke(canceled, duration);
         }
 
         private void StartInteractPrimary()

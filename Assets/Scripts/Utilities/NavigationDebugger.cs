@@ -20,6 +20,7 @@ namespace Utilities
         // Update is called once per frame
         void Update()
         {
+            if(!agentToDebug) return;
             if(agentToDebug.hasPath)
             {
                 lineRenderer.positionCount = agentToDebug.path.corners.Length;

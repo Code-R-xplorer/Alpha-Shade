@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""7896ec01-2942-488e-a535-a052d6ebfd7b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16d1300f-a811-4102-976e-5b659cd2c205"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Controls_Crouch = m_Controls.FindAction("Crouch", throwIfNotFound: true);
         m_Controls_Interact = m_Controls.FindAction("Interact", throwIfNotFound: true);
         m_Controls_Throw = m_Controls.FindAction("Throw", throwIfNotFound: true);
+        m_Controls_Melee = m_Controls.FindAction("Melee", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_Crouch;
     private readonly InputAction m_Controls_Interact;
     private readonly InputAction m_Controls_Throw;
+    private readonly InputAction m_Controls_Melee;
     public struct ControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Controls_Crouch;
         public InputAction @Interact => m_Wrapper.m_Controls_Interact;
         public InputAction @Throw => m_Wrapper.m_Controls_Throw;
+        public InputAction @Melee => m_Wrapper.m_Controls_Melee;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Throw.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnThrow;
                 @Throw.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnThrow;
                 @Throw.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnThrow;
+                @Melee.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMelee;
+                @Melee.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMelee;
+                @Melee.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMelee;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Throw.started += instance.OnThrow;
                 @Throw.performed += instance.OnThrow;
                 @Throw.canceled += instance.OnThrow;
+                @Melee.started += instance.OnMelee;
+                @Melee.performed += instance.OnMelee;
+                @Melee.canceled += instance.OnMelee;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
     }
 }
