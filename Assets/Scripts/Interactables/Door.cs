@@ -160,11 +160,13 @@ namespace Interactables
                 switch (doorInteraction)
                 {
                     case DoorInteractions.Interact:
+                        if(_open) ToggleDoor(true);
                         break;
                     case DoorInteractions.Automatic:
                         ToggleDoor(true);
                         break;
                     case DoorInteractions.KeyCard:
+                        if(_open) ToggleDoor(true);
                         break;
                     case DoorInteractions.Default:
                         Debug.LogWarning("No Door Interaction Set!");
