@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Utilities;
 
 namespace Interactables
 {
@@ -10,6 +11,7 @@ namespace Interactables
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!other.CompareTag(Tags.Player)) return;
             door.CollectedKeyCard();
             Destroy(gameObject);
         }
