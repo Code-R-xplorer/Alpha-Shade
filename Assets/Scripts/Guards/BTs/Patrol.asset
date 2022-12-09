@@ -74,7 +74,7 @@ MonoBehaviour:
     investigatePosition: {x: 0, y: 0, z: 0}
     homePosition: {x: 0, y: 0, z: 0}
     homeRotation: {x: 0, y: 0, z: 0, w: 1}
-  viewPosition: {x: 539, y: -50, z: 0}
+  viewPosition: {x: -31, y: -74, z: 0}
   viewScale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
@@ -914,7 +914,7 @@ MonoBehaviour:
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
         description: 
         drawGizmos: 0
-        tolerance: 0.1
+        tolerance: 0.2
     - rid: 2765563785597157380
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
       data:

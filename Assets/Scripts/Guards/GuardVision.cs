@@ -13,7 +13,7 @@ namespace Guards
         [SerializeField] private float lookSpeed = 3;
         [SerializeField] private Vector3 playerEyeOffset;
         
-        private bool _lookedLeftRight = false; // false = left, true = right
+        [FormerlySerializedAs("_lookedLeftRight")] [SerializeField] private bool lookedLeftRight = false; // false = left, true = right
         public bool canLookLeftRight = true;
         [FormerlySerializedAs("_player")] [SerializeField] private GameObject player;
         private GuardController _guardController;
@@ -38,12 +38,12 @@ namespace Guards
         {
             if(canLookLeftRight)
             {
-                if(!_lookedLeftRight)
+                if(!lookedLeftRight)
                 {
                     eyesCollider.transform.localRotation = Quaternion.Lerp(eyesCollider.transform.localRotation,Quaternion.Euler(leftTarget), lookSpeed*Time.deltaTime);
                     if(eyesCollider.transform.localRotation == Quaternion.Euler(leftTarget))
                     {
-                        _lookedLeftRight = true;
+                        lookedLeftRight = true;
                     }
                 }
                 else
@@ -51,7 +51,7 @@ namespace Guards
                     eyesCollider.transform.localRotation = Quaternion.Lerp(eyesCollider.transform.localRotation,Quaternion.Euler(rightTarget), lookSpeed*Time.deltaTime);
                     if(eyesCollider.transform.localRotation == Quaternion.Euler(rightTarget))
                     {
-                        _lookedLeftRight = false;
+                        lookedLeftRight = false;
                     }
                 }
             }
@@ -62,15 +62,15 @@ namespace Guards
 
             if (_seenPlayer)
             {
-                if (!_lookedLeftRight)
+                if (!lookedLeftRight)
                 {
                     eyesCollider.transform.localRotation = Quaternion.Euler(leftTarget);
-                    _lookedLeftRight = true;
+                    lookedLeftRight = true;
                 }
                 else
                 {
                     eyesCollider.transform.localRotation = Quaternion.Euler(rightTarget);
-                    _lookedLeftRight = false;
+                    lookedLeftRight = false;
                 }
                 _seenPlayer = false;
             }

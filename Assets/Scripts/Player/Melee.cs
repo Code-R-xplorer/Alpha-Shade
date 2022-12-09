@@ -21,8 +21,7 @@ namespace Player
         private bool _canMelee;
 
         private GuardController _guardController;
-
-        [SerializeField] private TakeDownBar takeDownBar;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -37,7 +36,7 @@ namespace Player
             RaycastHit hit;
             Ray ray = new Ray(transform.position, transform.forward);
             // hits = Physics.RaycastAll(ray, attackRange);
-            Debug.DrawRay(ray.origin, ray.direction, Color.blue, 5f);
+            // Debug.DrawRay(ray.origin, ray.direction, Color.blue, 5f);
             if (Physics.Raycast(ray, out hit, attackRange, _layerMask))
             {
                 if (!cancelled)
@@ -45,7 +44,6 @@ namespace Player
                     _startTakedownTime = Time.time;
                     _checkForTakeDown = true;
                     _performingTakedown = false;
-                    takeDownBar.StartProgressBar(takedownMinTime);
                 }
                 if (cancelled)
                 {
@@ -95,7 +93,6 @@ namespace Player
 
         private void DealMeleeDamage()
         {
-            takeDownBar.ProgressFailed();
             _guardController.DecreaseHealth(damageDealt);
         }
 
