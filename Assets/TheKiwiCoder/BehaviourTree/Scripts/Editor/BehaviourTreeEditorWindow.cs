@@ -172,7 +172,9 @@ namespace TheKiwiCoder {
             treeView.ClearView();
         }
 
-        void ClearIfSelected(string path) {
+        void ClearIfSelected(string path)
+        {
+            if (serializer == null) return;
             if (AssetDatabase.GetAssetPath(serializer.tree) == path) {
                 // Need to delay because this is called from a will delete asset callback
                 EditorApplication.delayCall += () => {
