@@ -8,6 +8,8 @@ namespace Interactables
     {
         [HideInInspector]
         public Door door;
+        
+        
 
         private void OnTriggerEnter(Collider other)
         {

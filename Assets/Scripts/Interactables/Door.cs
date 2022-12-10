@@ -117,7 +117,7 @@ namespace Interactables
                 }
                 _open = true;
                 _offMeshLink.activated = true;
-                GameEvents.Instance.HeardSomething(investigatePoint, playerTriggered);
+                // GameEvents.Instance.HeardSomething(investigatePoint, playerTriggered);
             }
         }
 
