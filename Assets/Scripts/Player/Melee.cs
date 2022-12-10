@@ -133,5 +133,10 @@ namespace Player
                 _canMelee = false;
             }
         }
+
+        private void OnDestroy()
+        {
+            _inputManager.OnMelee -= PerformMelee;
+        }
     }
 }

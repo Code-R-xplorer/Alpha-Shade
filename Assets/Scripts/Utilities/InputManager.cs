@@ -4,8 +4,9 @@ using UnityEngine;
 namespace Utilities
 {
     [DefaultExecutionOrder(-1)]
-    public class InputManager : Singleton<InputManager>
+    public class InputManager : MonoBehaviour
     {
+        public static InputManager Instance;
         private PlayerControls _playerControls;
 
         public delegate void BaseAction();
@@ -33,6 +34,7 @@ namespace Utilities
         
         private void Awake()
         {
+            Instance = this;
             _playerControls = new PlayerControls();
 
         }
@@ -52,8 +54,9 @@ namespace Utilities
             _playerControls.Controls.Interact.performed += context => StartInteractPrimary();
         }
 
-        private void CursorLock(bool locked)
+        public void CursorLock(bool locked)
         {
+            Debug.Log(locked);
             if (locked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -112,7 +115,18 @@ namespace Utilities
             _playerControls.Disable();
         }
 
-        
-
+        private void OnDestroy()
+        {
+            _playerControls.Controls.Jump.performed -= _ => StartJumpPrimary();
+            _playerControls.Controls.Sprint.started -= context => SprintPrimary(context.canceled);
+            _playerControls.Controls.Sprint.canceled -= context => SprintPrimary(context.canceled);
+            _playerControls.Controls.Crouch.started -= context => CrouchPrimary(context.canceled);
+            _playerControls.Controls.Crouch.canceled -= context => CrouchPrimary(context.canceled);
+            _playerControls.Controls.Throw.started -= context => ThrowPrimary(context.canceled);
+            _playerControls.Controls.Throw.canceled -= context => ThrowPrimary(context.canceled);
+            _playerControls.Controls.Melee.started -= context => MeleePrimary(context.canceled, context.duration);
+            _playerControls.Controls.Melee.canceled -= context => MeleePrimary(context.canceled, context.duration);
+            _playerControls.Controls.Interact.performed -= context => StartInteractPrimary();
+        }
     }
 }

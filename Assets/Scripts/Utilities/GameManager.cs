@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Player;
+using UI;
 using UnityEngine;
 
 namespace Utilities
@@ -10,6 +14,7 @@ namespace Utilities
         [SerializeField] private Objective[] objectives;
         [SerializeField] private bool allObjectivesComplete;
         [SerializeField] private GameObject AI;
+        private GameObject player;
 
         private void Awake()
         {
@@ -19,6 +24,8 @@ namespace Utilities
         private void Start()
         {
             GameEvents.Instance.OnPlayerDeath += PlayerDeath;
+            UIManager.Instance.UpdateObjectives(GetObjectives());
+            player = GameObject.FindWithTag(Tags.Player).transform.parent.gameObject;
         }
 
         public void ObjectiveComplete(int objectiveID)
@@ -37,7 +44,7 @@ namespace Utilities
                     objective.completed = true;
                 }
             }
-
+            UIManager.Instance.UpdateObjectives(GetObjectives());
             allObjectivesComplete = CheckAllComplete();
         }
 
@@ -75,16 +82,37 @@ namespace Utilities
         {
             if (allObjectivesComplete)
             {
+                player.GetComponent<PlayerMovement>().enabled = false;
+                player.GetComponent<PlayerLook>().enabled = false;
+                AI.SetActive(false);
+                InputManager.Instance.CursorLock(false);
                 GameEvents.Instance.GameComplete();
-                Time.timeScale = 0f;
+                // Time.timeScale = 0f;
             }
         }
 
         private void PlayerDeath()
         {
             AI.SetActive(false);
-            Time.timeScale = 0f;
+            player.GetComponent<PlayerMovement>().enabled = false;
+            player.GetComponent<PlayerLook>().enabled = false;
+            InputManager.Instance.CursorLock(false);
+            // Time.timeScale = 0f;
         }
+
+        public List<Tuple<bool, string>> GetObjectives()
+        {
+            List<Tuple<bool, string>> allObjectives = new List<Tuple<bool, string>>();
+            // Tuple<bool, string>[] allObjectives = new Tuple<bool, string>[objectives.Length];
+
+            foreach (var objective in objectives)
+            {
+                allObjectives.Add(new Tuple<bool, string>(objective.completed, objective.objectiveName));
+            }
+
+            return allObjectives;
+        }
+        
     }
 
     [System.Serializable]

@@ -21,5 +21,13 @@ namespace Tasks
                 GameManager.Instance.ObjectiveComplete(objectiveID);
             }
         }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag(Tags.Player))
+            {
+                if(endArea) GameManager.Instance.CheckComplete();
+            }
+        }
     }
 }

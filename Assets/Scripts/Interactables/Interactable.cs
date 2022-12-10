@@ -40,5 +40,10 @@ namespace Interactables
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, interactRange);
         }
+
+        private void OnDestroy()
+        {
+            _inputManager.OnStartInteract -= Interact;
+        }
     }
 }

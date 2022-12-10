@@ -7,7 +7,9 @@ using TheKiwiCoder;
 public class GoToSearchPoint : ActionNode
 {
     public float tolerance = 1.0f;
-    protected override void OnStart() {
+    protected override void OnStart()
+    {
+        if (blackboard.searchPositions.Count == 0) return;
         context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
     }
 
@@ -15,7 +17,7 @@ public class GoToSearchPoint : ActionNode
     }
 
     protected override State OnUpdate() {
-        
+        if (blackboard.searchPositions.Count == 0) return State.Failure;
         if (context.agent.pathPending) {
             return State.Running;
         }

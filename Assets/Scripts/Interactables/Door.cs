@@ -203,8 +203,10 @@ namespace Interactables
             KeyCard,
             Default
         }
-        
-        
-        
+
+        private void OnDestroy()
+        {
+            _inputManager.OnStartInteract -= CheckInteraction;
+        }
     }
 }

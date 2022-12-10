@@ -50,6 +50,11 @@ namespace Player
             }
             
         }
+
+        private void OnDestroy()
+        {
+            _inputManager.OnThrow -= ThrowItem;
+        }
     }
     
     

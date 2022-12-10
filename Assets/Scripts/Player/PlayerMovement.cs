@@ -179,7 +179,6 @@ namespace Player
         public void KillPlayer()
         {
             if (!canBeKilled) return;
-            gameObject.SetActive(false);
             GameEvents.Instance.PlayerDeath();
         }
         
