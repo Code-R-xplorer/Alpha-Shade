@@ -12,5 +12,10 @@ namespace Guards
             base.Start();
             blackboard.patrolPoints = patrolPoints;
         }
+
+        public void SetPatrolPoints(List<Transform> points)
+        {
+            patrolPoints = points;
+        }
     }
 }

@@ -365,6 +365,7 @@ MonoBehaviour:
   leftTarget: {x: 0, y: -40, z: 0}
   lookSpeed: 5
   playerEyeOffset: {x: 0, y: 0.5, z: 0}
+  lookedLeftRight: 0
   canLookLeftRight: 1
   player: {fileID: 0}
   canSeePlayer: 0

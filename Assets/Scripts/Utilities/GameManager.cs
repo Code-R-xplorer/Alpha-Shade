@@ -26,6 +26,7 @@ namespace Utilities
             GameEvents.Instance.OnPlayerDeath += PlayerDeath;
             UIManager.Instance.UpdateObjectives(GetObjectives());
             player = GameObject.FindWithTag(Tags.Player).transform.parent.gameObject;
+            GameEvents.Instance.InitiateGuards();
         }
 
         public void ObjectiveComplete(int objectiveID)

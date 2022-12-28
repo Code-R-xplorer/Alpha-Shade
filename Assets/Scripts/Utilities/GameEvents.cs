@@ -20,5 +20,8 @@ namespace Utilities
 
         public event Action OnGameComplete;
         public void GameComplete() { OnGameComplete?.Invoke(); }
+
+        public event Action OnInitiateGuards;
+        public void InitiateGuards(){ OnInitiateGuards?.Invoke(); }
     }
 }
