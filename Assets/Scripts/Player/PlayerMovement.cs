@@ -176,11 +176,5 @@ namespace Player
             
         }
 
-        public void KillPlayer()
-        {
-            if (!canBeKilled) return;
-            GameEvents.Instance.PlayerDeath();
-        }
-        
     }
 }

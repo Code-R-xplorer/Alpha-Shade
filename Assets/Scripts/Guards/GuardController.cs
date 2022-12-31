@@ -29,6 +29,14 @@ namespace Guards
 
         private float _agentSpeed;
 
+        [SerializeField] private float damageAmount = 15f;
+        [SerializeField] private float damageRate = 0.5f;
+
+        private bool _dealingDamage;
+        private bool _canDamage;
+
+        private PlayerHealth _playerHealth;
+
         protected virtual void Start()
         {
             _behaviourTreeRunner = GetComponent<BehaviourTreeRunner>();
@@ -39,6 +47,7 @@ namespace Guards
             blackboard = _behaviourTreeRunner.tree.blackboard;
             GameEvents.Instance.OnHeardSomething += Investigate;
             _agentSpeed = _navMeshAgent.speed;
+            _playerHealth = _player.transform.parent.GetComponent<PlayerHealth>();
         }
 
         public void CanSeePlayer(bool canSeePlayer)
@@ -125,8 +134,35 @@ namespace Guards
         {
             if (collision.collider.CompareTag(Tags.Player))
             {
-                _player.transform.parent.GetComponent<PlayerMovement>().KillPlayer();
+                _canDamage = true;
+                StartCoroutine(DealDamage());
             }
+        }
+
+        private void OnCollisionStay(Collision collision)
+        {
+            if (collision.collider.CompareTag(Tags.Player))
+            {
+                _canDamage = true;
+                StartCoroutine(DealDamage());
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.collider.CompareTag(Tags.Player))
+            {
+                _canDamage = false;
+            }
+        }
+
+        private IEnumerator DealDamage()
+        {
+            if(_dealingDamage) yield break;
+            _dealingDamage = true;
+            yield return new WaitForSeconds(damageRate);
+            if(_canDamage) _playerHealth.DecreaseHealth(damageAmount);
+            _dealingDamage = false;
         }
     }
 }
