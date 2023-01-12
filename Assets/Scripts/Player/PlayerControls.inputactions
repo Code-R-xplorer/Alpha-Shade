@@ -76,6 +76,33 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleWatch",
+                    "type": "Button",
+                    "id": "5fdfc888-b72f-46ec-90d7-03397369e5f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleWatchScreenL",
+                    "type": "Value",
+                    "id": "f5a6a047-a0c6-4f11-9c86-c4c933eb5026",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ToggleWatchScreenR",
+                    "type": "Value",
+                    "id": "bdbfbb6a-0bc7-47f8-9641-b3d1a996c080",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -208,6 +235,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "010a4301-61da-401c-a095-8324be9b5e33",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleWatch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e48f9f6-3fb0-4b91-bd36-7ef4b4af7a2f",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleWatchScreenL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c84cd0b-e699-4185-b683-2051359b32c5",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleWatchScreenR",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

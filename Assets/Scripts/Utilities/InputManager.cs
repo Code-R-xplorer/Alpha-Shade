@@ -30,6 +30,9 @@ namespace Utilities
         public event BoolDoubleBaseAction OnMelee;
 
         public event BaseAction OnStartInteract;
+        public event BaseAction OnStartToggleWatch;
+        public event BaseAction OnStartToggleWatchScreenL;
+        public event BaseAction OnStartToggleWatchScreenR;
 
         
         private void Awake()
@@ -52,6 +55,9 @@ namespace Utilities
             _playerControls.Controls.Melee.started += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Melee.canceled += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Interact.performed += context => StartInteractPrimary();
+            _playerControls.Controls.ToggleWatch.performed += _ => StartToggleWatchPrimary();
+            _playerControls.Controls.ToggleWatchScreenL.performed += _ => StartToggleWatchScreenL();
+            _playerControls.Controls.ToggleWatchScreenR.performed += _ => StartToggleWatchScreenR();
         }
 
         public void CursorLock(bool locked)
@@ -103,6 +109,21 @@ namespace Utilities
         private void ThrowPrimary(bool canceled)
         {
             OnThrow?.Invoke(canceled);
+        }
+
+        private void StartToggleWatchPrimary()
+        {
+            OnStartToggleWatch?.Invoke();
+        }
+
+        private void StartToggleWatchScreenL()
+        {
+            OnStartToggleWatchScreenL?.Invoke();
+        }
+
+        private void StartToggleWatchScreenR()
+        {
+            OnStartToggleWatchScreenR?.Invoke();
         }
 
         private void OnEnable()
