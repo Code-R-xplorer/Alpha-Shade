@@ -125,6 +125,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleWatchScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bec1e28-7d3a-4875-8a30-0789eb21f584"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleWatchScreenR"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""385f3358-f3a9-4bec-aec6-6e7dd8e1ed00"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleWatchScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Controls_ToggleWatch = m_Controls.FindAction("ToggleWatch", throwIfNotFound: true);
         m_Controls_ToggleWatchScreenL = m_Controls.FindAction("ToggleWatchScreenL", throwIfNotFound: true);
         m_Controls_ToggleWatchScreenR = m_Controls.FindAction("ToggleWatchScreenR", throwIfNotFound: true);
+        m_Controls_ToggleWatchScreen = m_Controls.FindAction("ToggleWatchScreen", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -381,6 +402,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_ToggleWatch;
     private readonly InputAction m_Controls_ToggleWatchScreenL;
     private readonly InputAction m_Controls_ToggleWatchScreenR;
+    private readonly InputAction m_Controls_ToggleWatchScreen;
     public struct ControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -396,6 +418,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @ToggleWatch => m_Wrapper.m_Controls_ToggleWatch;
         public InputAction @ToggleWatchScreenL => m_Wrapper.m_Controls_ToggleWatchScreenL;
         public InputAction @ToggleWatchScreenR => m_Wrapper.m_Controls_ToggleWatchScreenR;
+        public InputAction @ToggleWatchScreen => m_Wrapper.m_Controls_ToggleWatchScreen;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +461,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleWatchScreenR.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenR;
                 @ToggleWatchScreenR.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenR;
                 @ToggleWatchScreenR.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenR;
+                @ToggleWatchScreen.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
+                @ToggleWatchScreen.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
+                @ToggleWatchScreen.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -475,6 +501,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleWatchScreenR.started += instance.OnToggleWatchScreenR;
                 @ToggleWatchScreenR.performed += instance.OnToggleWatchScreenR;
                 @ToggleWatchScreenR.canceled += instance.OnToggleWatchScreenR;
+                @ToggleWatchScreen.started += instance.OnToggleWatchScreen;
+                @ToggleWatchScreen.performed += instance.OnToggleWatchScreen;
+                @ToggleWatchScreen.canceled += instance.OnToggleWatchScreen;
             }
         }
     }
@@ -492,5 +521,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnToggleWatch(InputAction.CallbackContext context);
         void OnToggleWatchScreenL(InputAction.CallbackContext context);
         void OnToggleWatchScreenR(InputAction.CallbackContext context);
+        void OnToggleWatchScreen(InputAction.CallbackContext context);
     }
 }
