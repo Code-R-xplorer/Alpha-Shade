@@ -134,6 +134,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""996c6a9f-7470-4e4d-8b0f-08f0a4277ab5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""e280423f-a245-42a7-b96a-e259308fdea0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -312,6 +330,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleWatchScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""008ec0a0-f903-40a5-bed6-8721206fbe95"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1eb111c-88cf-45be-98c8-0dac55d93231"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -332,6 +372,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Controls_ToggleWatchScreenL = m_Controls.FindAction("ToggleWatchScreenL", throwIfNotFound: true);
         m_Controls_ToggleWatchScreenR = m_Controls.FindAction("ToggleWatchScreenR", throwIfNotFound: true);
         m_Controls_ToggleWatchScreen = m_Controls.FindAction("ToggleWatchScreen", throwIfNotFound: true);
+        m_Controls_Fire = m_Controls.FindAction("Fire", throwIfNotFound: true);
+        m_Controls_Reload = m_Controls.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +445,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_ToggleWatchScreenL;
     private readonly InputAction m_Controls_ToggleWatchScreenR;
     private readonly InputAction m_Controls_ToggleWatchScreen;
+    private readonly InputAction m_Controls_Fire;
+    private readonly InputAction m_Controls_Reload;
     public struct ControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -419,6 +463,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @ToggleWatchScreenL => m_Wrapper.m_Controls_ToggleWatchScreenL;
         public InputAction @ToggleWatchScreenR => m_Wrapper.m_Controls_ToggleWatchScreenR;
         public InputAction @ToggleWatchScreen => m_Wrapper.m_Controls_ToggleWatchScreen;
+        public InputAction @Fire => m_Wrapper.m_Controls_Fire;
+        public InputAction @Reload => m_Wrapper.m_Controls_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -464,6 +510,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleWatchScreen.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
                 @ToggleWatchScreen.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
                 @ToggleWatchScreen.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
+                @Fire.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnFire;
+                @Reload.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -504,6 +556,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleWatchScreen.started += instance.OnToggleWatchScreen;
                 @ToggleWatchScreen.performed += instance.OnToggleWatchScreen;
                 @ToggleWatchScreen.canceled += instance.OnToggleWatchScreen;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -522,5 +580,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnToggleWatchScreenL(InputAction.CallbackContext context);
         void OnToggleWatchScreenR(InputAction.CallbackContext context);
         void OnToggleWatchScreen(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

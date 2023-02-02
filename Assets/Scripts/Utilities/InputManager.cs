@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Utilities
@@ -28,6 +29,8 @@ namespace Utilities
         public event BoolBaseAction OnCrouch;
         public event BoolBaseAction OnThrow;
         public event BoolDoubleBaseAction OnMelee;
+        public event BoolBaseAction OnFire;
+        public event BaseAction OnReload;
 
         public event BaseAction OnStartInteract;
         public event BaseAction OnStartToggleWatch;
@@ -46,7 +49,7 @@ namespace Utilities
         void Start()
         {
             CursorLock(true);
-            _playerControls.Controls.Jump.performed += context => StartJumpPrimary();
+            _playerControls.Controls.Jump.performed += _ => StartJumpPrimary();
             _playerControls.Controls.Sprint.started += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Sprint.canceled += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Crouch.started += context => CrouchPrimary(context.canceled);
@@ -55,7 +58,10 @@ namespace Utilities
             _playerControls.Controls.Throw.canceled += context => ThrowPrimary(context.canceled);
             _playerControls.Controls.Melee.started += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Melee.canceled += context => MeleePrimary(context.canceled, context.duration);
-            _playerControls.Controls.Interact.performed += context => StartInteractPrimary();
+            _playerControls.Controls.Fire.started += context => FirePrimary(context.canceled); 
+            _playerControls.Controls.Fire.canceled += context => FirePrimary(context.canceled);
+            _playerControls.Controls.Reload.performed += _ => ReloadPrimary();
+            _playerControls.Controls.Interact.performed += _ => StartInteractPrimary();
             _playerControls.Controls.ToggleWatch.performed += _ => StartToggleWatchPrimary();
             _playerControls.Controls.ToggleWatchScreen.performed += _ => StartToggleWatchScreenPrimary();
             _playerControls.Controls.ToggleWatchScreenL.performed += _ => StartToggleWatchScreenLPrimary();
@@ -103,6 +109,16 @@ namespace Utilities
             OnMelee?.Invoke(canceled, duration);
         }
 
+        private void FirePrimary(bool canceled)
+        {
+            OnFire?.Invoke(canceled);
+        }
+
+        private void ReloadPrimary()
+        {
+            OnReload?.Invoke();
+        }
+
         private void StartInteractPrimary()
         {
             OnStartInteract?.Invoke();
@@ -141,20 +157,6 @@ namespace Utilities
         private void OnDisable()
         {
             _playerControls.Disable();
-        }
-
-        private void OnDestroy()
-        {
-            _playerControls.Controls.Jump.performed -= _ => StartJumpPrimary();
-            _playerControls.Controls.Sprint.started -= context => SprintPrimary(context.canceled);
-            _playerControls.Controls.Sprint.canceled -= context => SprintPrimary(context.canceled);
-            _playerControls.Controls.Crouch.started -= context => CrouchPrimary(context.canceled);
-            _playerControls.Controls.Crouch.canceled -= context => CrouchPrimary(context.canceled);
-            _playerControls.Controls.Throw.started -= context => ThrowPrimary(context.canceled);
-            _playerControls.Controls.Throw.canceled -= context => ThrowPrimary(context.canceled);
-            _playerControls.Controls.Melee.started -= context => MeleePrimary(context.canceled, context.duration);
-            _playerControls.Controls.Melee.canceled -= context => MeleePrimary(context.canceled, context.duration);
-            _playerControls.Controls.Interact.performed -= context => StartInteractPrimary();
         }
     }
 }

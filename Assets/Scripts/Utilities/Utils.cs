@@ -65,5 +65,26 @@ namespace Utilities
             }
             return lengthSoFar;
         }
+        
+        public static T Clone<T>(T scriptableObject) where T : ScriptableObject
+        {
+            /*************************************************************************************************
+            *    Title: Create copy of Scriptableobject (during runtime)
+            *    Author: IainCarr
+            *    Date: 2021
+            *    Code version: 1.0
+            *    Availability: https://forum.unity.com/threads/create-copy-of-scriptableobject-during-runtime.355933/
+            **************************************************************************************************/
+            
+            if (scriptableObject == null)
+            {
+                Debug.LogError($"ScriptableObject was null. Returning default {typeof(T)} object.");
+                return (T)ScriptableObject.CreateInstance(typeof(T));
+            }
+ 
+            T instance = Object.Instantiate(scriptableObject);
+            instance.name = scriptableObject.name; // remove (Clone) from name
+            return instance;
+        }
     }
 }

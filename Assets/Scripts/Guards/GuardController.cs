@@ -8,7 +8,7 @@ using Utilities;
 
 namespace Guards
 {
-    public class GuardController : MonoBehaviour
+    public class GuardController : MonoBehaviour, IDamageable
     {
         private BehaviourTreeRunner _behaviourTreeRunner;
 
@@ -98,8 +98,7 @@ namespace Guards
             Destroy(gameObject);
 
         }
-
-        public void DecreaseHealth(float damage)
+        public void TakeDamage(float damage)
         {
             _guardVision.canSeePlayer = true;
             health -= damage;
