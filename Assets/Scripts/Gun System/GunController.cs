@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Player;
 using UnityEngine;
 using Utilities;
 
@@ -14,6 +16,10 @@ namespace Gun_System
         private bool canFire;
         private bool fired;
         private LayerMask _layerMask;
+        [SerializeField] private PlayerAnimation playerAnimation;
+        [SerializeField] private GameObject muzzleFlashPrefab;
+        [SerializeField] private Transform muzzlePoint;
+        [SerializeField] private GunUI gunUI;
 
         private void Start()
         {
@@ -24,6 +30,8 @@ namespace Gun_System
             gun.currentAmmo = gun.clipSize;
             gun.firePoint = Camera.main.transform;
             _layerMask = LayerMask.GetMask("Player");
+            gunUI.InitializeUI(gun.clipSize);
+            
 
         }
 
@@ -51,6 +59,12 @@ namespace Gun_System
             {
                 // decrease the ammo count
                 gun.currentAmmo--;
+                
+                gunUI.ReduceAmmo();
+                
+                playerAnimation.PlayShootAnim();
+                SpawnFX();
+                
 
                 // play the fire sound
                 // AudioSource.PlayClipAtPoint(data.fireSound, transform.position);
@@ -65,10 +79,11 @@ namespace Gun_System
                 {
                     GameObject guard;
                     guard = hit.collider.gameObject;
-                    if (hit.collider.CompareTag("GuardBack"))
+                    if (hit.collider.CompareTag("GuardBack") || hit.collider.CompareTag("GuardVision"))
                     {
                         guard = hit.collider.transform.parent.gameObject;
                     }
+                    
                     IDamageable damageable = guard.GetComponent<Collider>().GetComponent<IDamageable>();
                     if (damageable != null)
                     {
@@ -100,7 +115,22 @@ namespace Gun_System
             {
                 gun.currentAmmo = gun.clipSize;
                 gun.clipCount--;
+                gunUI.Reload();
             }
         }
+
+        private void SpawnFX()
+        {
+            GameObject fx = Instantiate(muzzleFlashPrefab, muzzlePoint);
+            StartCoroutine(DestroyFX(fx));
+        }
+
+        private IEnumerator DestroyFX(GameObject objectToDestroy)
+        {
+            yield return new WaitForSeconds(1);
+            Destroy(objectToDestroy);
+            
+        }
+        
     }
 }

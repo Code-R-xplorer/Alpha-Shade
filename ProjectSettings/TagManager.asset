@@ -8,6 +8,8 @@ TagManager:
   - Guard
   - Interactable
   - GuardBack
+  - GuardVision
+  - PocketWatch
   layers:
   - Default
   - TransparentFX

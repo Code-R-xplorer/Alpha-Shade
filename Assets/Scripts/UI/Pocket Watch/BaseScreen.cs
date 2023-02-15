@@ -13,6 +13,8 @@ namespace UI.Pocket_Watch
 
         private GameObject _uiParent;
 
+        public int test;
+
         public virtual void Init(PocketWatch pw, GameObject p)
         {
             pocketWatch = pw;

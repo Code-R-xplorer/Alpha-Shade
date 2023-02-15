@@ -23,7 +23,7 @@ namespace Player
 
         private int _screenIndex;
 
-        [SerializeField] private List<BaseScreen> screens;
+        public List<BaseScreen> screens;
 
         private GameObject _screenParent;
         // Start is called before the first frame update
@@ -36,7 +36,7 @@ namespace Player
             _inputManager.OnStartToggleWatchScreen += ToggleWatchScreen;
             _inputManager.OnStartToggleWatchScreenL += ToggleScreenL;
             _inputManager.OnStartToggleWatchScreenR += ToggleScreenR;
-            GameObject player = GameObject.FindWithTag(Tags.Player).transform.parent.gameObject;
+            GameObject player = GameObject.FindWithTag(Tags.Player).transform.root.gameObject;
             foreach (var screen in screens)
             {
                 screen.Init(this, player);

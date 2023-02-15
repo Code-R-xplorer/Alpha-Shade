@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Player;
 using UI;
+using UI.Pocket_Watch;
 using UnityEngine;
 
 namespace Utilities
@@ -15,6 +16,7 @@ namespace Utilities
         [SerializeField] private bool allObjectivesComplete;
         [SerializeField] private GameObject AI;
         private GameObject player;
+        private ObjectivesScreen objectivesScreen;
 
         private void Awake()
         {
@@ -24,8 +26,11 @@ namespace Utilities
         private void Start()
         {
             GameEvents.Instance.OnPlayerDeath += PlayerDeath;
-            UIManager.Instance.UpdateObjectives(GetObjectives());
-            player = GameObject.FindWithTag(Tags.Player).transform.parent.gameObject;
+            UIManager.Instance.UpdateCurrentObjective(GetCurrentObjective());
+            player = GameObject.FindWithTag(Tags.Player).transform.root.gameObject;
+            objectivesScreen = player.transform.GetChild(0).GetChild(2).GetChild(2).GetChild(2)
+                .GetComponent<ObjectivesScreen>();
+            objectivesScreen.UpdateObjectivesScreen(GetObjectives());
         }
 
         public void ObjectiveComplete(int objectiveID)
@@ -44,7 +49,8 @@ namespace Utilities
                     objective.completed = true;
                 }
             }
-            UIManager.Instance.UpdateObjectives(GetObjectives());
+            UIManager.Instance.UpdateCurrentObjective(GetCurrentObjective());
+            objectivesScreen.UpdateObjectivesScreen(GetObjectives());
             allObjectivesComplete = CheckAllComplete();
         }
 
@@ -111,6 +117,19 @@ namespace Utilities
             }
 
             return allObjectives;
+        }
+
+        public string GetCurrentObjective()
+        {
+            foreach (var objective in objectives)
+            {
+                if (!objective.completed)
+                {
+                    return objective.objectiveName;
+                }
+            }
+
+            return "";
         }
         
     }

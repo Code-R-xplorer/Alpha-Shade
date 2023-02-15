@@ -16,8 +16,8 @@ MonoBehaviour:
   clipSize: 10
   clipCount: 5
   currentAmmo: 0
-  fireRate: 0.25
-  damage: 15
-  range: 5
+  fireRate: 1
+  damage: 50
+  range: 20
   firePoint: {fileID: 0}
   hitDecal: {fileID: 3806696194405312696, guid: 3e5c4a4b6092a4445be34f070589f3f7, type: 3}

@@ -37,6 +37,8 @@ namespace Guards
 
         private PlayerHealth _playerHealth;
 
+        public AccessLevel accessLevel = AccessLevel.Default;
+
         protected virtual void Start()
         {
             _behaviourTreeRunner = GetComponent<BehaviourTreeRunner>();
@@ -47,7 +49,7 @@ namespace Guards
             blackboard = _behaviourTreeRunner.tree.blackboard;
             GameEvents.Instance.OnHeardSomething += Investigate;
             _agentSpeed = _navMeshAgent.speed;
-            _playerHealth = _player.transform.parent.GetComponent<PlayerHealth>();
+            _playerHealth = _player.transform.root.GetComponent<PlayerHealth>();
         }
 
         public void CanSeePlayer(bool canSeePlayer)

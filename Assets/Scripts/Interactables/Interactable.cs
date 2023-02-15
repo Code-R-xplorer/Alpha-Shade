@@ -28,7 +28,7 @@ namespace Interactables
                 if (hit.CompareTag(Tags.Player))
                 {
                     CanInteract = true;
-                    Player = hit.transform.parent.gameObject;
+                    Player = hit.transform.root.gameObject;
                     return;
                 }
             }

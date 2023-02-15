@@ -41,19 +41,14 @@ namespace Player
 
         [SerializeField] private bool canBeKilled;
 
-        private enum PlayerState
-        {
-            Walking,
-            Sprinting,
-            Jumping,
-            Crouching
-        }
+        private PlayerAnimation playerAnimation;
         // Start is called before the first frame update
         void Start()
         {
             _inputManager = InputManager.Instance;
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
+            playerAnimation = GetComponent<PlayerAnimation>();
             _inputManager.OnStartJump += Jump;
             _inputManager.OnSprint += Sprint;
             _inputManager.OnCrouch += Crouch;
@@ -122,6 +117,12 @@ namespace Player
                 
 
             if (!_isGrounded) playerState = PlayerState.Jumping;
+
+            if(_isGrounded && !_isSprinting && !_isCrouching && _rb.velocity.magnitude < 1)
+            {
+                playerState = PlayerState.Idle;
+            }
+            playerAnimation.UpdateAnimation(playerState);
         }
 
         private void Jump()
@@ -176,5 +177,13 @@ namespace Player
             
         }
 
+    }
+    public enum PlayerState
+    {
+        Walking,
+        Sprinting,
+        Jumping,
+        Idle,
+        Crouching
     }
 }
