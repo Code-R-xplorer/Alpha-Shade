@@ -1,0 +1,1193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d285eb63c2cdd74180de7cfceaa96ad, type: 3}
+  m_Name: Patrol
+  m_EditorClassIdentifier: 
+  rootNode:
+    rid: 2765563782596395008
+  nodes:
+  - rid: 2765563782596395008
+  - rid: 2765563782596395009
+  - rid: 2765563782596395010
+  - rid: 2765563782596395011
+  - rid: 2765563782596395012
+  - rid: 2765563782596395014
+  - rid: 2765563782596395015
+  - rid: 2765563782596395016
+  - rid: 2765563782596395017
+  - rid: 2765563782596395018
+  - rid: 2765563782596395019
+  - rid: 2765563782596395020
+  - rid: 2765563782596395021
+  - rid: 2765563782596395022
+  - rid: 2765563782596395023
+  - rid: 2765563782596395024
+  - rid: 2765563782596395025
+  - rid: 2765563782596395028
+  - rid: 2765563782596395030
+  - rid: 2765563782596395031
+  - rid: 2765563782596395033
+  - rid: 2765563782596395034
+  - rid: 2765563782596395035
+  - rid: 2765563782596395036
+  - rid: 2765563782596395037
+  - rid: 2765563785597157376
+  - rid: 2765563785597157377
+  - rid: 2765563785597157378
+  - rid: 2765563785597157380
+  - rid: 2765563785597157381
+  - rid: 2765563785597157382
+  - rid: 2765563785844097024
+  - rid: 2765563785844097025
+  - rid: 3470478289200480256
+  - rid: 3470478289200480257
+  - rid: 3490959439064989696
+  - rid: 3490959439064989697
+  - rid: 2418071392341983232
+  - rid: 2418071392341983233
+  - rid: 3490959462784565248
+  - rid: 3490959462784565249
+  - rid: 2418071427721986073
+  - rid: 2418071427721986074
+  - rid: 2418071427721986075
+  treeState: 0
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    canSeePlayer: 0
+    isChasing: 0
+    playerPosition: {x: 0, y: 0, z: 0}
+    searchPositions: []
+    searchIndex: 0
+    generateSearchPoints: 0
+    patrolPoints: []
+    patrolIndex: 0
+    investigate: 0
+    investigatePosition: {x: 0, y: 0, z: 0}
+    homePosition: {x: 0, y: 0, z: 0}
+    homeRotation: {x: 0, y: 0, z: 0, w: 1}
+  viewPosition: {x: -880, y: -277, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2418071392341983232
+      type: {class: GoInvestigate, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 30aedd2439755964aaf1bdc776fadd4c
+        position: {x: 630.0001, y: 661.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        tolerance: 0.1
+    - rid: 2418071392341983233
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 956092f7f9a2895458c684e4d639e861
+        position: {x: 1019, y: 661.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        newValue: 0
+        blackboardValues: 3
+    - rid: 2418071427721986073
+      type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: fe475e5278a13c54cba87049b8ff0768
+        position: {x: 825.0001, y: 661.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        duration: 2.5
+        guardPositions: 0
+    - rid: 2418071427721986074
+      type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8338d768094d1a346834b97cae5acb77
+        position: {x: 1971.44, y: 746}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        duration: 2.5
+        guardPositions: 1
+    - rid: 2418071427721986075
+      type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 8306fa1d83554e84fbb5372715ef491b
+        position: {x: 751, y: 1301.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        duration: 2.5
+        guardPositions: 2
+    - rid: 2765563782596395008
+      type: {class: RootNode, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 12eabe95-f42b-47c6-9173-ad448385921c
+        position: {x: -0.0000009536743, y: 1.5207516}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2765563782596395012
+    - rid: 2765563782596395009
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ed5919f1357864f4ca999bd222677000
+        position: {x: -610, y: 461.99997}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Check Is Chasing
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395011
+        - rid: 2765563782596395015
+        - rid: 2765563782596395016
+    - rid: 2765563782596395010
+      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 2debf7124121c0e49880f05c0ad94b86
+        position: {x: -0.00000047683716, y: 252.63602}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Root Selector
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395009
+        - rid: 2765563782596395017
+        - rid: 3490959439064989696
+        - rid: 2765563782596395036
+    - rid: 2765563782596395011
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ee65ded2650e1d84eb0b8a2c32033bf4
+        position: {x: -885, y: 669}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Inverse of Is Chasing
+        drawGizmos: 0
+        child:
+          rid: 2765563782596395014
+    - rid: 2765563782596395012
+      type: {class: Repeat, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: f32a396212e3a714b86512081c41ec2b
+        position: {x: 0.000022888184, y: 131}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Run Forever
+        drawGizmos: 0
+        child:
+          rid: 2765563782596395010
+        restartOnSuccess: 1
+        restartOnFailure: 0
+    - rid: 2765563782596395014
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 60cc212ba59fe794cbe0ada98ca72394
+        position: {x: -885, y: 810}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Is Chasing
+        drawGizmos: 0
+        blackboardValues: 1
+    - rid: 2765563782596395015
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 05b8f7abb14f38a4b889b53d2b8be97d
+        position: {x: -610, y: 669}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Can See Player
+        drawGizmos: 0
+        blackboardValues: 0
+    - rid: 2765563782596395016
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: f0cb202bd942c544f9e843efca763547
+        position: {x: -353, y: 669}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Is Chasing
+        drawGizmos: 0
+        newValue: 1
+        blackboardValues: 1
+    - rid: 2765563782596395017
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 594d85bf28fa7794b8abbde9681c64ab
+        position: {x: 0.00009763241, y: 505.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Chasing Player Sequence
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395018
+        - rid: 2765563782596395019
+    - rid: 2765563782596395018
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: cf9c46ce40bda8f4ebfdd6793a8cf5a6
+        position: {x: -149.99995, y: 662.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Is Chasing
+        drawGizmos: 0
+        blackboardValues: 1
+    - rid: 2765563782596395019
+      type: {class: Selector, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: f0d543c846b77b648b87c7e3e92148bc
+        position: {x: 140.00008, y: 657.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Find Player Selector
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395020
+        - rid: 3470478289200480257
+    - rid: 2765563782596395020
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 654d142a381197d4d91ac8bf673a2c7a
+        position: {x: -94.99994, y: 817.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Chase Sequence
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395021
+        - rid: 2765563782596395022
+        - rid: 2765563785597157380
+        - rid: 3470478289200480256
+    - rid: 2765563782596395021
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c6474244be1937547a7c106d8e234e72
+        position: {x: -460, y: 1017.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Can See Player
+        drawGizmos: 0
+        blackboardValues: 0
+    - rid: 2765563782596395022
+      type: {class: ChasePlayer, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 962c22997085cd54f96b752fc191216d
+        position: {x: -270.99994, y: 1017.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        tolerance: 1
+    - rid: 2765563782596395023
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 0c1d489248bf19d40a83ac3bc53e5f74
+        position: {x: 317, y: 1125.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Searching
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395024
+        - rid: 2765563785844097024
+        - rid: 2765563782596395031
+        - rid: 2418071427721986075
+    - rid: 2765563782596395024
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 774b3e09c9944554586571332731fd3f
+        position: {x: 2.0000377, y: 1291.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2765563782596395025
+    - rid: 2765563782596395025
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: c75d6285c0ef38845af75078d4ace106
+        position: {x: 2.0000377, y: 1434.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Can See Player
+        drawGizmos: 0
+        blackboardValues: 0
+    - rid: 2765563782596395028
+      type: {class: RepeatUntil, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: dfc8f4d4c99d16544a7c2c769fdb701f
+        position: {x: 317, y: 1015.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2765563782596395023
+        untilSuccess: 0
+        untilFailure: 1
+    - rid: 2765563782596395030
+      type: {class: GenerateSearchPositions, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 7ccc7b76727850f46aed4592c237754d
+        position: {x: 296.00006, y: 1600.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        searchPoints: 5
+        searchRadius: 5
+    - rid: 2765563782596395031
+      type: {class: GoToSearchPoint, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 934a52c2755080e4498a3cbc52a2cc56
+        position: {x: 580, y: 1301.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        tolerance: 0.2
+    - rid: 2765563782596395033
+      type: {class: ResetSearchTree, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: b5e227d693e342848a0b148bcd7d0273
+        position: {x: 644.00006, y: 1135.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+    - rid: 2765563782596395034
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 7808c974c20e8ea47bb879a9694f9140
+        position: {x: 764.99994, y: 992.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Search Tree Cleanup
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395033
+        - rid: 2765563782596395035
+    - rid: 2765563782596395035
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 689b24b3fe83be740b323a736a9694dc
+        position: {x: 869, y: 1128.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Is Chasing
+        drawGizmos: 0
+        newValue: 0
+        blackboardValues: 1
+    - rid: 2765563782596395036
+      type: {class: RepeatUntil, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 446413636f44c9f4ebdb59981c69b955
+        position: {x: 1471, y: 440}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2765563782596395037
+        untilSuccess: 0
+        untilFailure: 1
+    - rid: 2765563782596395037
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: a56cf7ccc22c55244831dfef5d7b8ab1
+        position: {x: 1471, y: 594}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Patrol Sequence
+        drawGizmos: 0
+        children:
+        - rid: 2765563785597157377
+        - rid: 3490959462784565248
+        - rid: 2765563785597157378
+        - rid: 2418071427721986074
+    - rid: 2765563785597157376
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: db5a0d43ff5075a4a93d6598592a190c
+        position: {x: 1352, y: 852}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Can See Player
+        drawGizmos: 0
+        blackboardValues: 0
+    - rid: 2765563785597157377
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 079d876907cc65b4c92677deb21455e8
+        position: {x: 1352, y: 746}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2765563785597157376
+    - rid: 2765563785597157378
+      type: {class: GoToPatrolPoint, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 78d254a670640cb4d8d569d26622c072
+        position: {x: 1775, y: 746}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        tolerance: 0.2
+    - rid: 2765563785597157380
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ae4e1b322af18264e930d137e203bdf8
+        position: {x: -82.99993, y: 1017.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        newValue: 1
+        blackboardValues: 2
+    - rid: 2765563785597157381
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 0ff95d87703e17b4f83d0dbf6c672081
+        position: {x: 317, y: 1434.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Search Points Generation
+        drawGizmos: 0
+        children:
+        - rid: 2765563785597157382
+        - rid: 2765563782596395030
+        - rid: 2765563785844097025
+    - rid: 2765563785597157382
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 37650d8850e95e449a01850358a567eb
+        position: {x: 105.00008, y: 1600.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        blackboardValues: 2
+    - rid: 2765563785844097024
+      type: {class: Succeed, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: ff38d1292b3d699439a95cc3368e5600
+        position: {x: 317, y: 1301.9998}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 2765563785597157381
+    - rid: 2765563785844097025
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: d75fc8242f3219e4fab1f5dc25cafa6d
+        position: {x: 566.00006, y: 1591.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        newValue: 0
+        blackboardValues: 2
+    - rid: 3470478289200480256
+      type: {class: ResetSearchTree, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 153f580a7cff24746888f951a5bcb0be
+        position: {x: 77.00006, y: 1017.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+    - rid: 3470478289200480257
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 6f4aa2fcc8df8e247874665e3edf6f53
+        position: {x: 467.00003, y: 835.99976}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 2765563782596395028
+        - rid: 2765563782596395034
+    - rid: 3490959439064989696
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 093f73d2f70a6ca419d2ce4be02d1b48
+        position: {x: 730, y: 506}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 3490959439064989697
+        - rid: 2418071392341983232
+        - rid: 2418071427721986073
+        - rid: 2418071392341983233
+    - rid: 3490959439064989697
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: f2767b37e0966e149bb8b43139f9c783
+        position: {x: 437, y: 661.9999}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: Investigate
+        drawGizmos: 0
+        blackboardValues: 3
+    - rid: 3490959462784565248
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 950ad37f84b89a649af7bec7c5fb91a4
+        position: {x: 1556, y: 746}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 3490959462784565249
+    - rid: 3490959462784565249
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 39acaf0c7e9859a4ea698a95f641f79d
+        position: {x: 1556, y: 865}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+        description: 
+        drawGizmos: 0
+        blackboardValues: 3
