@@ -1,0 +1,107 @@
+﻿using System;
+using Gun_System;
+using UnityEngine;
+using UnityEngine.Animations.Rigging;
+using Utilities;
+
+namespace Player
+{
+    public class Animation : MonoBehaviour
+    {
+        [SerializeField] private Animator animator;
+        private AnimatorOverrideController animatorOverrideController;
+        private AnimationClipOverrides clipOverrides;
+
+        [SerializeField] private MultiAimConstraint bodyAimRig;
+        
+        private static readonly int WeaponEquipped = Animator.StringToHash("weaponEquipped");
+        private static readonly int Speed = Animator.StringToHash("speed");
+        private static readonly int Shoot = Animator.StringToHash("shoot");
+        private static readonly int Holster = Animator.StringToHash("holster");
+        private static readonly int Reload = Animator.StringToHash("reload");
+
+        [SerializeField] private Vector3[] offsets;
+
+        private float speed;
+        private bool shooting;
+
+        private void Awake()
+        {
+            animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+            animator.runtimeAnimatorController = animatorOverrideController;
+
+            clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
+            animatorOverrideController.GetOverrides(clipOverrides);
+
+        }
+
+        public void SetWeaponAnimations(Gun gun)
+        {
+            clipOverrides["DEFAULT_FIRE"] = gun.fire;
+            clipOverrides["DEFAULT_IDLE"] = gun.idle;
+            clipOverrides["DEFAULT_UNHOLSTER"] = gun.holster;
+            clipOverrides["DEFAULT_HOLSTER"] = gun.holster;
+            clipOverrides["DEFAULT_RUN"] = gun.run;
+            clipOverrides["DEFAULT_RELOAD"] = gun.reload;
+            animatorOverrideController.ApplyOverrides(clipOverrides);
+        }
+
+        private void Update()
+        {
+            if (speed > 1)
+            {
+                bodyAimRig.data.offset = offsets[1];
+            }
+            else if (speed < 1)
+            {
+                bodyAimRig.data.offset = offsets[0];
+            }
+
+            if (shooting)
+            {
+                bodyAimRig.data.offset = offsets[2];
+            }
+        }
+
+        public void UpdateSpeed(float speedT)
+        {
+            speed = speedT;
+            animator.SetFloat(Speed, speedT);
+        }
+
+        public void PlayShootAnim()
+        {
+            animator.SetTrigger(Shoot);
+        }
+
+        public void PlayHolsterAnim()
+        {
+            animator.SetTrigger(Holster);
+        }
+
+        public void PlayReloadAnim()
+        {
+            animator.SetTrigger(Reload);
+        }
+
+        public void AnimStart(string animName)
+        {
+            Debug.Log("AnimStart: " + animName);
+            if (animName == "Shoot")
+            {
+                shooting = true;
+            }
+        }
+
+        public void AnimEnd(string animName)
+        {
+            Debug.Log("AnimEndt: " + animName);
+            if (animName == "Shoot")
+            {
+                shooting = false;
+            }
+        }
+
+
+    }
+}
