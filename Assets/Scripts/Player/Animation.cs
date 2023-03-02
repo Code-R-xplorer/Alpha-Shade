@@ -13,6 +13,7 @@ namespace Player
         private AnimationClipOverrides clipOverrides;
 
         [SerializeField] private MultiAimConstraint bodyAimRig;
+        [SerializeField] private Rig rig;
         
         private static readonly int WeaponEquipped = Animator.StringToHash("weaponEquipped");
         private static readonly int Speed = Animator.StringToHash("speed");
@@ -33,6 +34,11 @@ namespace Player
             clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
             animatorOverrideController.GetOverrides(clipOverrides);
 
+        }
+
+        private void Start()
+        {
+            PlayHolsterAnim();
         }
 
         public void SetWeaponAnimations(Gun gun)
@@ -56,7 +62,7 @@ namespace Player
             {
                 bodyAimRig.data.offset = offsets[0];
             }
-
+            
             if (shooting)
             {
                 bodyAimRig.data.offset = offsets[2];
@@ -86,19 +92,27 @@ namespace Player
 
         public void AnimStart(string animName)
         {
-            Debug.Log("AnimStart: " + animName);
             if (animName == "Shoot")
             {
                 shooting = true;
+            }
+
+            if (animName == "Holster")
+            {
+                rig.weight = 0;
             }
         }
 
         public void AnimEnd(string animName)
         {
-            Debug.Log("AnimEndt: " + animName);
             if (animName == "Shoot")
             {
                 shooting = false;
+            }
+
+            if (animName == "Holster")
+            {
+                rig.weight = 1;
             }
         }
 

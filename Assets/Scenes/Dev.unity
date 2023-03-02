@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7e65c4bdc4aa9e24f8b11d86dc8de405, type: 2}
+    - target: {fileID: 5866666021909216657, guid: d7491cc9039eb2e4c8a5970b1563b761, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5902035385766270648, guid: d7491cc9039eb2e4c8a5970b1563b761, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -2355,6 +2359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 919132149148514609}
   bodyAimRig: {fileID: 954632322}
+  rig: {fileID: 0}
   offsets:
   - {x: -27.7, y: 3.85, z: -18.3}
   - {x: -6.49, y: -0.8, z: -16.97}
@@ -5998,6 +6003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 919132149148514609}
   bodyAimRig: {fileID: 954632322}
+  rig: {fileID: 1582741911}
   offsets:
   - {x: -27.7, y: 3.85, z: -18.3}
   - {x: -6.49, y: -0.8, z: -16.97}
@@ -6423,11 +6429,15 @@ PrefabInstance:
     - target: {fileID: 4863447338365936860, guid: 8875ac7c6c1a45c43bc5ba2f868d4804, type: 3}
       propertyPath: animation
       value: 
-      objectReference: {fileID: 908925391}
+      objectReference: {fileID: 919132149148514610}
     - target: {fileID: 4863447338365936860, guid: 8875ac7c6c1a45c43bc5ba2f868d4804, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4863447338365936860, guid: 8875ac7c6c1a45c43bc5ba2f868d4804, type: 3}
+      propertyPath: gun.holster
+      value: 
+      objectReference: {fileID: 7400000, guid: 07369cf8e7506f14f9733b15eb3469fc, type: 2}
     - target: {fileID: 5857604232676405762, guid: 8875ac7c6c1a45c43bc5ba2f868d4804, type: 3}
       propertyPath: m_Name
       value: Pistol
