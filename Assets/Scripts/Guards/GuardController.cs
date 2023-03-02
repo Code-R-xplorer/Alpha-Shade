@@ -129,7 +129,7 @@ namespace Guards
         private void OnDestroy()
         {
             GameEvents.Instance.OnHeardSomething -= Investigate;
-        }
+                 }
 
         private void OnCollisionEnter(Collision collision)
         {

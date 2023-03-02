@@ -16,6 +16,7 @@ namespace Utilities
 
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
+        public Vector2 MousePos { get; private set; }
     
         // Input Action Setup Example
         // public event BaseAction OnStartJump;
@@ -37,6 +38,9 @@ namespace Utilities
         public event BaseAction OnStartToggleWatchScreen;
         public event BaseAction OnStartToggleWatchScreenL;
         public event BaseAction OnStartToggleWatchScreenR;
+
+        public event BoolBaseAction OnToggleMenu;
+        public event BaseAction OnClick;
 
         
         private void Awake()
@@ -66,11 +70,13 @@ namespace Utilities
             _playerControls.Controls.ToggleWatchScreen.performed += _ => StartToggleWatchScreenPrimary();
             _playerControls.Controls.ToggleWatchScreenL.performed += _ => StartToggleWatchScreenLPrimary();
             _playerControls.Controls.ToggleWatchScreenR.performed += _ => StartToggleWatchScreenRPrimary();
+            _playerControls.UI.ShowMenu.started += context => ToggleMenuPrimary(context.canceled);
+            _playerControls.UI.ShowMenu.canceled += context => ToggleMenuPrimary(context.canceled);
+            _playerControls.UI.Click.performed += _ => ClickPrimary();
         }
 
         public void CursorLock(bool locked)
         {
-            Debug.Log(locked);
             if (locked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -88,6 +94,7 @@ namespace Utilities
         {
             MovementInput = _playerControls.Controls.Move.ReadValue<Vector2>();
             LookInput = _playerControls.Controls.Look.ReadValue<Vector2>();
+            MousePos = _playerControls.UI.MousePos.ReadValue<Vector2>();
         }
 
         private void StartJumpPrimary()
@@ -147,6 +154,16 @@ namespace Utilities
         private void StartToggleWatchScreenRPrimary()
         {
             OnStartToggleWatchScreenR?.Invoke();
+        }
+
+        private void ToggleMenuPrimary(bool canceled)
+        {
+            OnToggleMenu?.Invoke(canceled);
+        }
+
+        private void ClickPrimary()
+        {
+            OnClick?.Invoke();
         }
 
         private void OnEnable()

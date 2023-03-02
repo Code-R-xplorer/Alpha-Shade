@@ -24,7 +24,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""|Controls"",
+            ""name"": ""Controls"",
             ""id"": ""33419dc0-c93f-4bc8-ac06-42117b6435a9"",
             ""actions"": [
                 {
@@ -289,17 +289,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""010a4301-61da-401c-a095-8324be9b5e33"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ToggleWatch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4e48f9f6-3fb0-4b91-bd36-7ef4b4af7a2f"",
                     ""path"": ""<Mouse>/scroll/up"",
                     ""interactions"": """",
@@ -352,14 +341,93 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f2ced29-f1b9-451d-a1d9-a8c58e2d077a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleWatch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""69528be5-d87c-4c8c-b3a2-8d06979e4571"",
+            ""actions"": [
+                {
+                    ""name"": ""MousePos"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bdb79caa-2cbe-48ff-89b9-c92113367bae"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""2aa9984f-342d-4c75-b68d-ab873a2b6311"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""418e7a8f-f7c8-4701-84d6-7b907bdd75a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3e13c54d-6d52-41dc-bbf6-c4ff4c91b4da"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dc50d1a-3128-45d7-9c6d-066ea6dbba51"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c10145b-5f68-4a36-9ac1-073b51cae7f0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // |Controls
-        m_Controls = asset.FindActionMap("|Controls", throwIfNotFound: true);
+        // Controls
+        m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
         m_Controls_Move = m_Controls.FindAction("Move", throwIfNotFound: true);
         m_Controls_Look = m_Controls.FindAction("Look", throwIfNotFound: true);
         m_Controls_Jump = m_Controls.FindAction("Jump", throwIfNotFound: true);
@@ -374,6 +442,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Controls_ToggleWatchScreen = m_Controls.FindAction("ToggleWatchScreen", throwIfNotFound: true);
         m_Controls_Fire = m_Controls.FindAction("Fire", throwIfNotFound: true);
         m_Controls_Reload = m_Controls.FindAction("Reload", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_MousePos = m_UI.FindAction("MousePos", throwIfNotFound: true);
+        m_UI_ShowMenu = m_UI.FindAction("ShowMenu", throwIfNotFound: true);
+        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -430,7 +503,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // |Controls
+    // Controls
     private readonly InputActionMap m_Controls;
     private IControlsActions m_ControlsActionsCallbackInterface;
     private readonly InputAction m_Controls_Move;
@@ -566,6 +639,55 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public ControlsActions @Controls => new ControlsActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_MousePos;
+    private readonly InputAction m_UI_ShowMenu;
+    private readonly InputAction m_UI_Click;
+    public struct UIActions
+    {
+        private @PlayerControls m_Wrapper;
+        public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MousePos => m_Wrapper.m_UI_MousePos;
+        public InputAction @ShowMenu => m_Wrapper.m_UI_ShowMenu;
+        public InputAction @Click => m_Wrapper.m_UI_Click;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @MousePos.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePos;
+                @MousePos.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePos;
+                @MousePos.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePos;
+                @ShowMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnShowMenu;
+                @ShowMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnShowMenu;
+                @ShowMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnShowMenu;
+                @Click.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MousePos.started += instance.OnMousePos;
+                @MousePos.performed += instance.OnMousePos;
+                @MousePos.canceled += instance.OnMousePos;
+                @ShowMenu.started += instance.OnShowMenu;
+                @ShowMenu.performed += instance.OnShowMenu;
+                @ShowMenu.canceled += instance.OnShowMenu;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -582,5 +704,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnToggleWatchScreen(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMousePos(InputAction.CallbackContext context);
+        void OnShowMenu(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }

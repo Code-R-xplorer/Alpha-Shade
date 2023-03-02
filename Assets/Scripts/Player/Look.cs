@@ -25,6 +25,7 @@ namespace Player
         // Update is called once per frame
         private void Update()
         {
+            if (Cursor.lockState == CursorLockMode.None) return;
             SetY();
             SetX();
         }
