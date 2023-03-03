@@ -9,7 +9,7 @@ namespace UI.RadialMenu
 
         private bool isOpen;
 
-        public GameObject[] menus;
+        public Menu[] menus;
 
         private int menuIndex;
         private void Start()
@@ -17,8 +17,8 @@ namespace UI.RadialMenu
             InputManager.Instance.OnToggleMenu += ShowMainMenu;
             foreach (var menu in menus)
             {
-                menu.GetComponent<Menu>().radialMenu = this;
-                menu.SetActive(false);
+                menu.radialMenu = this;
+                menu.ToggleMenu(false);
             }
         }
         
@@ -30,23 +30,23 @@ namespace UI.RadialMenu
             {
                 Time.timeScale = 0;
                 menuIndex = 0;
-                menus[0].SetActive(isOpen);
+                menus[0].ToggleMenu(isOpen);
             }
             else
             {
                 Time.timeScale = 1;
                 foreach (var menu in menus)
                 {
-                    menu.SetActive(false);
+                    menu.ToggleMenu(false);
                 }
             }
         }
 
         public void SwitchMenu(int newMenu)
         {
-            menus[menuIndex].SetActive(false);
+            menus[menuIndex].ToggleMenu(false);
             menuIndex = newMenu;
-            menus[menuIndex].SetActive(true);
+            menus[menuIndex].ToggleMenu(true);
             
         }
     }

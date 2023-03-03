@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Utilities;
 
@@ -6,34 +7,55 @@ namespace UI.RadialMenu
     public class Menu : MonoBehaviour
     {
 
-        // private bool isOpen;
-        // private GameObject menu;
+        public bool IsOpen { get; private set; }
+        private GameObject menu;
 
         private Vector2 screenCenter;
 
         public int selection;
         private int prevSelection;
         private float angleNumber;
-        [SerializeField] private ItemBase[] radialMenuItems;
+        [SerializeField] private ItemBase[] menuItems;
 
         private ItemBase radialMenuItem;
         private ItemBase prevRadialMenuItem;
 
         public RadialMenu radialMenu;
+
+        private bool reselect;
+
+        [SerializeField] private bool outer;
+
+        [SerializeField] private float innerThreshold;
+        [SerializeField] private float outerThreshold;
+
+        private float threshold;
         // Start is called before the first frame update
+        private void Awake()
+        {
+            menu = gameObject;
+        }
+
         void Start()
         {
             InputManager.Instance.OnClick += Click;
             screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
-            // menu = gameObject;
-            angleNumber = 360f / radialMenuItems.Length;
+            angleNumber = 360f / menuItems.Length;
             // menu.SetActive(false);
+            if (outer)
+            {
+                threshold = outerThreshold;
+            }
+            else
+            {
+                threshold = innerThreshold;
+            }
 
-            foreach (var item in radialMenuItems)
+            foreach (var item in menuItems)
             {
                 item.Init(radialMenu);
             }
-            
+
         }
 
         // Update is called once per frame
@@ -41,24 +63,47 @@ namespace UI.RadialMenu
         {
             // if (!isOpen) return;
             Vector2 deflection = InputManager.Instance.MousePos - screenCenter;
-            float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg;
-            angle = (angle + 360) % 360;
-            selection = (int)(angle / angleNumber);
-            if (selection != prevSelection)
+            if (deflection.magnitude > threshold)
             {
-                prevRadialMenuItem = radialMenuItems[prevSelection].GetComponent<ItemBase>();
-                prevRadialMenuItem.Deselect();
-                prevSelection = selection;
+                float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg;
+                angle = (angle + 360) % 360;
+                selection = (int)(angle / angleNumber);
+                if (selection >= menuItems.Length) selection = 0;
+                if (prevSelection >= menuItems.Length) prevSelection = 0;
+                if (reselect)
+                {
+                    radialMenuItem.Select();
+                    reselect = false;
+                }
+                if (selection != prevSelection)
+                {
+                    prevRadialMenuItem = menuItems[prevSelection];
+                    prevRadialMenuItem.Deselect();
+                    prevSelection = selection;
 
-                radialMenuItem = radialMenuItems[selection].GetComponent<ItemBase>();
-                radialMenuItem.Select();
+                    radialMenuItem = menuItems[selection];
+                    radialMenuItem.Select();
+                }
             }
+            else if (deflection.magnitude < threshold && (prevRadialMenuItem != null || radialMenuItem != null))
+            {
+                prevRadialMenuItem.Deselect();
+                radialMenuItem.Deselect();
+                reselect = true;
+            }
+        }
+
+        public void ToggleMenu(bool open)
+        {
+            Debug.Log(gameObject.name + ": " + open);
+            IsOpen = open;
+            menu.SetActive(IsOpen);
         }
 
         private void Click()
         {
-            // if(!isOpen) return;
-            radialMenuItems[selection].OnClick();
+            if(!IsOpen) return;
+            menuItems[selection].OnClick();
         }
     }
 }
