@@ -12,15 +12,22 @@ namespace UI.RadialMenu
         public Menu[] menus;
 
         private int menuIndex;
+
+        [SerializeField] private int weaponIndex, idIndex;
+
+        private IDManager idManager;
+
+        [SerializeField] private GameObject idMenuItem, weaponMenuItem;
         private void Start()
         {
             InputManager.Instance.OnToggleMenu += ShowMainMenu;
+            idManager = IDManager.Instance;
             foreach (var menu in menus)
             {
                 menu.radialMenu = this;
                 menu.ToggleMenu(false);
             }
-        }
+        }   
         
         private void ShowMainMenu(bool canceled)
         {
@@ -34,6 +41,7 @@ namespace UI.RadialMenu
             }
             else
             {
+                menus[menuIndex].PerformAction();
                 Time.timeScale = 1;
                 foreach (var menu in menus)
                 {
@@ -42,12 +50,23 @@ namespace UI.RadialMenu
             }
         }
 
-        public void SwitchMenu(int newMenu)
+        // public void SwitchMenu(int newMenu)
+        // {
+        //     menus[menuIndex].ToggleMenu(false);
+        //     menuIndex = newMenu;
+        //     menus[menuIndex].ToggleMenu(true);
+        //     
+        // }
+
+        public void ChangeSubMenu(int newMenu)
         {
-            menus[menuIndex].ToggleMenu(false);
+            if (menuIndex != 0)
+            {
+                menus[menuIndex].ToggleMenu(false);
+            }
+
             menuIndex = newMenu;
             menus[menuIndex].ToggleMenu(true);
-            
         }
     }
 }

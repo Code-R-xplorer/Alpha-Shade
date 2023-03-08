@@ -5,10 +5,11 @@ namespace UI.RadialMenu
     public class MenuSwitch : ItemBase
     {
         [SerializeField] private int menuID;
-        public override void OnClick()
+        public override void OnHover()
         {
-            base.OnClick();
-            radialMenu.SwitchMenu(menuID);
+            base.OnHover();
+            if (menuID == -1) return;
+            radialMenu.ChangeSubMenu(menuID);
         }
     }
 }

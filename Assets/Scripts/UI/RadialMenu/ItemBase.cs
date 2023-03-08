@@ -35,5 +35,16 @@ namespace UI.RadialMenu
         {
             // if()
         }
+
+        public virtual void OnHover()
+        {
+            
+        }
+
+        public virtual void OnPerformAction()
+        {
+            
+        }
+        
     }
 }

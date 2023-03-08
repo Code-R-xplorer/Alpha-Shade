@@ -23,13 +23,10 @@ namespace UI.RadialMenu
         public RadialMenu radialMenu;
 
         private bool reselect;
+        
+        [SerializeField] private float threshold;
 
-        [SerializeField] private bool outer;
-
-        [SerializeField] private float innerThreshold;
-        [SerializeField] private float outerThreshold;
-
-        private float threshold;
+        private float _sectionRadius = 155;
         // Start is called before the first frame update
         private void Awake()
         {
@@ -38,18 +35,10 @@ namespace UI.RadialMenu
 
         void Start()
         {
-            InputManager.Instance.OnClick += Click;
+            // InputManager.Instance.OnClick += Click;
             screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
             angleNumber = 360f / menuItems.Length;
             // menu.SetActive(false);
-            if (outer)
-            {
-                threshold = outerThreshold;
-            }
-            else
-            {
-                threshold = innerThreshold;
-            }
 
             foreach (var item in menuItems)
             {
@@ -61,13 +50,15 @@ namespace UI.RadialMenu
         // Update is called once per frame
         void Update()
         {
-            // if (!isOpen) return;
+            if(!IsOpen) return;
             Vector2 deflection = InputManager.Instance.MousePos - screenCenter;
-            if (deflection.magnitude > threshold)
+            // Debug.Log(deflection.magnitude);
+            if (deflection.magnitude > threshold && deflection.magnitude < threshold + _sectionRadius)
             {
                 float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg;
                 angle = (angle + 360) % 360;
                 selection = (int)(angle / angleNumber);
+                Hover();
                 if (selection >= menuItems.Length) selection = 0;
                 if (prevSelection >= menuItems.Length) prevSelection = 0;
                 if (reselect)
@@ -85,7 +76,7 @@ namespace UI.RadialMenu
                     radialMenuItem.Select();
                 }
             }
-            else if (deflection.magnitude < threshold && (prevRadialMenuItem != null || radialMenuItem != null))
+            else if ((deflection.magnitude < threshold || deflection.magnitude > threshold + _sectionRadius) && (prevRadialMenuItem != null || radialMenuItem != null))
             {
                 prevRadialMenuItem.Deselect();
                 radialMenuItem.Deselect();
@@ -95,15 +86,26 @@ namespace UI.RadialMenu
 
         public void ToggleMenu(bool open)
         {
-            Debug.Log(gameObject.name + ": " + open);
+            // Debug.Log(gameObject.name + ": " + open);
             IsOpen = open;
             menu.SetActive(IsOpen);
         }
 
-        private void Click()
+        // private void Click()
+        // {
+        //     if(!IsOpen) return;
+        //     menuItems[selection].OnClick();
+        // }
+
+        private void Hover()
         {
-            if(!IsOpen) return;
-            menuItems[selection].OnClick();
+            menuItems[selection].OnHover();
+        }
+
+        public void PerformAction()
+        {
+            if (reselect) return;
+            menuItems[selection].OnPerformAction();
         }
     }
 }

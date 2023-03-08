@@ -153,12 +153,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 28997279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e124a0b3fab40eca31775ae7d2100e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+  baseColor: {r: 0, g: 0.31764707, b: 0.6313726, a: 1}
   background: {fileID: 2007391709}
+  gunPrefab: {fileID: 0}
 --- !u!1 &93511256
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 1, g: 0.13333334, b: 0, a: 1}
+  baseColor: {r: 0.5849056, g: 0.104289785, b: 0.03034888, a: 1}
   background: {fileID: 764922251}
 --- !u!1 &109439135
 GameObject:
@@ -748,9 +749,7 @@ MonoBehaviour:
   - {fileID: 97452190}
   - {fileID: 1950529935}
   radialMenu: {fileID: 271847990}
-  outer: 0
-  innerThreshold: 0
-  outerThreshold: 0
+  threshold: 275
 --- !u!224 &173298833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1033,8 +1032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 1, g: 0.13333334, b: 0, a: 1}
+  baseColor: {r: 0.5849056, g: 0.104289785, b: 0.03034888, a: 1}
   background: {fileID: 727958992}
 --- !u!1 &263899912
 GameObject:
@@ -1330,6 +1329,10 @@ MonoBehaviour:
   - {fileID: 1638547326}
   - {fileID: 2047975273}
   - {fileID: 173298832}
+  weaponIndex: 0
+  idIndex: 0
+  idMenuItem: {fileID: 0}
+  weaponMenuItem: {fileID: 0}
 --- !u!1 &341369356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,8 +1479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 1, g: 0.13333334, b: 0, a: 1}
+  baseColor: {r: 0.5849056, g: 0.104289785, b: 0.03034888, a: 1}
   background: {fileID: 1751355619}
 --- !u!1 &382537864 stripped
 GameObject:
@@ -1498,12 +1501,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 382537864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e124a0b3fab40eca31775ae7d2100e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+  baseColor: {r: 0, g: 0.31764707, b: 0.6313726, a: 1}
   background: {fileID: 1614642355}
+  gunPrefab: {fileID: 0}
 --- !u!1001 &390867296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2015,7 +2019,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.58406985, b: 0, a: 1}
   baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
   background: {fileID: 1245885537}
-  menuID: 5
+  menuID: -1
 --- !u!224 &538023859 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3439480910737990551, guid: 00b81bfb73be08f41a06afa2e07dcd7f, type: 3}
@@ -2487,7 +2491,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.58406985, b: 0, a: 1}
   baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
   background: {fileID: 181134392}
-  menuID: 3
+  menuID: -1
 --- !u!224 &642471618 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3439480910737990551, guid: 00b81bfb73be08f41a06afa2e07dcd7f, type: 3}
@@ -2612,8 +2616,9 @@ GameObject:
   m_Component:
   - component: {fileID: 644316404}
   - component: {fileID: 644316403}
+  - component: {fileID: 644316405}
   m_Layer: 0
-  m_Name: InputManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,6 +2651,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644316405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644316402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8c91ca656debe43a5bf0e70fe4998b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &663485170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3802,7 +3819,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28294
+  m_Name: pb_Mesh28296
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4935,7 +4952,7 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 0.58406985, b: 0, a: 1}
   baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
   background: {fileID: 734181358}
-  menuID: 4
+  menuID: -1
 --- !u!224 &1433779023 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3439480910737990551, guid: 00b81bfb73be08f41a06afa2e07dcd7f, type: 3}
@@ -7478,9 +7495,7 @@ MonoBehaviour:
   - {fileID: 1433779022}
   - {fileID: 538023858}
   radialMenu: {fileID: 271847990}
-  outer: 0
-  innerThreshold: 0
-  outerThreshold: 0
+  threshold: 100
 --- !u!1 &1688322826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7920581466699670588, guid: 00b81bfb73be08f41a06afa2e07dcd7f, type: 3}
@@ -7500,12 +7515,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1688322826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e124a0b3fab40eca31775ae7d2100e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+  baseColor: {r: 0, g: 0.31764707, b: 0.6313726, a: 1}
   background: {fileID: 914179541}
+  gunPrefab: {fileID: 0}
 --- !u!1 &1721097824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7851,12 +7867,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1945153227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e124a0b3fab40eca31775ae7d2100e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+  baseColor: {r: 0, g: 0.31764707, b: 0.6313726, a: 1}
   background: {fileID: 8422168}
+  gunPrefab: {fileID: 0}
 --- !u!1 &1950529932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7920581466699670588, guid: 00b81bfb73be08f41a06afa2e07dcd7f, type: 3}
@@ -7879,8 +7896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 1, g: 0.13333334, b: 0, a: 1}
+  baseColor: {r: 0.5849056, g: 0.104289785, b: 0.03034888, a: 1}
   background: {fileID: 1920838951}
 --- !u!1 &1987100258 stripped
 GameObject:
@@ -7901,12 +7918,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987100258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e124a0b3fab40eca31775ae7d2100e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+  baseColor: {r: 0, g: 0.31764707, b: 0.6313726, a: 1}
   background: {fileID: 1124615794}
+  gunPrefab: {fileID: 0}
 --- !u!1 &1991696917
 GameObject:
   m_ObjectHideFlags: 0
@@ -8038,9 +8056,7 @@ MonoBehaviour:
   - {fileID: 28997282}
   - {fileID: 1987100261}
   radialMenu: {fileID: 271847990}
-  outer: 0
-  innerThreshold: 0
-  outerThreshold: 0
+  threshold: 275
 --- !u!224 &2047975274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8207,8 +8223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3df1f0a09e4f529c0a176288f04bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.58431375, b: 0, a: 1}
-  baseColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
+  hoverColor: {r: 1, g: 0.13333334, b: 0, a: 1}
+  baseColor: {r: 0.5849056, g: 0.104289785, b: 0.03034888, a: 1}
   background: {fileID: 440699290}
 --- !u!1 &2119756404
 GameObject:

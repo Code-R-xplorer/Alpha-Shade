@@ -7,9 +7,11 @@ namespace UI.RadialMenu
     public class WeaponMenuItem : ItemBase
     {
         [SerializeField] private GameObject gunPrefab;
-        public override void OnClick()
+
+        public override void OnPerformAction()
         {
-            base.OnClick();
+            base.OnPerformAction();
+            Debug.Log( transform.parent.name + " " + gameObject.name);
         }
     }
 }
