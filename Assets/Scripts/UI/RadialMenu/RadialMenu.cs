@@ -18,6 +18,9 @@ namespace UI.RadialMenu
         private IDManager idManager;
 
         [SerializeField] private GameObject idMenuItem, weaponMenuItem;
+        
+        [SerializeField] private GameObject infoTab;
+        public InfoDisplayTab infoDisplayTab;
         private void Start()
         {
             InputManager.Instance.OnToggleMenu += ShowMainMenu;
@@ -27,6 +30,8 @@ namespace UI.RadialMenu
                 menu.radialMenu = this;
                 menu.ToggleMenu(false);
             }
+            infoTab.SetActive(false);
+            infoDisplayTab = infoTab.GetComponent<InfoDisplayTab>();
         }   
         
         private void ShowMainMenu(bool canceled)
@@ -47,16 +52,15 @@ namespace UI.RadialMenu
                 {
                     menu.ToggleMenu(false);
                 }
+                infoTab.SetActive(false);
             }
         }
 
-        // public void SwitchMenu(int newMenu)
-        // {
-        //     menus[menuIndex].ToggleMenu(false);
-        //     menuIndex = newMenu;
-        //     menus[menuIndex].ToggleMenu(true);
-        //     
-        // }
+        public void ToggleInfoTab(bool show)
+        {
+            infoTab.SetActive(show);
+            menus[0].ToggleMenu(!show);
+        }
 
         public void ChangeSubMenu(int newMenu)
         {

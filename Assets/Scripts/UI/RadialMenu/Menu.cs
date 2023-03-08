@@ -27,10 +27,17 @@ namespace UI.RadialMenu
         [SerializeField] private float threshold;
 
         private float _sectionRadius = 155;
+
+        private bool _isMain;
+        
         // Start is called before the first frame update
         private void Awake()
         {
             menu = gameObject;
+            if (menu.name == "MainMenu")
+            {
+                _isMain = true;
+            }
         }
 
         void Start()
@@ -44,6 +51,7 @@ namespace UI.RadialMenu
             {
                 item.Init(radialMenu);
             }
+            
 
         }
 
@@ -52,7 +60,6 @@ namespace UI.RadialMenu
         {
             if(!IsOpen) return;
             Vector2 deflection = InputManager.Instance.MousePos - screenCenter;
-            // Debug.Log(deflection.magnitude);
             if (deflection.magnitude > threshold && deflection.magnitude < threshold + _sectionRadius)
             {
                 float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg;
@@ -75,27 +82,33 @@ namespace UI.RadialMenu
                     radialMenuItem = menuItems[selection];
                     radialMenuItem.Select();
                 }
+
+                if (!_isMain)
+                {
+                    radialMenu.ToggleInfoTab(true);
+                }
+                
             }
             else if ((deflection.magnitude < threshold || deflection.magnitude > threshold + _sectionRadius) && (prevRadialMenuItem != null || radialMenuItem != null))
             {
                 prevRadialMenuItem.Deselect();
                 radialMenuItem.Deselect();
                 reselect = true;
+                radialMenu.ToggleInfoTab(false);
             }
+            if (deflection.magnitude < threshold && _isMain)
+            {
+                radialMenu.ChangeSubMenu(0);
+                radialMenu.ToggleInfoTab(false);
+            }
+            
         }
 
         public void ToggleMenu(bool open)
         {
-            // Debug.Log(gameObject.name + ": " + open);
             IsOpen = open;
             menu.SetActive(IsOpen);
         }
-
-        // private void Click()
-        // {
-        //     if(!IsOpen) return;
-        //     menuItems[selection].OnClick();
-        // }
 
         private void Hover()
         {

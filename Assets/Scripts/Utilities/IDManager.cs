@@ -24,7 +24,7 @@ namespace Utilities
 
         private void Start()
         {
-            pocketWatch = GameObject.FindWithTag("PocketWatch").GetComponent<PocketWatch>();
+            // pocketWatch = GameObject.FindWithTag("PocketWatch").GetComponent<PocketWatch>();
             idCards = new List<ID>();
             currentID = new ID
             {

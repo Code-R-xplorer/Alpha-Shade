@@ -31,11 +31,6 @@ namespace UI.RadialMenu
             background.color = baseColor;
         }
 
-        public virtual void OnClick()
-        {
-            // if()
-        }
-
         public virtual void OnHover()
         {
             
