@@ -13,9 +13,9 @@ namespace UI.RadialMenu
 
         private int menuIndex;
 
-        [SerializeField] private int weaponIndex, idIndex;
+        public int weaponIndex, idIndex;
 
-        private IDManager idManager;
+        public IDManager IDManager { get; private set; }
 
         [SerializeField] private GameObject idMenuItem, weaponMenuItem;
         
@@ -24,7 +24,7 @@ namespace UI.RadialMenu
         private void Start()
         {
             InputManager.Instance.OnToggleMenu += ShowMainMenu;
-            idManager = IDManager.Instance;
+            IDManager = IDManager.Instance;
             foreach (var menu in menus)
             {
                 menu.radialMenu = this;
@@ -32,8 +32,16 @@ namespace UI.RadialMenu
             }
             infoTab.SetActive(false);
             infoDisplayTab = infoTab.GetComponent<InfoDisplayTab>();
-        }   
-        
+        }
+
+        public void AddMenuItem(int id)
+        {
+            if (id == weaponIndex)
+            {
+                
+            }
+        }
+
         private void ShowMainMenu(bool canceled)
         {
             isOpen = !canceled;

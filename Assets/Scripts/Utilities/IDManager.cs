@@ -48,6 +48,11 @@ namespace Utilities
             }
         }
 
+        public void SelectID(int id)
+        {
+            currentID = idCards[id];
+        }
+
         private struct ID
         {
             public string name;

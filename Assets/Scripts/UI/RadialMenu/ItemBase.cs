@@ -10,13 +10,15 @@ namespace UI.RadialMenu
         public Image background;
 
         protected RadialMenu radialMenu;
+        protected InfoDisplayTab infoDisplayTab;
 
-        public void Init(RadialMenu menu)
+        public void Init(RadialMenu menu, InfoDisplayTab displayTab)
         {
             radialMenu = menu;
+            infoDisplayTab = displayTab;
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             background.color = baseColor;
         }

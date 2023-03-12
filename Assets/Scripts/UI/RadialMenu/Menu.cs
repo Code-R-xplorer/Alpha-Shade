@@ -49,7 +49,7 @@ namespace UI.RadialMenu
 
             foreach (var item in menuItems)
             {
-                item.Init(radialMenu);
+                item.Init(radialMenu, radialMenu.infoDisplayTab);
             }
             
 
