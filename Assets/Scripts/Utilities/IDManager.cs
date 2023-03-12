@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Interactables;
 using Player;
 using UI.Pocket_Watch;
+using UI.RadialMenu;
 using UnityEngine;
 
 namespace Utilities
@@ -17,6 +18,8 @@ namespace Utilities
 
         private PocketWatch pocketWatch;
 
+        private RadialMenu radialMenu;
+
         private void Awake()
         {
             Instance = this;
@@ -25,6 +28,7 @@ namespace Utilities
         private void Start()
         {
             // pocketWatch = GameObject.FindWithTag("PocketWatch").GetComponent<PocketWatch>();
+            radialMenu = GameObject.Find("RadialMenu").GetComponent<RadialMenu>();
             idCards = new List<ID>();
             currentID = new ID
             {
@@ -41,11 +45,11 @@ namespace Utilities
                 accessLevel = card.GetAccessLevel()
             };
             idCards.Add(id);
-            pocketWatch.screens[3].GetComponent<IDScreen>().AddCardToScreen(id.name, id.accessLevel);
-            if (currentID.accessLevel < id.accessLevel)
-            {
-                currentID = id;
-            }
+            radialMenu.AddMenuItem(idCards.Count - 1, id.name, id.accessLevel.ToString());
+            // if (currentID.accessLevel < id.accessLevel)
+            // {
+            //     currentID = id;
+            // }
         }
 
         public void SelectID(int id)

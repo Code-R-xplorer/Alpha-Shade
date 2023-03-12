@@ -33,6 +33,14 @@ namespace UI.RadialMenu
             background.color = baseColor;
         }
 
+        public void UpdateItemUI(int totalItems, int index)
+        {
+            int degreeRotation = 360 / totalItems;
+            float fillAmount =  1f / totalItems;
+            transform.rotation = Quaternion.Euler(0,0,degreeRotation*index);
+            background.fillAmount = fillAmount;
+        }
+
         public virtual void OnHover()
         {
             

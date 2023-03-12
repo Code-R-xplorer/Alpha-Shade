@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
@@ -15,7 +16,7 @@ namespace UI.RadialMenu
         public int selection;
         private int prevSelection;
         private float angleNumber;
-        [SerializeField] private ItemBase[] menuItems;
+        public List<ItemBase> menuItems;
 
         private ItemBase radialMenuItem;
         private ItemBase prevRadialMenuItem;
@@ -42,10 +43,9 @@ namespace UI.RadialMenu
 
         void Start()
         {
-            // InputManager.Instance.OnClick += Click;
+            if (menuItems.Count == 0) return;
             screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
-            angleNumber = 360f / menuItems.Length;
-            // menu.SetActive(false);
+            angleNumber = 360f / menuItems.Count;
 
             foreach (var item in menuItems)
             {
@@ -55,6 +55,18 @@ namespace UI.RadialMenu
 
         }
 
+        public void UpdateItemUIs()
+        {
+            screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+            angleNumber = 360f / menuItems.Count;
+            for (int i = 0; i < menuItems.Count; i++)
+            {
+                var item = menuItems[i];
+                item.UpdateItemUI(menuItems.Count, i);
+                item.Init(radialMenu, radialMenu.infoDisplayTab);
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -62,12 +74,12 @@ namespace UI.RadialMenu
             Vector2 deflection = InputManager.Instance.MousePos - screenCenter;
             if (deflection.magnitude > threshold && deflection.magnitude < threshold + _sectionRadius)
             {
-                float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg - 18f;
                 angle = (angle + 360) % 360;
                 selection = (int)(angle / angleNumber);
                 Hover();
-                if (selection >= menuItems.Length) selection = 0;
-                if (prevSelection >= menuItems.Length) prevSelection = 0;
+                if (selection >= menuItems.Count) selection = 0;
+                if (prevSelection >= menuItems.Count) prevSelection = 0;
                 if (reselect)
                 {
                     radialMenuItem.Select();
@@ -112,12 +124,13 @@ namespace UI.RadialMenu
 
         private void Hover()
         {
+            if(menuItems.Count == 0) return;
             menuItems[selection].OnHover();
         }
 
         public void PerformAction()
         {
-            if (reselect) return;
+            if (reselect || menuItems.Count == 0) return;
             menuItems[selection].OnPerformAction();
         }
     }

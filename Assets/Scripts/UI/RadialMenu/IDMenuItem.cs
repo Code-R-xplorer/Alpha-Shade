@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.ComponentModel;
+using UnityEngine;
 
 namespace UI.RadialMenu
 {
@@ -11,9 +12,11 @@ namespace UI.RadialMenu
         private string heading;
         private string body;
 
-        protected override void Start()
+        public void Inititlize(int idNumber, string nameID, string accessLevel)
         {
-            base.Start();
+            id = idNumber;
+            idName = nameID;
+            idAccessLevel = accessLevel;
             heading = "ID Card";
             body = $"Name: {idName} \n Access Level: {idAccessLevel}";
         }

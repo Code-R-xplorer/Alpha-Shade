@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using Utilities;
 
@@ -17,7 +18,7 @@ namespace UI.RadialMenu
 
         public IDManager IDManager { get; private set; }
 
-        [SerializeField] private GameObject idMenuItem, weaponMenuItem;
+        [SerializeField] private GameObject idMenuItemPrefab, weaponMenuItemPrefab;
         
         [SerializeField] private GameObject infoTab;
         public InfoDisplayTab infoDisplayTab;
@@ -34,12 +35,20 @@ namespace UI.RadialMenu
             infoDisplayTab = infoTab.GetComponent<InfoDisplayTab>();
         }
 
-        public void AddMenuItem(int id)
+        public void AddMenuItem(int idNumber, string idName, string idAccessLevel)
         {
-            if (id == weaponIndex)
-            {
-                
-            }
+            var idMenuItem = Instantiate(idMenuItemPrefab, menus[idIndex].transform, false);
+            var menuItem = idMenuItem.GetComponent<IDMenuItem>();
+            menuItem.Inititlize(idNumber, idName, idAccessLevel);
+            // menus[idIndex].ToggleMenu(true);
+            menus[idIndex].menuItems.Add(menuItem);
+            menus[idIndex].UpdateItemUIs();
+            // menus[idIndex].ToggleMenu(false);
+        }
+
+        public void AddMenuItem(GameObject weaponPrefab)
+        {
+            
         }
 
         private void ShowMainMenu(bool canceled)
