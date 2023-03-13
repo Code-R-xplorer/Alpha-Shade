@@ -41,17 +41,6 @@ namespace Player
             PlayHolsterAnim();
         }
 
-        public void SetWeaponAnimations(Gun gun)
-        {
-            clipOverrides["DEFAULT_FIRE"] = gun.fire;
-            clipOverrides["DEFAULT_IDLE"] = gun.idle;
-            clipOverrides["DEFAULT_UNHOLSTER"] = gun.holster;
-            clipOverrides["DEFAULT_HOLSTER"] = gun.holster;
-            clipOverrides["DEFAULT_RUN"] = gun.run;
-            clipOverrides["DEFAULT_RELOAD"] = gun.reload;
-            animatorOverrideController.ApplyOverrides(clipOverrides);
-        }
-
         private void Update()
         {
             if (speed > 1)

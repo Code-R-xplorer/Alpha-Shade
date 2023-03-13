@@ -164,11 +164,11 @@ MonoBehaviour:
     range: 20
     firePoint: {fileID: 4318609318075467972}
     hitDecal: {fileID: 3806696194405312696, guid: 3e5c4a4b6092a4445be34f070589f3f7, type: 3}
-    fire: {fileID: -203655887218126122, guid: d0811c80b0a29094580cc4f09d760706, type: 3}
-    idle: {fileID: -203655887218126122, guid: a2ec2daa98c8b0f4584e7b3137a7a961, type: 3}
-    run: {fileID: -203655887218126122, guid: 7873f3772ef791748922ed265d8e0667, type: 3}
-    reload: {fileID: 1827226128182048838, guid: 043d21f581364dc4cb84f2ee0927fab3, type: 3}
-    holster: {fileID: -203655887218126122, guid: 94952d1d7a393714bbe01d61685a296d, type: 3}
+    fire: {fileID: 0}
+    idle: {fileID: 0}
+    run: {fileID: 0}
+    reload: {fileID: 0}
+    holster: {fileID: 0}
   animation: {fileID: 0}
   muzzleFlashPrefab: {fileID: 1500370264893162, guid: 10719f104ece0ac4891ff8aaf5041b45, type: 3}
   muzzlePoint: {fileID: 4318609318075467972}

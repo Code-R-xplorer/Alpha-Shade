@@ -19,7 +19,6 @@ namespace Gun_System
         private bool canFire;
         private bool fired;
         private LayerMask _layerMask;
-        [SerializeField] private Animation animation;
         [SerializeField] private GameObject muzzleFlashPrefab;
         [SerializeField] private Transform muzzlePoint;
         [SerializeField] private GunUI gunUI;
@@ -34,8 +33,7 @@ namespace Gun_System
             // gun.firePoint = Camera.main.transform;
             _layerMask = LayerMask.GetMask("Player");
             gunUI.InitializeUI(gun.clipSize);
-            animation.SetWeaponAnimations(gun);
-            
+
 
         }
 
@@ -66,7 +64,7 @@ namespace Gun_System
                 
                 gunUI.ReduceAmmo();
                 
-                animation.PlayShootAnim();
+                // animation.PlayShootAnim();
                 SpawnFX();
                 
 
@@ -149,11 +147,6 @@ namespace Gun_System
         public float range;
         public Transform firePoint;
         public GameObject hitDecal;
-        public AnimationClip fire;
-        public AnimationClip idle;
-        public AnimationClip run;
-        public AnimationClip reload;
-        public AnimationClip holster;
-        
+
     }
 }
