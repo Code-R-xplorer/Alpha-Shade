@@ -22,8 +22,7 @@ namespace Player
         private bool _isSprinting;
 
         private bool _isGrounded;
-
-        private Animation animation;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -34,7 +33,6 @@ namespace Player
             sprintSpeed *= SpeedMultiplier;
             walkSpeed *= SpeedMultiplier;
             jumpForce *= SpeedMultiplier;
-            animation = transform.GetChild(0).GetComponent<Animation>();
         }
 
         // Update is called once per frame
@@ -60,15 +58,6 @@ namespace Player
             targetVelocity.y = _rb.velocity.y;
             _rb.velocity = targetVelocity;
 
-            if (hMove < 0.1 && vMove < 0.1)
-            {
-                animation.UpdateSpeed(0);
-            }
-            else
-            {
-                animation.UpdateSpeed(speed);
-            }
-            
 
         }
         

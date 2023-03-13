@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 using Animation = Player.Animation;
 
@@ -11,7 +12,7 @@ namespace Gun_System
     {
         // [SerializeField] private GunData gun;
 
-        [SerializeField] private Gun gun;
+        [FormerlySerializedAs("Gun")] public Gun gun;
 
         private float _lastFired;
 
@@ -20,8 +21,9 @@ namespace Gun_System
         private bool fired;
         private LayerMask _layerMask;
         [SerializeField] private GameObject muzzleFlashPrefab;
-        [SerializeField] private Transform muzzlePoint;
         [SerializeField] private GunUI gunUI;
+
+        private GunManager gunManager;
 
         private void Start()
         {
@@ -33,12 +35,15 @@ namespace Gun_System
             // gun.firePoint = Camera.main.transform;
             _layerMask = LayerMask.GetMask("Player");
             gunUI.InitializeUI(gun.clipSize);
+            
+            gunManager = GunManager.Instance; 
 
 
         }
 
         private void Update()
         {
+            if (!gameObject.activeSelf) return;
             if (gun.semiAutomatic)
             {
                 if (canFire && !fired && Time.time > _lastFired + gun.fireRate)
@@ -113,17 +118,18 @@ namespace Gun_System
 
         private void Reload()
         {
-            if (gun.currentAmmo < gun.clipSize && gun.clipCount > 0)
+            if (!gameObject.activeSelf) return;
+            if (gun.currentAmmo < gun.clipSize && gunManager.clipCount > 0)
             {
                 gun.currentAmmo = gun.clipSize;
-                gun.clipCount--;
+                gunManager.clipCount--;
                 gunUI.Reload();
             }
         }
 
         private void SpawnFX()
         {
-            GameObject fx = Instantiate(muzzleFlashPrefab, muzzlePoint);
+            GameObject fx = Instantiate(muzzleFlashPrefab, gun.firePoint);
             StartCoroutine(DestroyFX(fx));
         }
 
@@ -140,7 +146,6 @@ namespace Gun_System
     {
         public bool semiAutomatic;
         public int clipSize;
-        public int clipCount;
         public int currentAmmo;
         public float fireRate;
         public float damage;

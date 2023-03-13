@@ -12,7 +12,7 @@ namespace UI.RadialMenu
         private string heading;
         private string body;
 
-        public void Inititlize(int idNumber, string nameID, string accessLevel)
+        public void Initialize(int idNumber, string nameID, string accessLevel)
         {
             id = idNumber;
             idName = nameID;

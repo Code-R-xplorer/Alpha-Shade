@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Gun_System;
 using UnityEngine;
 using Utilities;
 
@@ -39,16 +40,20 @@ namespace UI.RadialMenu
         {
             var idMenuItem = Instantiate(idMenuItemPrefab, menus[idIndex].transform, false);
             var menuItem = idMenuItem.GetComponent<IDMenuItem>();
-            menuItem.Inititlize(idNumber, idName, idAccessLevel);
+            menuItem.Initialize(idNumber, idName, idAccessLevel);
             // menus[idIndex].ToggleMenu(true);
             menus[idIndex].menuItems.Add(menuItem);
             menus[idIndex].UpdateItemUIs();
             // menus[idIndex].ToggleMenu(false);
         }
 
-        public void AddMenuItem(GameObject weaponPrefab)
+        public void AddMenuItem(string gunName,int gunIndex, Gun gun)
         {
-            
+            var gunMenuItem = Instantiate(weaponMenuItemPrefab, menus[weaponIndex].transform, false);
+            var menuItem = gunMenuItem.GetComponent<WeaponMenuItem>();
+            menuItem.Initialize(gunName, gunIndex, gun);
+            menus[weaponIndex].menuItems.Add(menuItem);
+            menus[weaponIndex].UpdateItemUIs();
         }
 
         private void ShowMainMenu(bool canceled)

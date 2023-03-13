@@ -28,7 +28,6 @@ namespace Gun_System
         {
             if (transform.childCount > 0)
             {
-                Debug.Log(transform.childCount);
                 for (int i = transform.childCount; i > 0; i--)
                 {
                     DestroyImmediate(transform.GetChild(0).gameObject);
