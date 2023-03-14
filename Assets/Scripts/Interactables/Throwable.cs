@@ -10,10 +10,20 @@ namespace Interactables
     {
         [SerializeField] private float despawnTime = 10f;
         private Rigidbody _rb;
-        private void Start()
+
+        public void Throw(Transform hand, float throwForce)
         {
-            _rb = GetComponent<Rigidbody>();
-            _rb.sleepThreshold = 0f;
+            _rb = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
+            if (_rb != null)
+            {
+                _rb.sleepThreshold = 0f;
+                _rb.mass = 1f;
+                _rb.angularDrag = 5f;
+                _rb.interpolation = RigidbodyInterpolation.Interpolate;
+                _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                _rb.AddForce(Camera.main.transform.up * 5f, ForceMode.Impulse);
+                _rb.AddForce(hand.forward * throwForce, ForceMode.Impulse);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)

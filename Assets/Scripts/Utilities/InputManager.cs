@@ -28,7 +28,7 @@ namespace Utilities
         public event BaseAction OnStartJump;
         public event BoolBaseAction OnSprint;
         public event BoolBaseAction OnCrouch;
-        public event BoolBaseAction OnThrow;
+        public event BoolDoubleBaseAction OnThrow;
         public event BoolDoubleBaseAction OnMelee;
         public event BoolBaseAction OnFire;
         public event BaseAction OnReload;
@@ -58,8 +58,8 @@ namespace Utilities
             _playerControls.Controls.Sprint.canceled += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Crouch.started += context => CrouchPrimary(context.canceled);
             _playerControls.Controls.Crouch.canceled += context => CrouchPrimary(context.canceled);
-            _playerControls.Controls.Throw.started += context => ThrowPrimary(context.canceled);
-            _playerControls.Controls.Throw.canceled += context => ThrowPrimary(context.canceled);
+            _playerControls.Controls.Throw.started += context => ThrowPrimary(context.canceled, context.duration);
+            _playerControls.Controls.Throw.canceled += context => ThrowPrimary(context.canceled, context.duration);
             _playerControls.Controls.Melee.started += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Melee.canceled += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Fire.started += context => FirePrimary(context.canceled); 
@@ -131,9 +131,9 @@ namespace Utilities
             OnStartInteract?.Invoke();
         }
 
-        private void ThrowPrimary(bool canceled)
+        private void ThrowPrimary(bool canceled, double duration)
         {
-            OnThrow?.Invoke(canceled);
+            OnThrow?.Invoke(canceled, duration);
         }
 
         private void StartToggleWatchPrimary()
