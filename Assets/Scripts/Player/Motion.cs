@@ -12,6 +12,8 @@ namespace Player
         [SerializeField] private float groundDistance = 0.4f;
         [SerializeField] private LayerMask groundMask;
         [SerializeField] private float jumpForce = 10f;
+        
+        private CameraManager _cameraManager;
         private float speed;
         private InputManager _input;
 
@@ -22,14 +24,21 @@ namespace Player
         private bool _isSprinting;
 
         private bool _isGrounded;
-        
+
+        private float _height;
+        private CapsuleCollider _capsuleCollider;
+
         // Start is called before the first frame update
         void Start()
         {
             _input = InputManager.Instance;
+            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _cameraManager = GetComponent<CameraManager>();
+            _height = _capsuleCollider.height;
             _rb = GetComponent<Rigidbody>();
             _input.OnSprint += Sprint;
             _input.OnStartJump += Jump;
+            _input.OnCrouch += Crouch;
             sprintSpeed *= SpeedMultiplier;
             walkSpeed *= SpeedMultiplier;
             jumpForce *= SpeedMultiplier;
@@ -77,6 +86,21 @@ namespace Player
             if (_isGrounded)
             {
                 _rb.AddForce(transform.up * jumpForce);
+            }
+        }
+
+        private void Crouch(bool canceled)
+        {
+            if (!canceled)
+            {
+                _cameraManager.SwitchCameraPosition(1);
+                _capsuleCollider.height = _height * 0.5f;
+                _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+            }
+            else
+            {
+                _cameraManager.SwitchCameraPosition(0);
+                _capsuleCollider.height = _height;
             }
         }
     }
