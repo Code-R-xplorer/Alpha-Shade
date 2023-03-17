@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Player;
 using UI.RadialMenu;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ namespace Gun_System
         private void Start()
         {
             radialMenu = GameObject.Find("RadialMenu").GetComponent<RadialMenu>();
+            StateManager.Instance.OnStateChange += HolsterWeapon;
             collected = new List<bool>();
             collected.Add(true);
             for (int i = 1; i < transform.childCount; i++)
@@ -33,6 +35,11 @@ namespace Gun_System
                 collected.Add(false);
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+        }
+
+        private void HolsterWeapon(StateManager.States states)
+        {
+            if(states != StateManager.States.Gun) SelectGun(0);
         }
 
         public void GunCollected(int index)
@@ -50,6 +57,7 @@ namespace Gun_System
                 transform.GetChild(prevActive).gameObject.SetActive(false);
                 transform.GetChild(index).gameObject.SetActive(true);
                 prevActive = index;
+                StateManager.Instance.SetState(index == 0 ? StateManager.States.Normal : StateManager.States.Gun);
             }
         }
 

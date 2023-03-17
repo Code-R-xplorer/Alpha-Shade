@@ -30,7 +30,7 @@ namespace Guards
         {
             _guardController = GetComponentInParent<GuardController>();
             _startingTransform = transform;
-            player = GameObject.FindGameObjectWithTag(Tags.Player).transform.parent.gameObject;
+            player = GameObject.FindGameObjectWithTag(Tags.Player);
             _layerMask = LayerMask.GetMask("Guard");
             _layerMask = ~_layerMask;
         }

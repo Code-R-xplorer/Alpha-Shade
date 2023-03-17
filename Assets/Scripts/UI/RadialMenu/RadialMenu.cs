@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Ability_System;
 using Gun_System;
 using UnityEngine;
 using Utilities;
@@ -15,11 +16,11 @@ namespace UI.RadialMenu
 
         private int menuIndex;
 
-        public int weaponIndex, idIndex;
+        public int weaponIndex, idIndex, abilityIndex;
 
         public IDManager IDManager { get; private set; }
 
-        [SerializeField] private GameObject idMenuItemPrefab, weaponMenuItemPrefab;
+        [SerializeField] private GameObject idMenuItemPrefab, weaponMenuItemPrefab, abilityMenuItemPrefab;
         
         [SerializeField] private GameObject infoTab;
         public InfoDisplayTab infoDisplayTab;
@@ -41,10 +42,8 @@ namespace UI.RadialMenu
             var idMenuItem = Instantiate(idMenuItemPrefab, menus[idIndex].transform, false);
             var menuItem = idMenuItem.GetComponent<IDMenuItem>();
             menuItem.Initialize(idNumber, idName, idAccessLevel);
-            // menus[idIndex].ToggleMenu(true);
             menus[idIndex].menuItems.Add(menuItem);
             menus[idIndex].UpdateItemUIs();
-            // menus[idIndex].ToggleMenu(false);
         }
 
         public void AddMenuItem(string gunName,int gunIndex, Gun gun)
@@ -54,6 +53,15 @@ namespace UI.RadialMenu
             menuItem.Initialize(gunName, gunIndex, gun);
             menus[weaponIndex].menuItems.Add(menuItem);
             menus[weaponIndex].UpdateItemUIs();
+        }
+
+        public void AddMenuItem(Ability ability, AbilityManager abilityManager)
+        {
+            var abilityMenuItem = Instantiate(abilityMenuItemPrefab, menus[abilityIndex].transform, false);
+            var menuItem = abilityMenuItem.GetComponent<AbilityMenuItem>();
+            menuItem.Initialization(ability, abilityManager);
+            menus[abilityIndex].menuItems.Add(menuItem);
+            menus[abilityIndex].UpdateItemUIs();
         }
 
         private void ShowMainMenu(bool canceled)

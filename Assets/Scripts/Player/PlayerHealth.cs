@@ -40,6 +40,7 @@ namespace Player
         {
             if (_dead) return;
             _health += val;
+            if (_health > startingHealth) _health = startingHealth;
         }
 
         public bool IsDead()
