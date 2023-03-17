@@ -3409,9 +3409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - {fileID: 0}
+  - {fileID: 1147930910}
   player: {fileID: 0}
-  selectedAbility: {fileID: 1147930910}
+  selectedAbility: {fileID: 0}
 --- !u!1001 &1111716382
 PrefabInstance:
   m_ObjectHideFlags: 0

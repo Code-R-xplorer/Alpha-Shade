@@ -40,7 +40,11 @@ namespace Ability_System
 
         private void DeactivateAbilities(StateManager.States states)
         {
-            if(states != StateManager.States.Ability) gameObject.SetActive(false);
+            if (states != StateManager.States.Ability)
+            {
+                gameObject.SetActive(false);
+                prevSelected = null;
+            }
         }
 
         public void SelectAbility(string abilityName)
@@ -48,8 +52,13 @@ namespace Ability_System
             var checkDict = _abilities.TryGetValue(abilityName, out selectedAbility);
             if (checkDict)
             {
-                if (selectedAbility == prevSelected && 
-                    StateManager.Instance.GetCurrentState() == StateManager.States.Ability) return;
+                if (selectedAbility == prevSelected &&
+                    StateManager.Instance.GetCurrentState() == StateManager.States.Ability)
+                {
+                    StateManager.Instance.SetState(StateManager.States.Normal);
+                    selectedAbility.selected = false;
+                    return;
+                }
                 if(prevSelected != null) prevSelected.selected = false;
                 prevSelected = selectedAbility;
                 StateManager.Instance.SetState(StateManager.States.Ability);
