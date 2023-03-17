@@ -37,6 +37,8 @@ namespace Guards
 
         private PlayerHealth _playerHealth;
 
+        public bool stunned;
+
         public AccessLevel accessLevel = AccessLevel.Default;
 
         protected virtual void Start()
@@ -87,6 +89,11 @@ namespace Guards
             {
                 if (!_deathSequence) StartCoroutine(DeathSequence());
             }
+
+            if (stunned)
+            {
+                HoldGuard();
+            }
         }
 
         private IEnumerator DeathSequence()
@@ -124,6 +131,20 @@ namespace Guards
             if (_dead) return;
             _navMeshAgent.speed = _agentSpeed;
             _navMeshAgent.isStopped = false;
+        }
+
+        public void Stun(float duration)
+        {
+            StartCoroutine(StunRoutine(duration));
+        }
+
+        private IEnumerator StunRoutine(float duration)
+        {
+            stunned = true;
+            Debug.Log(duration);
+            yield return new WaitForSeconds(duration);
+            stunned = false;
+            FreeGuard();
         }
 
         private void OnDestroy()

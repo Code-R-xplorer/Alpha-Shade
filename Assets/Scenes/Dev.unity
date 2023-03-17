@@ -3393,6 +3393,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1147930909}
+  - {fileID: 1702343346}
   m_Father: {fileID: 908925387}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3408,8 +3409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c426ac9eef1549eeab49d5d49c8ce166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 1147930910}
+  abilities: []
   player: {fileID: 0}
   selectedAbility: {fileID: 0}
 --- !u!1001 &1111716382
@@ -7226,6 +7226,59 @@ MonoBehaviour:
   - {fileID: 538023858}
   radialMenu: {fileID: 271847990}
   threshold: 100
+--- !u!1 &1702343345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1702343346}
+  - component: {fileID: 1702343347}
+  m_Layer: 8
+  m_Name: EMP Dart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1702343346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702343345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1079524846}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1702343347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702343345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45f9a87bc3147be8eee512ed9e863ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: EMP Dart
+  uses: 5
+  cooldown: 30
+  selected: 0
+  inCooldown: 0
+  cooldownTime: 0
+  range: 20
+  stunDuration: 5
+  dartPrefab: {fileID: 603780722757594342, guid: 07c844265d6d9db409d64152bcd21b42, type: 3}
 --- !u!1 &1721097824
 GameObject:
   m_ObjectHideFlags: 0

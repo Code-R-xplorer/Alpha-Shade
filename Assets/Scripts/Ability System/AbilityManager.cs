@@ -27,6 +27,9 @@ namespace Ability_System
             player = GameObject.FindWithTag(Tags.Player);
             radialMenu = GameObject.Find("RadialMenu").GetComponent<RadialMenu>();
 
+            abilities = new List<Ability>();
+            abilities.AddRange(transform.GetComponentsInChildren<Ability>());
+
             _abilities = new Dictionary<string, Ability>();
             foreach (var ability in abilities)
             {
