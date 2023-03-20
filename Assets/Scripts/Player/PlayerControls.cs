@@ -24,7 +24,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""|Controls"",
+            ""name"": ""Controls"",
             ""id"": ""33419dc0-c93f-4bc8-ac06-42117b6435a9"",
             ""actions"": [
                 {
@@ -97,6 +97,60 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleWatch"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fdfc888-b72f-46ec-90d7-03397369e5f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleWatchScreenL"",
+                    ""type"": ""Value"",
+                    ""id"": ""f5a6a047-a0c6-4f11-9c86-c4c933eb5026"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleWatchScreenR"",
+                    ""type"": ""Value"",
+                    ""id"": ""bdbfbb6a-0bc7-47f8-9641-b3d1a996c080"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleWatchScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bec1e28-7d3a-4875-8a30-0789eb21f584"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""996c6a9f-7470-4e4d-8b0f-08f0a4277ab5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""e280423f-a245-42a7-b96a-e259308fdea0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -232,14 +286,148 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Melee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e48f9f6-3fb0-4b91-bd36-7ef4b4af7a2f"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleWatchScreenL"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c84cd0b-e699-4185-b683-2051359b32c5"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleWatchScreenR"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""385f3358-f3a9-4bec-aec6-6e7dd8e1ed00"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleWatchScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""008ec0a0-f903-40a5-bed6-8721206fbe95"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1eb111c-88cf-45be-98c8-0dac55d93231"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f2ced29-f1b9-451d-a1d9-a8c58e2d077a"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleWatch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""69528be5-d87c-4c8c-b3a2-8d06979e4571"",
+            ""actions"": [
+                {
+                    ""name"": ""MousePos"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bdb79caa-2cbe-48ff-89b9-c92113367bae"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""2aa9984f-342d-4c75-b68d-ab873a2b6311"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""418e7a8f-f7c8-4701-84d6-7b907bdd75a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3e13c54d-6d52-41dc-bbf6-c4ff4c91b4da"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dc50d1a-3128-45d7-9c6d-066ea6dbba51"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c10145b-5f68-4a36-9ac1-073b51cae7f0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // |Controls
-        m_Controls = asset.FindActionMap("|Controls", throwIfNotFound: true);
+        // Controls
+        m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
         m_Controls_Move = m_Controls.FindAction("Move", throwIfNotFound: true);
         m_Controls_Look = m_Controls.FindAction("Look", throwIfNotFound: true);
         m_Controls_Jump = m_Controls.FindAction("Jump", throwIfNotFound: true);
@@ -248,6 +436,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Controls_Interact = m_Controls.FindAction("Interact", throwIfNotFound: true);
         m_Controls_Throw = m_Controls.FindAction("Throw", throwIfNotFound: true);
         m_Controls_Melee = m_Controls.FindAction("Melee", throwIfNotFound: true);
+        m_Controls_ToggleWatch = m_Controls.FindAction("ToggleWatch", throwIfNotFound: true);
+        m_Controls_ToggleWatchScreenL = m_Controls.FindAction("ToggleWatchScreenL", throwIfNotFound: true);
+        m_Controls_ToggleWatchScreenR = m_Controls.FindAction("ToggleWatchScreenR", throwIfNotFound: true);
+        m_Controls_ToggleWatchScreen = m_Controls.FindAction("ToggleWatchScreen", throwIfNotFound: true);
+        m_Controls_Fire = m_Controls.FindAction("Fire", throwIfNotFound: true);
+        m_Controls_Reload = m_Controls.FindAction("Reload", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_MousePos = m_UI.FindAction("MousePos", throwIfNotFound: true);
+        m_UI_ShowMenu = m_UI.FindAction("ShowMenu", throwIfNotFound: true);
+        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,7 +503,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // |Controls
+    // Controls
     private readonly InputActionMap m_Controls;
     private IControlsActions m_ControlsActionsCallbackInterface;
     private readonly InputAction m_Controls_Move;
@@ -315,6 +514,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Controls_Interact;
     private readonly InputAction m_Controls_Throw;
     private readonly InputAction m_Controls_Melee;
+    private readonly InputAction m_Controls_ToggleWatch;
+    private readonly InputAction m_Controls_ToggleWatchScreenL;
+    private readonly InputAction m_Controls_ToggleWatchScreenR;
+    private readonly InputAction m_Controls_ToggleWatchScreen;
+    private readonly InputAction m_Controls_Fire;
+    private readonly InputAction m_Controls_Reload;
     public struct ControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -327,6 +532,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Controls_Interact;
         public InputAction @Throw => m_Wrapper.m_Controls_Throw;
         public InputAction @Melee => m_Wrapper.m_Controls_Melee;
+        public InputAction @ToggleWatch => m_Wrapper.m_Controls_ToggleWatch;
+        public InputAction @ToggleWatchScreenL => m_Wrapper.m_Controls_ToggleWatchScreenL;
+        public InputAction @ToggleWatchScreenR => m_Wrapper.m_Controls_ToggleWatchScreenR;
+        public InputAction @ToggleWatchScreen => m_Wrapper.m_Controls_ToggleWatchScreen;
+        public InputAction @Fire => m_Wrapper.m_Controls_Fire;
+        public InputAction @Reload => m_Wrapper.m_Controls_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,6 +571,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Melee.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMelee;
                 @Melee.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMelee;
                 @Melee.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnMelee;
+                @ToggleWatch.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatch;
+                @ToggleWatch.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatch;
+                @ToggleWatch.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatch;
+                @ToggleWatchScreenL.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenL;
+                @ToggleWatchScreenL.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenL;
+                @ToggleWatchScreenL.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenL;
+                @ToggleWatchScreenR.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenR;
+                @ToggleWatchScreenR.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenR;
+                @ToggleWatchScreenR.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreenR;
+                @ToggleWatchScreen.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
+                @ToggleWatchScreen.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
+                @ToggleWatchScreen.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnToggleWatchScreen;
+                @Fire.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnFire;
+                @Reload.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_ControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,10 +617,77 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Melee.started += instance.OnMelee;
                 @Melee.performed += instance.OnMelee;
                 @Melee.canceled += instance.OnMelee;
+                @ToggleWatch.started += instance.OnToggleWatch;
+                @ToggleWatch.performed += instance.OnToggleWatch;
+                @ToggleWatch.canceled += instance.OnToggleWatch;
+                @ToggleWatchScreenL.started += instance.OnToggleWatchScreenL;
+                @ToggleWatchScreenL.performed += instance.OnToggleWatchScreenL;
+                @ToggleWatchScreenL.canceled += instance.OnToggleWatchScreenL;
+                @ToggleWatchScreenR.started += instance.OnToggleWatchScreenR;
+                @ToggleWatchScreenR.performed += instance.OnToggleWatchScreenR;
+                @ToggleWatchScreenR.canceled += instance.OnToggleWatchScreenR;
+                @ToggleWatchScreen.started += instance.OnToggleWatchScreen;
+                @ToggleWatchScreen.performed += instance.OnToggleWatchScreen;
+                @ToggleWatchScreen.canceled += instance.OnToggleWatchScreen;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
     public ControlsActions @Controls => new ControlsActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_MousePos;
+    private readonly InputAction m_UI_ShowMenu;
+    private readonly InputAction m_UI_Click;
+    public struct UIActions
+    {
+        private @PlayerControls m_Wrapper;
+        public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MousePos => m_Wrapper.m_UI_MousePos;
+        public InputAction @ShowMenu => m_Wrapper.m_UI_ShowMenu;
+        public InputAction @Click => m_Wrapper.m_UI_Click;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @MousePos.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePos;
+                @MousePos.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePos;
+                @MousePos.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePos;
+                @ShowMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnShowMenu;
+                @ShowMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnShowMenu;
+                @ShowMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnShowMenu;
+                @Click.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MousePos.started += instance.OnMousePos;
+                @MousePos.performed += instance.OnMousePos;
+                @MousePos.canceled += instance.OnMousePos;
+                @ShowMenu.started += instance.OnShowMenu;
+                @ShowMenu.performed += instance.OnShowMenu;
+                @ShowMenu.canceled += instance.OnShowMenu;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -402,5 +698,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnMelee(InputAction.CallbackContext context);
+        void OnToggleWatch(InputAction.CallbackContext context);
+        void OnToggleWatchScreenL(InputAction.CallbackContext context);
+        void OnToggleWatchScreenR(InputAction.CallbackContext context);
+        void OnToggleWatchScreen(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMousePos(InputAction.CallbackContext context);
+        void OnShowMenu(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }

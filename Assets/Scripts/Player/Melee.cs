@@ -93,7 +93,7 @@ namespace Player
 
         private void DealMeleeDamage()
         {
-            _guardController.DecreaseHealth(damageDealt);
+            _guardController.GetComponent<IDamageable>().TakeDamage(damageDealt);
         }
 
         private void PerformTakeDown()

@@ -2,6 +2,7 @@
 using Interactables;
 using UnityEngine;
 using Utilities;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -10,7 +11,9 @@ namespace Player
         [SerializeField] private int maxItems = 10;
         [SerializeField] private Transform hand;
         [SerializeField] private GameObject itemPrefab;
-        [SerializeField] private float throwForce = 5;
+        private float throwForce;
+        [SerializeField] private float minThrowForce = 1;
+        [SerializeField] private float maxThrowForce = 5;
         
         private int _currentItems = 0;
         private InputManager _inputManager;
@@ -24,15 +27,14 @@ namespace Player
             _currentItems = maxItems;
         }
         
-        private void ThrowItem(bool canceled)
+        private void ThrowItem(bool canceled, double duration)
         {
             if (!canceled)
             {
                 if (_currentItems > 0 && !_itemHeld)
                 {
-                    _currentItem = Instantiate(itemPrefab, hand.position, UnityEngine.Random.rotation);
-                    _currentItem.transform.parent = hand;
-                    _currentItem.transform.localPosition = Vector3.zero;
+                    _currentItem = Instantiate(itemPrefab, hand);
+                    _currentItem.transform.rotation = Random.rotation;
                     _currentItems--;
                     _itemHeld = true;
                 }
@@ -41,10 +43,11 @@ namespace Player
             {
                 if (_itemHeld)
                 {
+                    float dur = (float) duration;
+                    dur = dur.Map(0, 5, 0, 1);
+                    throwForce = Mathf.Lerp(minThrowForce, maxThrowForce, dur);
+                    _currentItem.GetComponent<Throwable>().Throw(hand, throwForce);
                     _currentItem.transform.parent = null;
-                    Rigidbody itemRB = _currentItem.GetComponent<Rigidbody>();
-                    itemRB.AddForce(Camera.main.transform.up * 5f, ForceMode.Impulse);
-                    itemRB.AddForce(hand.forward * throwForce, ForceMode.Impulse);
                     _itemHeld = false;
                 }
             }

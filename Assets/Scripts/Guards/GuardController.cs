@@ -8,7 +8,7 @@ using Utilities;
 
 namespace Guards
 {
-    public class GuardController : MonoBehaviour
+    public class GuardController : MonoBehaviour, IDamageable
     {
         private BehaviourTreeRunner _behaviourTreeRunner;
 
@@ -29,6 +29,18 @@ namespace Guards
 
         private float _agentSpeed;
 
+        [SerializeField] private float damageAmount = 15f;
+        [SerializeField] private float damageRate = 0.5f;
+
+        private bool _dealingDamage;
+        private bool _canDamage;
+
+        private PlayerHealth _playerHealth;
+
+        public bool stunned;
+
+        public AccessLevel accessLevel = AccessLevel.Default;
+
         protected virtual void Start()
         {
             _behaviourTreeRunner = GetComponent<BehaviourTreeRunner>();
@@ -39,6 +51,7 @@ namespace Guards
             blackboard = _behaviourTreeRunner.tree.blackboard;
             GameEvents.Instance.OnHeardSomething += Investigate;
             _agentSpeed = _navMeshAgent.speed;
+            _playerHealth = _player.GetComponent<PlayerHealth>();
         }
 
         public void CanSeePlayer(bool canSeePlayer)
@@ -76,6 +89,11 @@ namespace Guards
             {
                 if (!_deathSequence) StartCoroutine(DeathSequence());
             }
+
+            if (stunned)
+            {
+                HoldGuard();
+            }
         }
 
         private IEnumerator DeathSequence()
@@ -89,8 +107,7 @@ namespace Guards
             Destroy(gameObject);
 
         }
-
-        public void DecreaseHealth(float damage)
+        public void TakeDamage(float damage)
         {
             _guardVision.canSeePlayer = true;
             health -= damage;
@@ -116,17 +133,58 @@ namespace Guards
             _navMeshAgent.isStopped = false;
         }
 
+        public void Stun(float duration)
+        {
+            StartCoroutine(StunRoutine(duration));
+        }
+
+        private IEnumerator StunRoutine(float duration)
+        {
+            stunned = true;
+            Debug.Log(duration);
+            yield return new WaitForSeconds(duration);
+            stunned = false;
+            FreeGuard();
+        }
+
         private void OnDestroy()
         {
             GameEvents.Instance.OnHeardSomething -= Investigate;
-        }
+                 }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.CompareTag(Tags.Player))
             {
-                _player.transform.parent.GetComponent<PlayerMovement>().KillPlayer();
+                _canDamage = true;
+                StartCoroutine(DealDamage());
             }
+        }
+
+        private void OnCollisionStay(Collision collision)
+        {
+            if (collision.collider.CompareTag(Tags.Player))
+            {
+                _canDamage = true;
+                StartCoroutine(DealDamage());
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.collider.CompareTag(Tags.Player))
+            {
+                _canDamage = false;
+            }
+        }
+
+        private IEnumerator DealDamage()
+        {
+            if(_dealingDamage) yield break;
+            _dealingDamage = true;
+            yield return new WaitForSeconds(damageRate);
+            if(_canDamage) _playerHealth.DecreaseHealth(damageAmount);
+            _dealingDamage = false;
         }
     }
 }

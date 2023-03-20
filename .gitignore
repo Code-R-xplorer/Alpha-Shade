@@ -78,4 +78,6 @@ crashlytics-build.properties
 
 /Assets/Plugins/
 /Assets/Plugins.meta
+/Assets/LicensedAssets/
+/Assets/LicensedAssets.meta
 

@@ -65,5 +65,50 @@ namespace Utilities
             }
             return lengthSoFar;
         }
+        
+        public static T Clone<T>(T scriptableObject) where T : ScriptableObject
+        {
+            /*************************************************************************************************
+            *    Title: Create copy of Scriptableobject (during runtime)
+            *    Author: IainCarr
+            *    Date: 2021
+            *    Code version: 1.0
+            *    Availability: https://forum.unity.com/threads/create-copy-of-scriptableobject-during-runtime.355933/
+            **************************************************************************************************/
+            
+            if (scriptableObject == null)
+            {
+                Debug.LogError($"ScriptableObject was null. Returning default {typeof(T)} object.");
+                return (T)ScriptableObject.CreateInstance(typeof(T));
+            }
+ 
+            T instance = Object.Instantiate(scriptableObject);
+            instance.name = scriptableObject.name; // remove (Clone) from name
+            return instance;
+        }
     }
+    
+    public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, AnimationClip>>
+    {
+        public AnimationClipOverrides(int capacity) : base(capacity) {}
+
+        public AnimationClip this[string name]
+        {
+            get { return this.Find(x => x.Key.name.Equals(name)).Value; }
+            set
+            {
+                int index = this.FindIndex(x => x.Key.name.Equals(name));
+                if (index != -1)
+                    this[index] = new KeyValuePair<AnimationClip, AnimationClip>(this[index].Key, value);
+            }
+        }
+    }
+}
+
+public static class ExtensionMethods {
+     
+    public static float Map (this float value, float from1, float to1, float from2, float to2) {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+       
 }

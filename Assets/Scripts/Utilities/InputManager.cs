@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Utilities
@@ -15,6 +16,7 @@ namespace Utilities
 
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
+        public Vector2 MousePos { get; private set; }
     
         // Input Action Setup Example
         // public event BaseAction OnStartJump;
@@ -26,10 +28,19 @@ namespace Utilities
         public event BaseAction OnStartJump;
         public event BoolBaseAction OnSprint;
         public event BoolBaseAction OnCrouch;
-        public event BoolBaseAction OnThrow;
+        public event BoolDoubleBaseAction OnThrow;
         public event BoolDoubleBaseAction OnMelee;
+        public event BoolBaseAction OnFire;
+        public event BaseAction OnReload;
 
         public event BaseAction OnStartInteract;
+        public event BaseAction OnStartToggleWatch;
+        public event BaseAction OnStartToggleWatchScreen;
+        public event BaseAction OnStartToggleWatchScreenL;
+        public event BaseAction OnStartToggleWatchScreenR;
+
+        public event BoolBaseAction OnToggleMenu;
+        public event BaseAction OnClick;
 
         
         private void Awake()
@@ -42,21 +53,30 @@ namespace Utilities
         void Start()
         {
             CursorLock(true);
-            _playerControls.Controls.Jump.performed += context => StartJumpPrimary();
+            _playerControls.Controls.Jump.performed += _ => StartJumpPrimary();
             _playerControls.Controls.Sprint.started += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Sprint.canceled += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Crouch.started += context => CrouchPrimary(context.canceled);
             _playerControls.Controls.Crouch.canceled += context => CrouchPrimary(context.canceled);
-            _playerControls.Controls.Throw.started += context => ThrowPrimary(context.canceled);
-            _playerControls.Controls.Throw.canceled += context => ThrowPrimary(context.canceled);
+            _playerControls.Controls.Throw.started += context => ThrowPrimary(context.canceled, context.duration);
+            _playerControls.Controls.Throw.canceled += context => ThrowPrimary(context.canceled, context.duration);
             _playerControls.Controls.Melee.started += context => MeleePrimary(context.canceled, context.duration);
             _playerControls.Controls.Melee.canceled += context => MeleePrimary(context.canceled, context.duration);
-            _playerControls.Controls.Interact.performed += context => StartInteractPrimary();
+            _playerControls.Controls.Fire.started += context => FirePrimary(context.canceled); 
+            _playerControls.Controls.Fire.canceled += context => FirePrimary(context.canceled);
+            _playerControls.Controls.Reload.performed += _ => ReloadPrimary();
+            _playerControls.Controls.Interact.performed += _ => StartInteractPrimary();
+            _playerControls.Controls.ToggleWatch.performed += _ => StartToggleWatchPrimary();
+            _playerControls.Controls.ToggleWatchScreen.performed += _ => StartToggleWatchScreenPrimary();
+            _playerControls.Controls.ToggleWatchScreenL.performed += _ => StartToggleWatchScreenLPrimary();
+            _playerControls.Controls.ToggleWatchScreenR.performed += _ => StartToggleWatchScreenRPrimary();
+            _playerControls.UI.ShowMenu.started += context => ToggleMenuPrimary(context.canceled);
+            _playerControls.UI.ShowMenu.canceled += context => ToggleMenuPrimary(context.canceled);
+            _playerControls.UI.Click.performed += _ => ClickPrimary();
         }
 
         public void CursorLock(bool locked)
         {
-            Debug.Log(locked);
             if (locked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -74,6 +94,7 @@ namespace Utilities
         {
             MovementInput = _playerControls.Controls.Move.ReadValue<Vector2>();
             LookInput = _playerControls.Controls.Look.ReadValue<Vector2>();
+            MousePos = _playerControls.UI.MousePos.ReadValue<Vector2>();
         }
 
         private void StartJumpPrimary()
@@ -95,14 +116,54 @@ namespace Utilities
             OnMelee?.Invoke(canceled, duration);
         }
 
+        private void FirePrimary(bool canceled)
+        {
+            OnFire?.Invoke(canceled);
+        }
+
+        private void ReloadPrimary()
+        {
+            OnReload?.Invoke();
+        }
+
         private void StartInteractPrimary()
         {
             OnStartInteract?.Invoke();
         }
 
-        private void ThrowPrimary(bool canceled)
+        private void ThrowPrimary(bool canceled, double duration)
         {
-            OnThrow?.Invoke(canceled);
+            OnThrow?.Invoke(canceled, duration);
+        }
+
+        private void StartToggleWatchPrimary()
+        {
+            OnStartToggleWatch?.Invoke();
+        }
+
+        private void StartToggleWatchScreenPrimary()
+        {
+            OnStartToggleWatchScreen?.Invoke();
+        }
+
+        private void StartToggleWatchScreenLPrimary()
+        {
+            OnStartToggleWatchScreenL?.Invoke();
+        }
+
+        private void StartToggleWatchScreenRPrimary()
+        {
+            OnStartToggleWatchScreenR?.Invoke();
+        }
+
+        private void ToggleMenuPrimary(bool canceled)
+        {
+            OnToggleMenu?.Invoke(canceled);
+        }
+
+        private void ClickPrimary()
+        {
+            OnClick?.Invoke();
         }
 
         private void OnEnable()
@@ -113,20 +174,6 @@ namespace Utilities
         private void OnDisable()
         {
             _playerControls.Disable();
-        }
-
-        private void OnDestroy()
-        {
-            _playerControls.Controls.Jump.performed -= _ => StartJumpPrimary();
-            _playerControls.Controls.Sprint.started -= context => SprintPrimary(context.canceled);
-            _playerControls.Controls.Sprint.canceled -= context => SprintPrimary(context.canceled);
-            _playerControls.Controls.Crouch.started -= context => CrouchPrimary(context.canceled);
-            _playerControls.Controls.Crouch.canceled -= context => CrouchPrimary(context.canceled);
-            _playerControls.Controls.Throw.started -= context => ThrowPrimary(context.canceled);
-            _playerControls.Controls.Throw.canceled -= context => ThrowPrimary(context.canceled);
-            _playerControls.Controls.Melee.started -= context => MeleePrimary(context.canceled, context.duration);
-            _playerControls.Controls.Melee.canceled -= context => MeleePrimary(context.canceled, context.duration);
-            _playerControls.Controls.Interact.performed -= context => StartInteractPrimary();
         }
     }
 }
