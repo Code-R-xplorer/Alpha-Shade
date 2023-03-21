@@ -7,9 +7,9 @@ namespace Guards
     {
         [SerializeField] private List<Transform> patrolPoints;
 
-        protected override void Start()
+        public override void Initialize()
         {
-            base.Start();
+            base.Initialize();
             blackboard.patrolPoints = patrolPoints;
         }
     }

@@ -41,7 +41,9 @@ namespace Guards
 
         public AccessLevel accessLevel = AccessLevel.Default;
 
-        protected virtual void Start()
+        public bool guardActive;
+
+        public virtual void Initialize()
         {
             _behaviourTreeRunner = GetComponent<BehaviourTreeRunner>();
             _guardVision = GetComponentInChildren<GuardVision>();
@@ -52,6 +54,7 @@ namespace Guards
             GameEvents.Instance.OnHeardSomething += Investigate;
             _agentSpeed = _navMeshAgent.speed;
             _playerHealth = _player.GetComponent<PlayerHealth>();
+            guardActive = true;
         }
 
         public void CanSeePlayer(bool canSeePlayer)

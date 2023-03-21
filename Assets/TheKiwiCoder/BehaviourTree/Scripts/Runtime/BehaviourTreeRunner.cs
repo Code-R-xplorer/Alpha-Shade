@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Guards;
 using UnityEngine;
 
 namespace TheKiwiCoder {
@@ -16,6 +17,7 @@ namespace TheKiwiCoder {
             context = CreateBehaviourTreeContext();
             tree = tree.Clone();
             tree.Bind(context);
+            gameObject.GetComponent<GuardController>().Initialize();
         }
 
         // Update is called once per frame

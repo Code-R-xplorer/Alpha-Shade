@@ -34,8 +34,9 @@ namespace Guards
             _layerMask = LayerMask.GetMask("Guard");
             _layerMask = ~_layerMask;
         }
-        private void Update() 
+        private void Update()
         {
+            if (!_guardController.guardActive) return;
             if(canLookLeftRight)
             {
                 if(!lookedLeftRight)
