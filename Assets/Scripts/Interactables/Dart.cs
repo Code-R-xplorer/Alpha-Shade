@@ -10,7 +10,6 @@ namespace Interactables
 
         private void Start()
         {
-            Debug.Log("Hello");
             Destroy(gameObject, 1f);
         }
 
@@ -18,16 +17,7 @@ namespace Interactables
         {
             if (other.CompareTag("Guard"))
             {
-                Debug.Log("enter");
                 other.GetComponent<GuardController>().Stun(duration);
-            }
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Guard"))
-            {
-                Debug.Log("stay");
             }
         }
     }
