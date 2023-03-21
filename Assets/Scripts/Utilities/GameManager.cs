@@ -5,6 +5,7 @@ using Player;
 using UI;
 using UI.Pocket_Watch;
 using UnityEngine;
+using Motion = Player.Motion;
 
 namespace Utilities
 {
@@ -26,11 +27,11 @@ namespace Utilities
         private void Start()
         {
             GameEvents.Instance.OnPlayerDeath += PlayerDeath;
-            UIManager.Instance.UpdateCurrentObjective(GetCurrentObjective());
-            player = GameObject.FindWithTag(Tags.Player).transform.root.gameObject;
-            objectivesScreen = player.transform.GetChild(0).GetChild(2).GetChild(2).GetChild(2)
-                .GetComponent<ObjectivesScreen>();
-            objectivesScreen.UpdateObjectivesScreen(GetObjectives());
+            // UIManager.Instance.UpdateCurrentObjective(GetCurrentObjective());
+            player = GameObject.FindWithTag(Tags.Player);
+            // objectivesScreen = player.transform.GetChild(0).GetChild(2).GetChild(2).GetChild(2)
+            //     .GetComponent<ObjectivesScreen>();
+            UIManager.Instance.UpdateCurrentObjective(GetObjectives());
         }
 
         public void ObjectiveComplete(int objectiveID)
@@ -49,8 +50,8 @@ namespace Utilities
                     objective.completed = true;
                 }
             }
-            UIManager.Instance.UpdateCurrentObjective(GetCurrentObjective());
-            objectivesScreen.UpdateObjectivesScreen(GetObjectives());
+            // UIManager.Instance.UpdateCurrentObjective(GetCurrentObjective());
+            UIManager.Instance.UpdateCurrentObjective(GetObjectives());
             allObjectivesComplete = CheckAllComplete();
         }
 
@@ -88,8 +89,8 @@ namespace Utilities
         {
             if (allObjectivesComplete)
             {
-                player.GetComponent<PlayerMovement>().enabled = false;
-                player.GetComponent<PlayerLook>().enabled = false;
+                player.GetComponent<Motion>().enabled = false;
+                player.GetComponent<Look>().enabled = false;
                 AI.SetActive(false);
                 InputManager.Instance.CursorLock(false);
                 GameEvents.Instance.GameComplete();

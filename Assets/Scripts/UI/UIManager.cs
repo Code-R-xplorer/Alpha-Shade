@@ -28,23 +28,23 @@ namespace UI
             GameEvents.Instance.OnGameComplete += DisplayGameComplete;
         }
 
-        public void UpdateCurrentObjective(string objectiveString)
+        public void UpdateCurrentObjective(List<Tuple<bool, string>> objectiveList)
         {
-            // string objectivesString = "";
-            // foreach (var objective in objectiveList)
-            // {
-            //     if (objective.Item1)
-            //     {
-            //         objectivesString += $"<color=\"green\"><s>{objective.Item2}</s></color>";
-            //     }
-            //     else
-            //     {
-            //         objectivesString += objective.Item2;
-            //     }
-            //     objectivesString += "\n";
-            // }
-
-            objectives.text = objectiveString;
+            string objectivesString = "";
+            foreach (var objective in objectiveList)
+            {
+                if (objective.Item1)
+                {
+                    objectivesString += $"<color=\"green\"><s>{objective.Item2}</s></color>";
+                }
+                else
+                {
+                    objectivesString += objective.Item2;
+                }
+                objectivesString += "\n";
+            }
+            objectives.text = objectivesString;
+            
         }
 
         private void DisplayGameComplete()
