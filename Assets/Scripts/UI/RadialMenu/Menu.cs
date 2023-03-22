@@ -58,6 +58,12 @@ namespace UI.RadialMenu
 
             currentAngleOffset = angleOffsets[menuItems.Count];
 
+            if (menuItems.Count == 1)
+            {
+                prevRadialMenuItem = menuItems[0];
+                radialMenuItem = menuItems[0];
+            }
+
         }
 
         public void UpdateItemUIs()
@@ -71,6 +77,11 @@ namespace UI.RadialMenu
                 item.Init(radialMenu, radialMenu.infoDisplayTab);
             }
             currentAngleOffset = angleOffsets[menuItems.Count];
+            if (menuItems.Count == 1)
+            {
+                prevRadialMenuItem = menuItems[0];
+                radialMenuItem = menuItems[0];
+            }
         }
 
         // Update is called once per frame
