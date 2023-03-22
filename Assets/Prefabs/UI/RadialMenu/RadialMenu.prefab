@@ -319,6 +319,17 @@ MonoBehaviour:
   menuItems: []
   radialMenu: {fileID: 9000113482271400517}
   threshold: 275
+  currentAngleOffset: 0
+  angleOffsets:
+  - 0
+  - 0
+  - 90
+  - 30
+  - 0
+  - -18
+  - -30
+  - -38
+  - -45
 --- !u!1 &9000113483320422050
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +611,17 @@ MonoBehaviour:
   menuItems: []
   radialMenu: {fileID: 9000113482271400517}
   threshold: 275
+  currentAngleOffset: 0
+  angleOffsets:
+  - 0
+  - 0
+  - 90
+  - 30
+  - 0
+  - -18
+  - -30
+  - -38
+  - -45
 --- !u!1 &9000113483778895643
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +677,17 @@ MonoBehaviour:
   - {fileID: 9000113482355745016}
   radialMenu: {fileID: 9000113482271400517}
   threshold: 275
+  currentAngleOffset: 0
+  angleOffsets:
+  - 0
+  - 0
+  - 90
+  - 30
+  - 0
+  - -18
+  - -30
+  - -38
+  - -45
 --- !u!1 &9000113484157128463
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +751,17 @@ MonoBehaviour:
   - {fileID: 9000113483074250689}
   radialMenu: {fileID: 9000113482271400517}
   threshold: 100
+  currentAngleOffset: 0
+  angleOffsets:
+  - 0
+  - 0
+  - 90
+  - 30
+  - 0
+  - -18
+  - -30
+  - -38
+  - -45
 --- !u!1001 &8162725828045296414
 PrefabInstance:
   m_ObjectHideFlags: 0

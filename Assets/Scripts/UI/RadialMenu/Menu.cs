@@ -30,7 +30,11 @@ namespace UI.RadialMenu
         private float _sectionRadius = 155;
 
         private bool _isMain;
-        
+
+        private float currentAngleOffset;
+
+        public List<float> angleOffsets;
+
         // Start is called before the first frame update
         private void Awake()
         {
@@ -51,7 +55,8 @@ namespace UI.RadialMenu
             {
                 item.Init(radialMenu, radialMenu.infoDisplayTab);
             }
-            
+
+            currentAngleOffset = angleOffsets[menuItems.Count];
 
         }
 
@@ -65,6 +70,7 @@ namespace UI.RadialMenu
                 item.UpdateItemUI(menuItems.Count, i);
                 item.Init(radialMenu, radialMenu.infoDisplayTab);
             }
+            currentAngleOffset = angleOffsets[menuItems.Count];
         }
 
         // Update is called once per frame
@@ -74,12 +80,16 @@ namespace UI.RadialMenu
             Vector2 deflection = InputManager.Instance.MousePos - screenCenter;
             if (deflection.magnitude > threshold && deflection.magnitude < threshold + _sectionRadius)
             {
-                float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg - 18f;
+                // Debug.Log(Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg);
+                float angle = Mathf.Atan2(deflection.y, deflection.x) * Mathf.Rad2Deg + currentAngleOffset;
                 angle = (angle + 360) % 360;
+                // Debug.Log(angle);
                 selection = (int)(angle / angleNumber);
-                Hover();
                 if (selection >= menuItems.Count) selection = 0;
                 if (prevSelection >= menuItems.Count) prevSelection = 0;
+                if (selection < 0) selection = 0;
+                if (prevSelection < 0) prevSelection = 0;
+                Hover();
                 if (reselect)
                 {
                     radialMenuItem.Select();
