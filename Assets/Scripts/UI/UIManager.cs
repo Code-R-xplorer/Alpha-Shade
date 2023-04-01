@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,13 @@ namespace UI
 
         [SerializeField] private TextMeshProUGUI objectives;
 
+        [SerializeField] private Animator objectivesAnimator;
+
+        private static readonly int FadeIn = Animator.StringToHash("ObjectivesFadeIn");
+        private static readonly int FadeOut = Animator.StringToHash("ObjectivesFadeOut");
+
+        // private Color objectiveTextColor;
+
         private void Awake()
         {
             Instance = this;
@@ -26,6 +34,7 @@ namespace UI
         {
             GameEvents.Instance.OnPlayerDeath += DisplayGameOver;
             GameEvents.Instance.OnGameComplete += DisplayGameComplete;
+            // objectiveTextColor = objectivesText[0].color;
         }
 
         public void UpdateCurrentObjective(List<Tuple<bool, string>> objectiveList)
@@ -45,6 +54,24 @@ namespace UI
             }
             objectives.text = objectivesString;
             
+        }
+
+        public void ToggleObjectives(bool show)
+        {
+            if (show)
+            {
+                objectivesAnimator.Play(FadeIn, -1, 0.0f);
+            }
+            else
+            {
+                StartCoroutine(DelayFade());
+            }
+        }
+
+        private IEnumerator DelayFade()
+        {
+            yield return new WaitForSeconds(2);
+            objectivesAnimator.Play(FadeOut, -1, 0.0f);
         }
 
         private void DisplayGameComplete()

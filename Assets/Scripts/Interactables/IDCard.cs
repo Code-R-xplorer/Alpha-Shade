@@ -14,6 +14,14 @@ namespace Interactables
 
         private bool _stopDraw;
 
+        private void Awake()
+        {
+            foreach (var model in models)
+            {
+                model.SetActive(false);
+            }
+        }
+
         private void Start()
         {
             models[(int)accessLevel-1].SetActive(true);
@@ -35,13 +43,6 @@ namespace Interactables
         public AccessLevel GetAccessLevel()
         {
             return accessLevel;
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (_stopDraw) return;
-            Gizmos.color = Color.blue;
-            Gizmos.DrawCube(transform.position, new Vector3(1, 0.1f,0.5f));
         }
     }
 }

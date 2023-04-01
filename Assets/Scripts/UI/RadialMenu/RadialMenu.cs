@@ -70,6 +70,7 @@ namespace UI.RadialMenu
             InputManager.Instance.CursorLock(!isOpen);
             if (isOpen)
             {
+                UIManager.Instance.ToggleObjectives(true);
                 Time.timeScale = 0;
                 menuIndex = 0;
                 menus[0].ToggleMenu(isOpen);
@@ -83,6 +84,7 @@ namespace UI.RadialMenu
                     menu.ToggleMenu(false);
                 }
                 infoTab.SetActive(false);
+                UIManager.Instance.ToggleObjectives(false);
             }
         }
 
