@@ -14,7 +14,7 @@ namespace Interactables
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag(Tags.Player)) return;
-            door.CollectedKeyCard();
+            KeyCardManager.Instance.KeyCardCollected();
             Destroy(gameObject);
         }
     }

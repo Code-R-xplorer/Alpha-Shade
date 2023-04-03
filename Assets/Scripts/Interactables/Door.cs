@@ -24,10 +24,10 @@ namespace Interactables
 
         private OffMeshLink _offMeshLink;
 
+        [SerializeField] private string doorName;
         [SerializeField] private Transform investigatePoint;
         [SerializeField] private DoorTypes doorType = DoorTypes.Default;
         [SerializeField] private DoorInteractions doorInteraction = DoorInteractions.Default;
-        [SerializeField] private KeyCard keyCard;
         [SerializeField] private GameObject keyCardReader;
 
         private bool _hasKeyCard;
@@ -42,7 +42,6 @@ namespace Interactables
             _inputManager.OnStartInteract += CheckInteraction;
             if (doorInteraction == DoorInteractions.KeyCard)
             {
-                keyCard.door = this;
                 keyCardReader.SetActive(true);
             }
         }
@@ -59,6 +58,10 @@ namespace Interactables
                     case DoorInteractions.Automatic:
                         break;
                     case DoorInteractions.KeyCard:
+                        if (!_hasKeyCard)
+                        {
+                            if (KeyCardManager.Instance.TryKeyCard(doorName)) _hasKeyCard = true;
+                        }
                         if(_hasKeyCard) ToggleDoor(true);
                         break;
                     case DoorInteractions.Default:
@@ -181,11 +184,6 @@ namespace Interactables
             {
                 ToggleDoor(false);
             }
-        }
-
-        public void CollectedKeyCard()
-        {
-            _hasKeyCard = true;
         }
 
         private enum DoorTypes

@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6072607804362930902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6646718189041465408}
+  - component: {fileID: 5095500159769890799}
+  m_Layer: 5
+  m_Name: KeyCardMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6646718189041465408
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072607804362930902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9000113482271400518}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5095500159769890799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072607804362930902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a0d33e5fc17b845a8da2881d15766f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selection: 0
+  menuItems: []
+  radialMenu: {fileID: 9000113482271400517}
+  threshold: 275
+  angleOffsets:
+  - 0
+  - 0
+  - -90
+  - 30
+  - 0
+  - -18
+  - -30
+  - -38
+  - -45
 --- !u!1 &9000113482239903971
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +234,7 @@ RectTransform:
   - {fileID: 9000113483778895641}
   - {fileID: 9000113482432898274}
   - {fileID: 9000113483513431905}
+  - {fileID: 6646718189041465408}
   - {fileID: 9000113483320422049}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -258,12 +322,15 @@ MonoBehaviour:
   - {fileID: 9000113483778895642}
   - {fileID: 9000113482432898275}
   - {fileID: 9000113483513431904}
+  - {fileID: 5095500159769890799}
   weaponIndex: 1
   idIndex: 2
   abilityIndex: 3
+  keyIndex: 4
   idMenuItemPrefab: {fileID: 626839115602145511, guid: 053b6d36516d86946af1afb611468192, type: 3}
   weaponMenuItemPrefab: {fileID: 6938514868673920117, guid: f65187c2c80d0f549955f87505859816, type: 3}
   abilityMenuItemPrefab: {fileID: 6046622878423081737, guid: 7f8fd0bb8b47df744b6934090d6b4f98, type: 3}
+  keyMenuItemPrefab: {fileID: 7920581466699670588, guid: b7668db2cc01f89408b987eae709211e, type: 3}
   infoTab: {fileID: 9000113483320422050}
   infoDisplayTab: {fileID: 9000113483320422048}
 --- !u!1 &9000113482432898300
@@ -319,7 +386,6 @@ MonoBehaviour:
   menuItems: []
   radialMenu: {fileID: 9000113482271400517}
   threshold: 275
-  currentAngleOffset: 0
   angleOffsets:
   - 0
   - 0
@@ -364,7 +430,7 @@ RectTransform:
   - {fileID: 9000113483362382770}
   - {fileID: 9000113482239903968}
   m_Father: {fileID: 9000113482271400518}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -611,7 +677,6 @@ MonoBehaviour:
   menuItems: []
   radialMenu: {fileID: 9000113482271400517}
   threshold: 275
-  currentAngleOffset: 0
   angleOffsets:
   - 0
   - 0
@@ -677,7 +742,6 @@ MonoBehaviour:
   - {fileID: 9000113482355745016}
   radialMenu: {fileID: 9000113482271400517}
   threshold: 275
-  currentAngleOffset: 0
   angleOffsets:
   - 0
   - 0
@@ -751,7 +815,6 @@ MonoBehaviour:
   - {fileID: 9000113483074250689}
   radialMenu: {fileID: 9000113482271400517}
   threshold: 100
-  currentAngleOffset: 0
   angleOffsets:
   - 0
   - 0

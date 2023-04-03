@@ -16,11 +16,11 @@ namespace UI.RadialMenu
 
         private int menuIndex;
 
-        public int weaponIndex, idIndex, abilityIndex;
+        public int weaponIndex, idIndex, abilityIndex, keyIndex;
 
         public IDManager IDManager { get; private set; }
 
-        [SerializeField] private GameObject idMenuItemPrefab, weaponMenuItemPrefab, abilityMenuItemPrefab;
+        [SerializeField] private GameObject idMenuItemPrefab, weaponMenuItemPrefab, abilityMenuItemPrefab, keyMenuItemPrefab;
         
         [SerializeField] private GameObject infoTab;
         public InfoDisplayTab infoDisplayTab;
@@ -62,6 +62,28 @@ namespace UI.RadialMenu
             menuItem.Initialization(ability, abilityManager);
             menus[abilityIndex].menuItems.Add(menuItem);
             menus[abilityIndex].UpdateItemUIs();
+        }
+
+        public void AddMenuItem(int keyID)
+        {
+            var keyMenuItem = Instantiate(keyMenuItemPrefab, menus[keyIndex].transform, false);
+            var menuItem = keyMenuItem.GetComponent<KeyMenuItem>();
+            menuItem.Initialize(keyID);
+            menus[keyIndex].menuItems.Add(menuItem);
+            menus[keyIndex].UpdateItemUIs();
+        }
+
+        public void RemoveMenuItem(string menuName, int menuItemID)
+        {
+            int menuID = 0;
+            if (menuName == "Weapon") menuID = weaponIndex;
+            if (menuName == "ID") menuID = idIndex;
+            if (menuName == "Ability") menuID = abilityIndex;
+            if (menuName == "Key") menuID = keyIndex;
+            var menuItem = menus[menuID].menuItems[menuItemID];
+            Destroy(menuItem.gameObject);
+            menus[menuID].menuItems.Remove(menuItem);
+            menus[menuID].UpdateItemUIs();
         }
 
         private void ShowMainMenu(bool canceled)
