@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &829957609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 829957610}
+  - component: {fileID: 829957611}
+  m_Layer: 8
+  m_Name: KeyCards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &829957610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829957609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2253595731380913871}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &829957611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829957609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fe9bf0c5fc4c208b09172f7a2ebc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCardDataObject: {fileID: 1597678497437992309, guid: 31c89adcde1da77469a0d8c6f232c46b, type: 3}
 --- !u!1 &2253595730696498264
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,17 +169,18 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2253595731380913869}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -4.579, y: 1, z: -1.8439999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2253595731406139679}
   - {fileID: 2253595731950949644}
   - {fileID: 2253595732151821034}
+  - {fileID: 829957610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2253595731380913870
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -199,8 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2253595731380913871}
   cam: {fileID: 2253595731406139679}
-  xSensitivity: 100
-  ySensitivity: 100
+  xSensitivity: 50
+  ySensitivity: 50
   maxAngle: 35
 --- !u!114 &2253595731380913867
 MonoBehaviour:
@@ -216,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems: 10
   hand: {fileID: 2253595731957031401}
-  itemPrefab: {fileID: 3610931612250803548, guid: df8f6e0983016114c9ac75d00af37bec, type: 3}
+  itemPrefab: {fileID: 776577566927570191, guid: 4ceb8b1f59ecdee46b132969b237b5de, type: 3}
   minThrowForce: 2
   maxThrowForce: 10
 --- !u!114 &2253595731380913876
@@ -396,7 +442,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -759,7 +805,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
