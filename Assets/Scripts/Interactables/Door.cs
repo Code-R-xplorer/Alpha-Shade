@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using TheKiwiCoder;
@@ -95,7 +95,7 @@ namespace Interactables
                         break;
                 }
                 _open = false;
-                _offMeshLink.activated = false;
+                // _offMeshLink.activated = false;
                 // GameEvents.Instance.HeardSomething(investigatePoint, playerTriggered);
             }
             else
@@ -120,7 +120,7 @@ namespace Interactables
                         break;
                 }
                 _open = true;
-                _offMeshLink.activated = true;
+                // _offMeshLink.activated = true;
                 // GameEvents.Instance.HeardSomething(investigatePoint, playerTriggered);
             }
         }

@@ -7,7 +7,7 @@ namespace Guards
     public class GuardVision : MonoBehaviour
     {
         [SerializeField] private Transform guardEyes;
-        [SerializeField] private Collider eyesCollider;
+        // [SerializeField] private Collider eyesCollider;
         [SerializeField] private Vector3 rightTarget = new Vector3(0, 40, 0);
         [SerializeField] private Vector3 leftTarget = new Vector3(0, -40, 0);
         [SerializeField] private float lookSpeed = 3;
@@ -41,16 +41,16 @@ namespace Guards
             {
                 if(!lookedLeftRight)
                 {
-                    eyesCollider.transform.localRotation = Quaternion.Lerp(eyesCollider.transform.localRotation,Quaternion.Euler(leftTarget), lookSpeed*Time.deltaTime);
-                    if(eyesCollider.transform.localRotation == Quaternion.Euler(leftTarget))
+                    transform.localRotation = Quaternion.Lerp(transform.localRotation,Quaternion.Euler(leftTarget), lookSpeed*Time.deltaTime);
+                    if(transform.localRotation == Quaternion.Euler(leftTarget))
                     {
                         lookedLeftRight = true;
                     }
                 }
                 else
                 {
-                    eyesCollider.transform.localRotation = Quaternion.Lerp(eyesCollider.transform.localRotation,Quaternion.Euler(rightTarget), lookSpeed*Time.deltaTime);
-                    if(eyesCollider.transform.localRotation == Quaternion.Euler(rightTarget))
+                    transform.localRotation = Quaternion.Lerp(transform.localRotation,Quaternion.Euler(rightTarget), lookSpeed*Time.deltaTime);
+                    if(transform.localRotation == Quaternion.Euler(rightTarget))
                     {
                         lookedLeftRight = false;
                     }
@@ -65,12 +65,12 @@ namespace Guards
             {
                 if (!lookedLeftRight)
                 {
-                    eyesCollider.transform.localRotation = Quaternion.Euler(leftTarget);
+                    transform.localRotation = Quaternion.Euler(leftTarget);
                     lookedLeftRight = true;
                 }
                 else
                 {
-                    eyesCollider.transform.localRotation = Quaternion.Euler(rightTarget);
+                    transform.localRotation = Quaternion.Euler(rightTarget);
                     lookedLeftRight = false;
                 }
                 _seenPlayer = false;

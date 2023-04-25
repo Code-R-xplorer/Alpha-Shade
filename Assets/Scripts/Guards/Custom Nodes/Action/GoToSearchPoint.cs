@@ -11,6 +11,7 @@ public class GoToSearchPoint : ActionNode
     {
         if (blackboard.searchPositions.Count == 0) return;
         context.agent.destination = blackboard.searchPositions[blackboard.searchIndex];
+        context.animation.ChangeState(Guards.Animation.AnimationState.Chasing);
     }
 
     protected override void OnStop() {

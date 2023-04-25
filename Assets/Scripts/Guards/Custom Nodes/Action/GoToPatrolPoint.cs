@@ -35,6 +35,8 @@ public class GoToPatrolPoint : ActionNode
         {
             return State.Failure;
         }
+        
+        context.animation.ChangeState(Guards.Animation.AnimationState.Patrolling);
 
         return State.Running;
     }

@@ -31,5 +31,7 @@ namespace TheKiwiCoder {
         public Vector3 homePosition;
         public Quaternion homeRotation;
 
+        public bool playerInRange;
+
     }
 }

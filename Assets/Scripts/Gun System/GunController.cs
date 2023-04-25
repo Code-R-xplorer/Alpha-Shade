@@ -79,13 +79,11 @@ namespace Gun_System
                 // shoot a raycast to detect hits
                 // RaycastHit hit = Physics.Raycast(data.firePoint.position, data.firePoint.right, data.range);
                 // Debug.Log("Fire");
-                RaycastHit hit;
                 Ray ray = new Ray(gun.firePoint.position, gun.firePoint.forward);
                 Debug.DrawRay(ray.origin, ray.direction * gun.range, Color.blue, 20f);
-                if (Physics.Raycast(ray, out hit, gun.range, ~_layerMask))
+                if (Physics.Raycast(ray, out var hit, gun.range, ~_layerMask))
                 {
-                    GameObject guard;
-                    guard = hit.collider.gameObject;
+                    var guard = hit.collider.gameObject;
                     if (hit.collider.CompareTag("GuardBack") || hit.collider.CompareTag("GuardVision"))
                     {
                         guard = hit.collider.transform.parent.gameObject;

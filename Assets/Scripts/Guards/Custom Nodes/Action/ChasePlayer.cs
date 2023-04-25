@@ -7,8 +7,10 @@ using TheKiwiCoder;
 public class ChasePlayer : ActionNode
 {
     public float tolerance = 1.0f;
+    public float minDistanceSqr = 10f;
     protected override void OnStart() {
         context.agent.destination = blackboard.playerPosition;
+        context.animation.ChangeState(Guards.Animation.AnimationState.Chasing);
     }
 
     protected override void OnStop() {
@@ -28,6 +30,18 @@ public class ChasePlayer : ActionNode
 
         if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid) {
             return State.Failure;
+        }
+
+        if (!blackboard.canSeePlayer) return State.Running;
+        var destPosition = blackboard.playerPosition;
+        var sqrDistance = (context.transform.position - destPosition).sqrMagnitude;
+
+        context.agent.destination = destPosition;
+        blackboard.playerInRange = sqrDistance <= minDistanceSqr;
+        context.agent.isStopped = blackboard.playerInRange;
+        if (!blackboard.playerInRange)
+        {
+            context.animation.ChangeState(Guards.Animation.AnimationState.Chasing);
         }
 
         return State.Running;

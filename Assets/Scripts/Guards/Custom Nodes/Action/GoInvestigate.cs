@@ -34,7 +34,7 @@ public class GoInvestigate : ActionNode
             blackboard.investigate = false;
             return State.Failure;
         }
-
+        context.animation.ChangeState(Guards.Animation.AnimationState.Patrolling);
         return State.Running;
     }
 }

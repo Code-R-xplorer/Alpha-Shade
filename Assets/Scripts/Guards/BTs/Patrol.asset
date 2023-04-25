@@ -74,8 +74,9 @@ MonoBehaviour:
     investigatePosition: {x: 0, y: 0, z: 0}
     homePosition: {x: 0, y: 0, z: 0}
     homeRotation: {x: 0, y: 0, z: 0, w: 1}
-  viewPosition: {x: 234.4, y: -80.4, z: 0}
-  viewScale: {x: 0.43232757, y: 0.43232757, z: 1}
+    playerInRange: 0
+  viewPosition: {x: 66, y: -259, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -100,6 +101,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         tolerance: 0.1
@@ -124,6 +126,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         newValue: 0
@@ -134,7 +137,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: fe475e5278a13c54cba87049b8ff0768
-        position: {x: 825.0001, y: 661.9999}
+        position: {x: 826, y: 662}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -149,9 +152,10 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
-        duration: 2.5
+        duration: 12
         guardPositions: 0
     - rid: 2418071427721986074
       type: {class: WaitAtPosition, ns: , asm: Assembly-CSharp}
@@ -174,6 +178,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         duration: 2.5
@@ -199,6 +204,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         duration: 2.5
@@ -224,6 +230,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -249,6 +256,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Check Is Chasing
         drawGizmos: 0
         children:
@@ -276,6 +284,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Root Selector
         drawGizmos: 0
         children:
@@ -304,6 +313,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Inverse of Is Chasing
         drawGizmos: 0
         child:
@@ -329,6 +339,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Run Forever
         drawGizmos: 0
         child:
@@ -356,6 +367,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Is Chasing
         drawGizmos: 0
         blackboardValues: 1
@@ -380,6 +392,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -404,6 +417,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Is Chasing
         drawGizmos: 0
         newValue: 1
@@ -429,6 +443,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Chasing Player Sequence
         drawGizmos: 0
         children:
@@ -455,6 +470,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Is Chasing
         drawGizmos: 0
         blackboardValues: 1
@@ -479,6 +495,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Find Player Selector
         drawGizmos: 0
         children:
@@ -505,6 +522,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Chase Sequence
         drawGizmos: 0
         children:
@@ -533,6 +551,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -557,9 +576,11 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         tolerance: 1
+        minDistanceSqr: 30
     - rid: 2765563782596395023
       type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
       data:
@@ -581,6 +602,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Searching
         drawGizmos: 0
         children:
@@ -609,6 +631,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -634,6 +657,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -658,6 +682,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -685,6 +710,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         searchPoints: 5
@@ -710,6 +736,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         tolerance: 0.2
@@ -734,6 +761,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
     - rid: 2765563782596395034
@@ -757,6 +785,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Search Tree Cleanup
         drawGizmos: 0
         children:
@@ -783,6 +812,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Is Chasing
         drawGizmos: 0
         newValue: 0
@@ -808,6 +838,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -835,6 +866,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Patrol Sequence
         drawGizmos: 0
         children:
@@ -863,6 +895,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -887,6 +920,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -912,6 +946,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         tolerance: 0.2
@@ -936,6 +971,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         newValue: 1
@@ -961,6 +997,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Search Points Generation
         drawGizmos: 0
         children:
@@ -988,6 +1025,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         blackboardValues: 2
@@ -1012,6 +1050,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -1037,6 +1076,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         newValue: 0
@@ -1062,6 +1102,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
     - rid: 3470478289200480257
@@ -1085,6 +1126,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         children:
@@ -1111,6 +1153,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         children:
@@ -1139,6 +1182,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: Investigate
         drawGizmos: 0
         blackboardValues: 3
@@ -1163,6 +1207,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         child:
@@ -1188,6 +1233,7 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
         description: 
         drawGizmos: 0
         blackboardValues: 3

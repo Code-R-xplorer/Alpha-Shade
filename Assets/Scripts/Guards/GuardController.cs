@@ -32,6 +32,9 @@ namespace Guards
         [SerializeField] private float damageAmount = 15f;
         [SerializeField] private float damageRate = 0.5f;
 
+        [SerializeField] private GunController gunController;
+        private Animation _animation;
+
         private bool _dealingDamage;
         private bool _canDamage;
 
@@ -42,6 +45,14 @@ namespace Guards
         public AccessLevel accessLevel = AccessLevel.Default;
 
         public bool guardActive;
+        public bool logValues;
+
+        private void Awake()
+        {
+            _animation = GetComponent<Animation>();
+            _animation.gun = gunController;
+            gunController._animation = _animation;
+        }
 
         public virtual void Initialize()
         {
@@ -59,7 +70,11 @@ namespace Guards
 
         public void CanSeePlayer(bool canSeePlayer)
         {
-            if (canSeePlayer) blackboard.playerPosition = _player.transform.position;
+            if (canSeePlayer)
+            {
+                blackboard.playerPosition = _player.transform.position; 
+                gunController.ShowGun();
+            }
             blackboard.canSeePlayer = canSeePlayer;
         }
 
@@ -88,6 +103,13 @@ namespace Guards
 
         private void Update()
         {
+            if (logValues)
+            {
+                
+                Debug.Log(_navMeshAgent.remainingDistance);
+                _navMeshAgent.isStopped = true;
+            }
+
             if (_dead)
             {
                 if (!_deathSequence) StartCoroutine(DeathSequence());
@@ -97,6 +119,8 @@ namespace Guards
             {
                 HoldGuard();
             }
+            _animation.ChangeMasterState(blackboard.playerInRange ? Animation.MasterState.Weapon : Animation.MasterState.Normal);
+            gunController.fire = blackboard.playerInRange;
         }
 
         private IEnumerator DeathSequence()
@@ -153,14 +177,14 @@ namespace Guards
         private void OnDestroy()
         {
             GameEvents.Instance.OnHeardSomething -= Investigate;
-                 }
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.CompareTag(Tags.Player))
             {
                 _canDamage = true;
-                StartCoroutine(DealDamage());
+                // StartCoroutine(DealDamage());
             }
         }
 
@@ -169,7 +193,7 @@ namespace Guards
             if (collision.collider.CompareTag(Tags.Player))
             {
                 _canDamage = true;
-                StartCoroutine(DealDamage());
+                // StartCoroutine(DealDamage());
             }
         }
 
@@ -181,13 +205,13 @@ namespace Guards
             }
         }
 
-        private IEnumerator DealDamage()
-        {
-            if(_dealingDamage) yield break;
-            _dealingDamage = true;
-            yield return new WaitForSeconds(damageRate);
-            if(_canDamage) _playerHealth.DecreaseHealth(damageAmount);
-            _dealingDamage = false;
-        }
+        // private IEnumerator DealDamage()
+        // {
+        //     if(_dealingDamage) yield break;
+        //     _dealingDamage = true;
+        //     yield return new WaitForSeconds(damageRate);
+        //     if(_canDamage) _playerHealth.DecreaseHealth(damageAmount);
+        //     _dealingDamage = false;
+        // }
     }
 }

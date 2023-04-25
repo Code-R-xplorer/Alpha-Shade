@@ -4,7 +4,7 @@ using Utilities;
 
 namespace Player
 {
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private float startingHealth = 100f;
         
@@ -22,19 +22,7 @@ namespace Player
         {
             return _health;
         }
-
-        public void DecreaseHealth(float val)
-        {
-            if(!canBeKilled) return; 
-            if (_health <= val)
-            {
-                _health = 0;
-                _dead = true;
-                GameEvents.Instance.PlayerDeath();
-                return;
-            }
-            _health -= val;
-        }
+        
 
         public void IncreaseHealth(float val)
         {
@@ -48,5 +36,17 @@ namespace Player
             return _dead;
         }
 
+        public void TakeDamage(float damage)
+        {
+            if(!canBeKilled) return; 
+            if (_health <= damage)
+            {
+                _health = 0;
+                _dead = true;
+                GameEvents.Instance.PlayerDeath();
+                return;
+            }
+            _health -= damage;
+        }
     }
 }

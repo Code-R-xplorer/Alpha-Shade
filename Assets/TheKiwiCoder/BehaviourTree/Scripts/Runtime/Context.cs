@@ -20,6 +20,7 @@ namespace TheKiwiCoder {
         public CapsuleCollider capsuleCollider;
         public CharacterController characterController;
         public BlackboardValues blackboardValues;
+        public Guards.Animation animation;
         // Add other game specific systems here
 
         public static Context CreateFromGameObject(GameObject gameObject) {
@@ -35,6 +36,7 @@ namespace TheKiwiCoder {
             context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
             context.characterController = gameObject.GetComponent<CharacterController>();
             context.blackboardValues = BlackboardValues.Default;
+            context.animation = gameObject.GetComponent<Guards.Animation>();
             
             // Add whatever else you need here...
 

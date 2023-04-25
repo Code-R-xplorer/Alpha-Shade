@@ -11,9 +11,11 @@ public class WaitAtPosition : ActionNode
     private Vector3 _waitPos;
     float _startTime;
     private bool _doNotWait;
+    private bool _waiting;
     protected override void OnStart()
     {
         _doNotWait = false;
+        _waiting = false;
         _startTime = Time.time;
         switch (guardPositions)
         {
@@ -54,15 +56,47 @@ public class WaitAtPosition : ActionNode
         float timeRemaining = Time.time - _startTime;
         if (_waitPos == Vector3.zero) return State.Failure;
         
-        if (timeRemaining > duration) {
+        if (timeRemaining > duration)
+        {
+            context.agent.isStopped = false;
             return State.Success;
         }
 
-        if (blackboard.canSeePlayer) return State.Success;
-        if (guardPositions != GuardPositions.Investigate && blackboard.investigate) return State.Success;
+        if (blackboard.canSeePlayer)
+        {
+            context.agent.isStopped = false;
+            return State.Success;
+        }
 
-        context.transform.position = _waitPos;
-        context.agent.destination = _waitPos;
+        if (guardPositions != GuardPositions.Investigate && blackboard.investigate)
+        {
+            context.agent.isStopped = false;
+            return State.Success;
+        }
+
+        // context.transform.position = _waitPos;
+        // context.agent.destination = _waitPos;
+        if (!_waiting)
+        {
+            _waiting = true;
+            context.agent.isStopped = true;
+            context.agent.velocity = Vector3.zero;
+            context.agent.destination = context.transform.position;
+            if (guardPositions == GuardPositions.Investigate)
+            {
+                context.animation.ChangeState(Guards.Animation.AnimationState.Investigate);
+            }
+
+            if (guardPositions == GuardPositions.Search)
+            {
+                context.animation.ChangeState(Guards.Animation.AnimationState.Search);
+            }
+            if(guardPositions == GuardPositions.Patrol)
+            {
+                context.animation.ChangeState(Guards.Animation.AnimationState.Idle);
+            }
+            
+        }
         return State.Running;
     }
 
