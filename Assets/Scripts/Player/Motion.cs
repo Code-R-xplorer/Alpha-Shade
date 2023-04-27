@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Player
 {
-    public class Motion : MonoBehaviour
+    public class Motion : MonoBehaviour, IDisplayText
     {
         [SerializeField] private float walkSpeed;
         [SerializeField] private float sprintSpeed;
@@ -28,6 +30,10 @@ namespace Player
         private float _height;
         private CapsuleCollider _capsuleCollider;
 
+        private float _totalStamina;
+        [SerializeField] private float maxStamina, staminaDecreaseRate, staminaRegenRate;
+        private bool _staminaDepleted;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -42,7 +48,9 @@ namespace Player
             sprintSpeed *= SpeedMultiplier;
             walkSpeed *= SpeedMultiplier;
             jumpForce *= SpeedMultiplier;
+            _totalStamina = maxStamina;
         }
+        
 
         // Update is called once per frame
         void FixedUpdate()
@@ -53,21 +61,38 @@ namespace Player
 
             Vector3 direction = new Vector3(hMove, 0, vMove);
             direction.Normalize();
-
-            if (_isSprinting)
+            
+            if (_rb.velocity.magnitude >= 0.2 & _isSprinting && !_staminaDepleted)
             {
-                speed = sprintSpeed;
+                if (_totalStamina > 0f)
+                {
+                    speed = sprintSpeed;
+                    _totalStamina -= staminaDecreaseRate * Time.deltaTime;
+                }
+                else
+                {
+                    _totalStamina = 0f;
+                    _staminaDepleted = true;
+                }
             }
             else
             {
                 speed = walkSpeed;
+                _isSprinting = false;
+                if (_totalStamina < maxStamina)
+                {
+                    _totalStamina += staminaRegenRate * Time.deltaTime;
+                }
+                else
+                {
+                    _totalStamina = maxStamina;
+                    _staminaDepleted = false;
+                }
             }
-            
+
             Vector3 targetVelocity = transform.TransformDirection(direction) * (speed * Time.deltaTime);
             targetVelocity.y = _rb.velocity.y;
             _rb.velocity = targetVelocity;
-
-
         }
         
         private void CheckGrounded()
@@ -78,6 +103,11 @@ namespace Player
 
         private void Sprint(bool canceled)
         {
+            if (_staminaDepleted)
+            {
+                _isSprinting = false;
+                return;
+            }
             _isSprinting = !canceled;
         }
         
@@ -102,6 +132,11 @@ namespace Player
                 _cameraManager.SwitchCameraPosition(0);
                 _capsuleCollider.height = _height;
             }
+        }
+
+        public string GetDisplayText()
+        {
+            return $"Stamina: {(int)_totalStamina}";
         }
     }
 }

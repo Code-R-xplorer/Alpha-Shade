@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b03fd5fc404179b67b11187ee0a71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 1, g: 0.043396294, b: 0.043396294, a: 1}
-  baseColor: {r: 0.5372549, g: 0, b: 0, a: 1}
+  hoverColor: {r: 0, g: 0.5254902, b: 0.60784316, a: 1}
+  baseColor: {r: 0, g: 0.34509805, b: 0.50980395, a: 1}
   background: {fileID: 8222603717191758122}
   id: 0
   idName: 

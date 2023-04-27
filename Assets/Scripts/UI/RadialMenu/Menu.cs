@@ -27,7 +27,7 @@ namespace UI.RadialMenu
         
         [SerializeField] private float threshold;
 
-        private float _sectionRadius = 155;
+        private float _sectionRadius = 106;
 
         private bool _isMain;
 
@@ -100,7 +100,6 @@ namespace UI.RadialMenu
                 if (prevSelection >= menuItems.Count) prevSelection = 0;
                 if (selection < 0) selection = 0;
                 if (prevSelection < 0) prevSelection = 0;
-                Hover();
                 if (reselect)
                 {
                     radialMenuItem.Select();
@@ -120,6 +119,7 @@ namespace UI.RadialMenu
                 {
                     radialMenu.ToggleInfoTab(true);
                 }
+                Hover();
                 
             }
             else if ((deflection.magnitude < threshold || deflection.magnitude > threshold + _sectionRadius) && (prevRadialMenuItem != null || radialMenuItem != null))

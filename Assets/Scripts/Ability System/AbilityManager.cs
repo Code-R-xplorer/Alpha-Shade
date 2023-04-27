@@ -7,7 +7,7 @@ using Utilities;
 
 namespace Ability_System
 {
-    public class AbilityManager : MonoBehaviour
+    public class AbilityManager : MonoBehaviour, IDisplayText
     {
         public List<Ability> abilities;
         private Dictionary<string, Ability> _abilities;
@@ -79,8 +79,11 @@ namespace Ability_System
                 selectedAbility.Action();
             }
         }
-        
-        
-        
+
+
+        public string GetDisplayText()
+        {
+            return prevSelected == null ? "Ability: None" : $"Ability: {selectedAbility.abilityName}";
+        }
     }
 }

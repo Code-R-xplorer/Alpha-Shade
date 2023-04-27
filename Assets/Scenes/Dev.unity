@@ -1739,6 +1739,321 @@ PrefabInstance:
       objectReference: {fileID: 1549636685}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed1ee3efe479a842bfc9be71b54b9b3, type: 3}
+--- !u!1 &796736166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 796736168}
+  - component: {fileID: 796736167}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &796736167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796736166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b728ff2cdb3c54ca0da4566d664a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioItems:
+  - Name: coin1
+    Clip: {fileID: 8300000, guid: 48feb63e7c9b35c4db7315ba1d4929fc, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 13
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: coin2
+    Clip: {fileID: 8300000, guid: 81348e7c663ca4f42997e1b748e80cc9, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 13
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: coin3
+    Clip: {fileID: 8300000, guid: 6c82bf43e081c454896cb7492b611426, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 13
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: run1
+    Clip: {fileID: 8300000, guid: dc01532cf36096f439ac99359fc1acd5, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: run2
+    Clip: {fileID: 8300000, guid: 892ad4a49857aa74abeec00f1a572096, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: run3
+    Clip: {fileID: 8300000, guid: a3c8aea98eb41474b9c866c0c733617e, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: run4
+    Clip: {fileID: 8300000, guid: db864d7e649587044b3c287cf1f41c65, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: run5
+    Clip: {fileID: 8300000, guid: 233c5af474c900048ab07841b913b8a6, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: walk1
+    Clip: {fileID: 8300000, guid: 5676d28f04ac5094b8541fc3e262e5e0, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: walk2
+    Clip: {fileID: 8300000, guid: 106bcbc051037bb4684d186c7e880155, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: walk3
+    Clip: {fileID: 8300000, guid: 33e6920288a7a5044876a7ad88fcaf3a, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: walk4
+    Clip: {fileID: 8300000, guid: 761a9ab7cdf99f64fa45fa3987f490f3, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: walk5
+    Clip: {fileID: 8300000, guid: 019dff6b3996ae645bea7d2d8d37f7b5, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: doorOpen
+    Clip: {fileID: 8300000, guid: 39873badad7c03f4da61c96c65100e86, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: doorClose
+    Clip: {fileID: 8300000, guid: 99b776b88b4b4b34e9bae9204b3017b1, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: doorLocked
+    Clip: {fileID: 8300000, guid: 3a4b9f8bdbacefe40a66536031cfbe4d, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: pistolEmpty
+    Clip: {fileID: 8300000, guid: 704f56bdfdeff90438d83d5c60b29f63, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: pistolShoot
+    Clip: {fileID: 8300000, guid: 98a8371047c34964c9c6ba1702f4082e, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: pistolReload
+    Clip: {fileID: 8300000, guid: 76468334b3757d74bad3ffbb90002407, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: pistolEquip
+    Clip: {fileID: 8300000, guid: 531318b7274a7f34ab2f7714dd66a385, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: rifleEmpty
+    Clip: {fileID: 8300000, guid: 0318402cbbcb4bc4d8c0bfeb1153e583, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: rifleShoot
+    Clip: {fileID: 8300000, guid: d79bebc90492a44499144f0e882d7a8d, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: rifleReload
+    Clip: {fileID: 8300000, guid: f9c159555d46f024e8f6012967ae6eb0, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: rifleEquip
+    Clip: {fileID: 8300000, guid: 59e1693634f3efd41a7c0ae34a3aa235, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: weaponSwap
+    Clip: {fileID: 8300000, guid: eb6dfe11356523940b4b42fba14e9ea5, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 30
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: emp
+    Clip: {fileID: 8300000, guid: 09eee18ac4939074799b34846453fc52, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 1
+    MinDistance: 1
+    MaxDistance: 20
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: healthUse
+    Clip: {fileID: 8300000, guid: 208c3e449cc034048a14463dea805b5f, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: abilityNotReady
+    Clip: {fileID: 8300000, guid: 36829bd5d5d49194493899e5fd493344, type: 3}
+    Volume: 1
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: uiHover
+    Clip: {fileID: 8300000, guid: 714c8128e758dfc498c96871ef880eab, type: 3}
+    Volume: 0.7
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: uiClick
+    Clip: {fileID: 8300000, guid: 6adce692b3697874dbcff6e9eb06192b, type: 3}
+    Volume: 0.7
+    Loop: 0
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+--- !u!4 &796736168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796736166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &810960339 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 6083253168917216926, guid: e25d7e72c002f0f43893f16104791ff6, type: 3}
@@ -2242,7 +2557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6083253168917216912, guid: e25d7e72c002f0f43893f16104791ff6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6083253168917216921, guid: e25d7e72c002f0f43893f16104791ff6, type: 3}
       propertyPath: tree

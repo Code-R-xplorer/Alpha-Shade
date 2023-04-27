@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b51b0dd91a4b4e88fd09e3dcc6847d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.6037736, g: 0, b: 0.56352204, a: 1}
-  baseColor: {r: 1, g: 0, b: 0.9333334, a: 1}
+  hoverColor: {r: 0, g: 0.5254902, b: 0.60784316, a: 1}
+  baseColor: {r: 0, g: 0.34509805, b: 0.50980395, a: 1}
   background: {fileID: 1677022105484486129}
   id: 0

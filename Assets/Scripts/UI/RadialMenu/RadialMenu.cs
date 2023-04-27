@@ -16,7 +16,7 @@ namespace UI.RadialMenu
 
         private int menuIndex;
 
-        public int weaponIndex, idIndex, abilityIndex, keyIndex;
+        public int infoIndex, weaponIndex, idIndex, abilityIndex, keyIndex;
 
         public IDManager IDManager { get; private set; }
 

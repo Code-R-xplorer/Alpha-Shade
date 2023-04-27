@@ -17,7 +17,6 @@ namespace Player
 
         private void InteractEvent()
         {
-            Debug.Log("Hello");
             RaycastHit hit;
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             Debug.DrawRay(ray.origin, ray.direction * 5f, Color.green, 5f);

@@ -34,6 +34,7 @@ namespace Gun_System
             gun.currentAmmo = gun.clipSize;
             // gun.firePoint = Camera.main.transform;
             _layerMask = LayerMask.GetMask("Player");
+            
             gunUI.InitializeUI(gun.clipSize);
             
             gunManager = GunManager.Instance; 
@@ -64,6 +65,16 @@ namespace Gun_System
         {
             if (gun.currentAmmo > 0)
             {
+                switch (gun.name)
+                {
+                    case "Pistol":
+                        AudioManager.Instance.Play("pistolShoot", transform);
+                        break;
+                    case "Rifle":
+                        AudioManager.Instance.Play("rifleShoot", transform);
+                        break;
+                }
+
                 // decrease the ammo count
                 gun.currentAmmo--;
                 
@@ -105,6 +116,15 @@ namespace Gun_System
             {
                 // play the out of ammo sound
                 // AudioSource.PlayClipAtPoint(data.outOfAmmoSound, transform.position);
+                switch (gun.name)
+                {
+                    case "Pistol":
+                        AudioManager.Instance.Play("pistolEmpty", transform);
+                        break;
+                    case "Rifle":
+                        AudioManager.Instance.Play("rifleEmpty", transform);
+                        break;
+                }
             }
         }
 
@@ -122,6 +142,15 @@ namespace Gun_System
                 gun.currentAmmo = gun.clipSize;
                 gunManager.clipCount--;
                 gunUI.Reload();
+                switch (gun.name)
+                {
+                    case "Pistol":
+                        AudioManager.Instance.Play("pistolReload", transform);
+                        break;
+                    case "Rifle":
+                        AudioManager.Instance.Play("rifleReload", transform);
+                        break;
+                }
             }
         }
 
@@ -142,6 +171,7 @@ namespace Gun_System
     [System.Serializable]
     public class Gun
     {
+        public string name;
         public bool semiAutomatic;
         public int clipSize;
         public int currentAmmo;

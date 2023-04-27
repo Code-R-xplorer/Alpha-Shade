@@ -152,8 +152,8 @@ GameObject:
   - component: {fileID: 2253595731380913864}
   - component: {fileID: 2253595731380913866}
   - component: {fileID: 2253595731380913867}
-  - component: {fileID: 2253595731380913876}
   - component: {fileID: 2253595731380913877}
+  - component: {fileID: 2253595731380913876}
   - component: {fileID: 2253595731380913878}
   m_Layer: 8
   m_Name: Player
@@ -231,6 +231,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpForce: 3
+  maxStamina: 0
+  staminaDecreaseRate: 0
+  staminaRegenRate: 0
 --- !u!114 &2253595731380913866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +268,20 @@ MonoBehaviour:
   itemPrefab: {fileID: 776577566927570191, guid: 4ceb8b1f59ecdee46b132969b237b5de, type: 3}
   minThrowForce: 2
   maxThrowForce: 10
+--- !u!114 &2253595731380913877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253595731380913869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c13f3d93a6963245966047b2eb61fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  canBeKilled: 1
 --- !u!114 &2253595731380913876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,20 +298,6 @@ MonoBehaviour:
   - {fileID: 2253595731227683023}
   - {fileID: 2253595732095221545}
   cameras: {fileID: 2253595731406139678}
---- !u!114 &2253595731380913877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2253595731380913869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c13f3d93a6963245966047b2eb61fb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  canBeKilled: 1
 --- !u!114 &2253595731380913878
 MonoBehaviour:
   m_ObjectHideFlags: 0

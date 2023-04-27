@@ -63,6 +63,7 @@ namespace Interactables
                             if (KeyCardManager.Instance.TryKeyCard(doorName)) _hasKeyCard = true;
                         }
                         if(_hasKeyCard) ToggleDoor(true);
+                        else AudioManager.Instance.Play("doorLocked", transform);
                         break;
                     case DoorInteractions.Default:
                         Debug.LogWarning("No Door Interaction Set!");
@@ -76,6 +77,7 @@ namespace Interactables
             if (_open)
             {
                 _animator.SetFloat(Speed, -1);
+                AudioManager.Instance.Play("doorClose", transform);
                 switch (doorType)
                 {
                     case DoorTypes.Single:
@@ -101,6 +103,7 @@ namespace Interactables
             else
             {
                 _animator.SetFloat(Speed, 1);
+                AudioManager.Instance.Play("doorOpen", transform);
                 switch (doorType)
                 {
                     case DoorTypes.Single:

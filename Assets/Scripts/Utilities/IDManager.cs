@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Utilities
 {
-    public class IDManager : MonoBehaviour
+    public class IDManager : MonoBehaviour, IDisplayText
     {
         public static IDManager Instance;
 
@@ -32,7 +32,7 @@ namespace Utilities
             idCards = new List<ID>();
             currentID = new ID
             {
-                name = default,
+                name = "default",
                 accessLevel = AccessLevel.Default
             };
         }
@@ -79,6 +79,13 @@ namespace Utilities
         {
             if (accessLevel == AccessLevel.Default) return false;
             return currentID.accessLevel >= accessLevel;
+        }
+
+        public string GetDisplayText()
+        {
+            return currentID.accessLevel == AccessLevel.Default
+                ? "Access Level: None"
+                : $"Access Level: {currentID.accessLevel}";
         }
     }
 

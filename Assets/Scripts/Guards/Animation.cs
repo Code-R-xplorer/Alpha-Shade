@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace Guards
 {
@@ -33,7 +34,7 @@ namespace Guards
 
         private float _bodyAimStartWeight, _headAimRigStartWeight, _aimRigStartWeight, _secondHandRigStartWeight;
 
-        private void Start()
+        private void Awake()
         {
             _animator = GetComponent<Animator>();
             _bodyAimStartWeight = bodyAimRig.weight;
@@ -44,8 +45,6 @@ namespace Guards
             bodyAimRig.weight = 0;
             aimRig.weight = 0;
             secondHandRig.weight = 0;
-            
-            ChangeState(AnimationState.Idle);
         }
 
         public void PlayAnimation(Animations animations)
@@ -82,7 +81,6 @@ namespace Guards
         public void ChangeState(AnimationState newState)
         {
             if (newState == _currentState) return;
-            Debug.Log(newState);
             switch (newState)
             {
                 case AnimationState.Idle:
@@ -137,6 +135,19 @@ namespace Guards
             gun.ToggleGun();
         }
 
+        public void AudioEvent(string audioName)
+        {
+            if (audioName == "walk")
+            {
+                AudioManager.Instance.PlayRandom(new []{"walk1", "walk2", "walk3", "walk4", "walk5"},transform);
+            }
+
+            if (audioName == "run")
+            {
+                AudioManager.Instance.PlayRandom(new []{"run1", "run2", "run3", "run4", "run5"},transform);
+            }
+        }
+
 
         public enum AnimationState
         {
@@ -159,6 +170,16 @@ namespace Guards
         {
             Normal,
             Weapon
+        }
+
+        private void OnEnable()
+        {
+            ChangeState(AnimationState.Idle);
+        }
+
+        private void OnDisable()
+        {
+            _currentState = AnimationState.Default;
         }
     }
 }

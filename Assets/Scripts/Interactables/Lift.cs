@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Utilities;
 
 namespace Interactables
 {
@@ -25,6 +26,7 @@ namespace Interactables
         {
             if (other.CompareTag("Player"))
             {
+                AudioManager.Instance.Play("doorOpen", transform);
                 _animator.Play(Open, -1, 0);
             }
         }
@@ -33,6 +35,7 @@ namespace Interactables
         {
             if (other.CompareTag("Player"))
             {
+                AudioManager.Instance.Play("doorClose", transform);
                 _animator.Play(Close, -1, 0);
             }
         }
@@ -43,6 +46,8 @@ namespace Interactables
             if (floor == 0) newTransform = groundFloor;
             if (floor == 1) newTransform = firstFloor;
             if (floor == 2) newTransform = secondFloor;
+            
+            GameManager.Instance.LoadFloor(floor);
             
             _player.transform.position = newTransform.position;
         }

@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
+  name: Pistol
 --- !u!65 &8055567981444962340
 BoxCollider:
   m_ObjectHideFlags: 0

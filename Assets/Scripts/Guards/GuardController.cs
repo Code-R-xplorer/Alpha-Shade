@@ -45,7 +45,6 @@ namespace Guards
         public AccessLevel accessLevel = AccessLevel.Default;
 
         public bool guardActive;
-        public bool logValues;
 
         private void Awake()
         {
@@ -103,13 +102,6 @@ namespace Guards
 
         private void Update()
         {
-            if (logValues)
-            {
-                
-                Debug.Log(_navMeshAgent.remainingDistance);
-                _navMeshAgent.isStopped = true;
-            }
-
             if (_dead)
             {
                 if (!_deathSequence) StartCoroutine(DeathSequence());

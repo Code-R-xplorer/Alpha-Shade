@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace Ability_System
 {
@@ -18,6 +19,8 @@ namespace Ability_System
         [HideInInspector]
         public float cooldownTime;
 
+        protected bool used;
+
         public virtual void Initialization(AbilityManager abilityManager)
         {
             
@@ -28,13 +31,21 @@ namespace Ability_System
             if (inCooldown)
             {
                 cooldownTime -= Time.deltaTime;
-                if (cooldownTime <= 0f) inCooldown = false;
+                if (cooldownTime <= 0f)
+                {
+                    inCooldown = false;
+                    used = false;
+                }
             }
         }
 
         public virtual void Action()
         {
-            if (uses <= 0 || inCooldown) return;
+            if (uses <= 0 || inCooldown)
+            {
+                AudioManager.Instance.PlayOneShot("abilityNotReady");
+                return;
+            }
             cooldownTime = cooldown;
             inCooldown = true;
         }

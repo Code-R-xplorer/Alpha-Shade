@@ -1,5 +1,6 @@
 ﻿using Player;
 using UnityEngine;
+using Utilities;
 
 namespace Ability_System
 {
@@ -16,6 +17,12 @@ namespace Ability_System
         public override void Action()
         {
             base.Action();
+            if (uses <= 0 || inCooldown)
+            {
+                if(used) return;
+                used = true;
+            }
+            AudioManager.Instance.PlayOneShot("healthUse");
             playerHealth.IncreaseHealth(healValue);
         }
     }

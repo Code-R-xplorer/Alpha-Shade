@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Player;
 using UI.RadialMenu;
 using UnityEngine;
+using Utilities;
 
 namespace Gun_System
 {
@@ -54,6 +55,7 @@ namespace Gun_System
             if (prevActive == index) return;
             if (collected[index])
             {
+                AudioManager.Instance.Play("weaponSwap", transform);
                 transform.GetChild(prevActive).gameObject.SetActive(false);
                 transform.GetChild(index).gameObject.SetActive(true);
                 prevActive = index;

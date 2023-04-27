@@ -45,6 +45,15 @@ namespace Guards
         {
             if (gun.currentAmmo > 0)
             {
+                switch (gun.name)
+                {
+                    case "Pistol":
+                        AudioManager.Instance.Play("pistolShoot", transform);
+                        break;
+                    case "Rifle":
+                        AudioManager.Instance.Play("rifleShoot", transform);
+                        break;
+                }
                 _animation.PlayAnimation(Animation.Animations.Shooting);
                 // decrease the ammo count
                 gun.currentAmmo--;
@@ -75,6 +84,15 @@ namespace Guards
             }
             else
             {
+                switch (gun.name)
+                {
+                    case "Pistol":
+                        AudioManager.Instance.Play("pistolEmpty", transform);
+                        break;
+                    case "Rifle":
+                        AudioManager.Instance.Play("rifleEmpty", transform);
+                        break;
+                }
                 Reload();
             }
         }
@@ -84,6 +102,15 @@ namespace Guards
             if (!gameObject.activeSelf) return;
             if (gun.currentAmmo < gun.clipSize && !_reloading)
             {
+                switch (gun.name)
+                {
+                    case "Pistol":
+                        AudioManager.Instance.Play("pistolReload", transform);
+                        break;
+                    case "Rifle":
+                        AudioManager.Instance.Play("rifleReload", transform);
+                        break;
+                }
                 StartCoroutine(ReloadTimer());
             }
         }
@@ -114,6 +141,7 @@ namespace Guards
         {
             _show = !_show;
             gameObject.SetActive(_show);
+            AudioManager.Instance.Play("weaponSwap", transform);
         }
 
         public void ShowGun()
@@ -121,12 +149,14 @@ namespace Guards
             if (_show) return;
             _show = true;
             gameObject.SetActive(true);
+            AudioManager.Instance.Play("weaponSwap", transform);
         }
         
     }
     [Serializable]
     public class Gun
     {
+        public string name;
         public int clipSize;
         public int currentAmmo;
         public float fireRate;

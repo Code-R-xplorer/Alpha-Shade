@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun:
+    name: Rifle
     clipSize: 10
     currentAmmo: 0
     fireRate: 2

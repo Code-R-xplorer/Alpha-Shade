@@ -1,6 +1,7 @@
 ﻿using System;
 using Guards;
 using UnityEngine;
+using Utilities;
 
 namespace Interactables
 {
@@ -11,6 +12,7 @@ namespace Interactables
         private void Start()
         {
             Destroy(gameObject, 1f);
+            AudioManager.Instance.Play("emp", transform);
         }
 
         private void OnTriggerEnter(Collider other)

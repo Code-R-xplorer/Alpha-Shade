@@ -13,9 +13,14 @@ namespace Utilities
     {
         public static GameManager Instance;
 
+        [Header("Objectives")]
         [SerializeField] private Objective[] objectives;
         [SerializeField] private bool allObjectivesComplete;
-        [SerializeField] private GameObject AI;
+
+        [Header("Floors")] 
+        [SerializeField] private GameObject level0;
+        [SerializeField] private GameObject level1;
+        [SerializeField] private GameObject level2;
         private GameObject player;
         private ObjectivesScreen objectivesScreen;
 
@@ -32,6 +37,9 @@ namespace Utilities
             // objectivesScreen = player.transform.GetChild(0).GetChild(2).GetChild(2).GetChild(2)
             //     .GetComponent<ObjectivesScreen>();
             UIManager.Instance.UpdateCurrentObjective(GetObjectives());
+            
+            level1.SetActive(false);
+            level2.SetActive(false);
         }
 
         public void ObjectiveComplete(int objectiveID)
@@ -91,7 +99,6 @@ namespace Utilities
             {
                 player.GetComponent<Motion>().enabled = false;
                 player.GetComponent<Look>().enabled = false;
-                AI.SetActive(false);
                 InputManager.Instance.CursorLock(false);
                 GameEvents.Instance.GameComplete();
                 // Time.timeScale = 0f;
@@ -100,7 +107,6 @@ namespace Utilities
 
         private void PlayerDeath()
         {
-            AI.SetActive(false);
             player.GetComponent<PlayerMovement>().enabled = false;
             player.GetComponent<PlayerLook>().enabled = false;
             InputManager.Instance.CursorLock(false);
@@ -131,6 +137,28 @@ namespace Utilities
             }
 
             return "";
+        }
+
+        public void LoadFloor(int floor)
+        {
+            switch (floor)
+            {
+                case 0:
+                    level0.SetActive(true);
+                    level1.SetActive(false);
+                    level2.SetActive(false);
+                    break;
+                case 1:
+                    level0.SetActive(false);
+                    level1.SetActive(true);
+                    level2.SetActive(false);
+                    break;
+                case 2:
+                    level0.SetActive(false);
+                    level1.SetActive(false);
+                    level2.SetActive(true);
+                    break;
+            }
         }
         
     }

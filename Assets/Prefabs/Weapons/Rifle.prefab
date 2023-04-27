@@ -79,17 +79,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun:
+    name: Rifle
     semiAutomatic: 0
     clipSize: 30
-    clipCount: 5
     currentAmmo: 0
-    fireRate: 0.1
+    fireRate: 0.5
     damage: 10
     range: 20
     firePoint: {fileID: 2944666680449024294}
     hitDecal: {fileID: 3806696194405312696, guid: 3e5c4a4b6092a4445be34f070589f3f7, type: 3}
   muzzleFlashPrefab: {fileID: 1500370264893162, guid: 10719f104ece0ac4891ff8aaf5041b45, type: 3}
-  muzzlePoint: {fileID: 2944666680449024294}
   gunUI: {fileID: 2944666681886822797}
 --- !u!1 &2944666680901157160
 GameObject:

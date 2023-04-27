@@ -11,6 +11,8 @@ namespace Interactables
         [SerializeField] private float despawnTime = 10f;
         private Rigidbody _rb;
 
+        private bool _hitGround;
+
         public void Throw(Transform hand, float throwForce)
         {
             _rb = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
@@ -30,6 +32,11 @@ namespace Interactables
         {
             if (collision.collider.CompareTag(Tags.Ground))
             {
+                if (!_hitGround)
+                {
+                    AudioManager.Instance.PlayRandom(new []{"coin1", "coin2", "coin3"},transform);
+                    _hitGround = true;
+                }
                 _rb.drag = 100;
                 GameEvents.Instance.HeardSomething(transform, true);
                 StartCoroutine(Despawn());

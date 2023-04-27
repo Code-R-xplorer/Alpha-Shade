@@ -4,7 +4,7 @@ using Utilities;
 
 namespace Player
 {
-    public class PlayerHealth : MonoBehaviour, IDamageable
+    public class PlayerHealth : MonoBehaviour, IDamageable, IDisplayText
     {
         [SerializeField] private float startingHealth = 100f;
         
@@ -47,6 +47,11 @@ namespace Player
                 return;
             }
             _health -= damage;
+        }
+
+        public string GetDisplayText()
+        {
+            return $"Health: {_health}";
         }
     }
 }

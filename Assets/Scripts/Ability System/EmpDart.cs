@@ -20,6 +20,11 @@ namespace Ability_System
         public override void Action()
         {
             base.Action();
+            if (uses <= 0 || inCooldown)
+            {
+                if(used) return;
+                used = true;
+            }
             RaycastHit hit;
             var transform1 = Camera.main.transform;
             Ray ray = new Ray(transform1.position, transform1.forward);
