@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Utilities;
 
@@ -16,9 +15,9 @@ namespace Tasks
             {
                 if (endArea)
                 {
-                    GameManager.Instance.CheckComplete();
+                    ObjectivesManager.Instance.CheckComplete();
                 }
-                GameManager.Instance.ObjectiveComplete(objectiveID);
+                ObjectivesManager.Instance.ObjectiveComplete(objectiveID);
             }
         }
 
@@ -26,7 +25,7 @@ namespace Tasks
         {
             if (other.CompareTag(Tags.Player))
             {
-                if(endArea) GameManager.Instance.CheckComplete();
+                if(endArea) ObjectivesManager.Instance.CheckComplete();
             }
         }
     }

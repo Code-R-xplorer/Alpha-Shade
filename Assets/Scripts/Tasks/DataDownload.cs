@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Utilities;
@@ -12,7 +11,7 @@ namespace Tasks
         {
             if (other.CompareTag(Tags.Player))
             {
-                GameManager.Instance.ObjectiveComplete(3);
+                ObjectivesManager.Instance.ObjectiveComplete(3);
                 StartCoroutine(DownloadData());
             }
         }
@@ -20,7 +19,7 @@ namespace Tasks
         private IEnumerator DownloadData()
         {
             yield return new WaitForSeconds(downloadTime);
-            GameManager.Instance.ObjectiveComplete(4);
+            ObjectivesManager.Instance.ObjectiveComplete(4);
         }
     }
 }

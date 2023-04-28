@@ -37,7 +37,7 @@ namespace UI
             // objectiveTextColor = objectivesText[0].color;
         }
 
-        public void UpdateCurrentObjective(List<Tuple<bool, string>> objectiveList)
+        public void UpdateObjectivesText(List<Tuple<bool, string>> objectiveList)
         {
             string objectivesString = "";
             foreach (var objective in objectiveList)
