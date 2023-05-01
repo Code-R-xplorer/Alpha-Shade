@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using Player;
 using UI;
 using UnityEngine;
-using Motion = Player.Motion;
 
 namespace Utilities
 {
     public class ObjectivesManager : MonoBehaviour
     {
+        // ReSharper disable once InconsistentNaming
         public static ObjectivesManager Instance;
         
         [SerializeField] private Objective[] objectives;
         [SerializeField] private bool allObjectivesComplete;
         
         private GameObject _player;
+        private bool _primaryComplete;
+
+        private bool _primaryUnlocked;
+        private bool _secondaryUnlocked;
+
+        private int _primaryLockedCount;
+        private int _secondaryLockedCount;
 
         private void Awake()
         {
@@ -23,7 +29,18 @@ namespace Utilities
 
         private void Start()
         {
-            UIManager.Instance.UpdateObjectivesText(GetObjectives());
+            UpdateObjectiveUI();
+            foreach (var objective in objectives)
+            {
+                if (objective.objectiveType == Type.Primary)
+                {
+                    if (objective.locked) _primaryLockedCount++;
+                }
+                else
+                {
+                    if (objective.locked) _secondaryLockedCount++;
+                }
+            }
         }
 
         public void ObjectiveComplete(int objectiveID)
@@ -32,18 +49,42 @@ namespace Utilities
             {
                 if (objective.objectiveID == objectiveID)
                 {
-                    if (objective.finalObjective)
+                    if (objective.objectiveType == Type.Primary && !objective.locked)
                     {
-                        if (!CheckCompleteFinal())
+                        if (objective.finalObjective)
                         {
-                            return;
+                            if (!PrimaryComplete())
+                            {
+                                return;
+                            }
+                        }
+                        objective.completed = true;
+                        if (PrimaryUnlockedComplete() && !_primaryUnlocked)
+                        {
+                            UnlockObjectives(new Tuple<int, int>(objective.objectiveID + 1, objective.objectiveID + _primaryLockedCount));
+                            _primaryUnlocked = true;
                         }
                     }
-                    objective.completed = true;
+
+                    if (objective.objectiveType == Type.Secondary && !objective.locked)
+                    {
+                        // if(!PrimaryComplete()) return;
+                        objective.completed = true;
+                        if (SecondaryUnlockedComplete() && !_secondaryUnlocked)
+                        {
+                            UnlockObjectives(new Tuple<int, int>(objective.objectiveID + 1, objective.objectiveID + _secondaryLockedCount));
+                            _secondaryUnlocked = true;
+                        }
+                    }
                 }
-            }
+            } 
+            UpdateObjectiveUI();
+        }
+
+        private void UpdateObjectiveUI()
+        {
             UIManager.Instance.UpdateObjectivesText(GetObjectives());
-            allObjectivesComplete = CheckAllComplete();
+            
         }
 
         private bool CheckAllComplete()
@@ -60,6 +101,7 @@ namespace Utilities
 
             return allComplete;
         }
+        
         private bool CheckCompleteFinal()
         {
             bool allCompleteFinal = true;
@@ -74,15 +116,76 @@ namespace Utilities
 
             return allCompleteFinal;
         }
+
+        private bool PrimaryComplete()
+        {
+            bool primaryComplete = true;
+            foreach (var objective in objectives)
+            {
+                if(objective.objectiveType == Type.Secondary) continue;
+                if (!objective.completed)
+                {
+                    primaryComplete = false;
+                    break;
+                }
+            }
+
+            return primaryComplete;
+        }
         
+        private bool ShowSecondaryObjectives()
+        {
+            bool showSecondary = true;
+            foreach (var objective in objectives)
+            {
+                if(objective.objectiveType == Type.Secondary) continue;
+                if (!objective.completed && !objective.finalObjective)
+                {
+                    showSecondary = false;
+                    break;
+                }
+            }
+
+            return showSecondary;
+        }
+
+        private bool PrimaryUnlockedComplete()
+        {
+            bool primaryUnlockedComplete = true;
+            foreach (var objective in objectives)
+            {
+                if(objective.objectiveType == Type.Secondary) continue;
+                if (!objective.completed && !objective.locked)
+                {
+                    primaryUnlockedComplete = false;
+                    break;
+                }
+            }
+
+            return primaryUnlockedComplete;
+        }
+
+        private bool SecondaryUnlockedComplete()
+        {
+            bool secondaryUnlockedComplete = true;
+            foreach (var objective in objectives)
+            {
+                if(objective.objectiveType == Type.Primary) continue;
+                if (!objective.completed && !objective.locked)
+                {
+                    secondaryUnlockedComplete = false;
+                    break;
+                }
+            }
+
+            return secondaryUnlockedComplete;
+        }
+
 
         public void CheckComplete()
         {
-            if (allObjectivesComplete)
+            if (PrimaryComplete())
             {
-                _player.GetComponent<Motion>().enabled = false;
-                _player.GetComponent<Look>().enabled = false;
-                InputManager.Instance.CursorLock(false);
                 GameEvents.Instance.GameComplete();
             }
         }
@@ -91,12 +194,33 @@ namespace Utilities
         {
             List<Tuple<bool, string>> allObjectives = new List<Tuple<bool, string>>();
 
-            foreach (var objective in objectives)
+            if (ShowSecondaryObjectives())
             {
-                allObjectives.Add(new Tuple<bool, string>(objective.completed, objective.objectiveName));
+                foreach (var objective in objectives)
+                {
+                    if((objective.objectiveType == Type.Primary || objective.locked) && !objective.finalObjective) continue;
+                    allObjectives.Add(new Tuple<bool, string>(objective.completed, objective.name));
+                }
+            }
+            else
+            {
+                foreach (var objective in objectives)
+                {
+                    if(objective.objectiveType == Type.Secondary || objective.locked) continue;
+                    allObjectives.Add(new Tuple<bool, string>(objective.completed, objective.name));
+                }
             }
 
             return allObjectives;
+        }
+
+        public void UnlockObjectives(Tuple<int,int> range)
+        {
+            for (int i = range.Item1; i <= range.Item2; i++)
+            {
+                objectives[i].locked = false;
+            }
+            UpdateObjectiveUI();
         }
 
         public string GetCurrentObjective()
@@ -105,7 +229,7 @@ namespace Utilities
             {
                 if (!objective.completed)
                 {
-                    return objective.objectiveName;
+                    return objective.name;
                 }
             }
 
@@ -116,10 +240,18 @@ namespace Utilities
         [Serializable]
         public class Objective
         {
+            public string name;
             public int objectiveID;
-            public string objectiveName;
             public bool completed;
+            public bool locked;
+            public Type objectiveType;
             public bool finalObjective;
+        }
+        
+        public enum Type
+        {
+            Primary,
+            Secondary
         }
     }
 }

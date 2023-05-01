@@ -12,8 +12,6 @@ namespace Interactables
 
         [SerializeField] private List<GameObject> models;
 
-        private bool _stopDraw;
-
         private void Awake()
         {
             foreach (var model in models)
@@ -25,7 +23,6 @@ namespace Interactables
         private void Start()
         {
             models[(int)accessLevel-1].SetActive(true);
-            _stopDraw = true;
         }
 
         private void OnTriggerEnter(Collider other)

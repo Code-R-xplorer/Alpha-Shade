@@ -17,15 +17,7 @@ namespace Utilities
         public Vector2 MovementInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public Vector2 MousePos { get; private set; }
-    
-        // Input Action Setup Example
-        // public event BaseAction OnStartJump;
-        // private void StartJumpPrimary()
-        // {
-        //     OnStartJump?.Invoke();
-        // }
-
-        public event BaseAction OnStartJump;
+        
         public event BoolBaseAction OnSprint;
         public event BoolBaseAction OnCrouch;
         public event BoolDoubleBaseAction OnThrow;
@@ -53,7 +45,6 @@ namespace Utilities
         void Start()
         {
             CursorLock(true);
-            _playerControls.Controls.Jump.performed += _ => StartJumpPrimary();
             _playerControls.Controls.Sprint.started += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Sprint.canceled += context => SprintPrimary(context.canceled);
             _playerControls.Controls.Crouch.started += context => CrouchPrimary(context.canceled);
@@ -95,11 +86,6 @@ namespace Utilities
             MovementInput = _playerControls.Controls.Move.ReadValue<Vector2>();
             LookInput = _playerControls.Controls.Look.ReadValue<Vector2>();
             MousePos = _playerControls.UI.MousePos.ReadValue<Vector2>();
-        }
-
-        private void StartJumpPrimary()
-        {
-            OnStartJump?.Invoke();
         }
 
         private void SprintPrimary(bool canceled)

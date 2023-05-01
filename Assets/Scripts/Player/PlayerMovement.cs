@@ -49,7 +49,6 @@ namespace Player
             _rb = GetComponent<Rigidbody>();
             _rb.freezeRotation = true;
             playerAnimation = GetComponent<PlayerAnimation>();
-            _inputManager.OnStartJump += Jump;
             _inputManager.OnSprint += Sprint;
             _inputManager.OnCrouch += Crouch;
             _startScaleY = transform.localScale.y;
@@ -58,7 +57,6 @@ namespace Player
 
         private void OnDestroy()
         {
-            _inputManager.OnStartJump -= Jump;
             _inputManager.OnSprint -= Sprint;
             _inputManager.OnCrouch -= Crouch;
         }
@@ -123,14 +121,6 @@ namespace Player
                 playerState = PlayerState.Idle;
             }
             playerAnimation.UpdateAnimation(playerState);
-        }
-
-        private void Jump()
-        {
-            if (_isGrounded)
-            {
-                _rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-            }
         }
 
         private void Sprint(bool cancelled)

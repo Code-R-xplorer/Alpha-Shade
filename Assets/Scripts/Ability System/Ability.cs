@@ -47,7 +47,6 @@ namespace Ability_System
                 return;
             }
             cooldownTime = cooldown;
-            inCooldown = true;
         }
 
         // protected IEnumerator 

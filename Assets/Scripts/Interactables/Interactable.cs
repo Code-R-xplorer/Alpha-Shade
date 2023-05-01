@@ -24,7 +24,6 @@ namespace Interactables
             
             foreach (var hit in hits)
             {
-                Debug.Log(hit.tag);
                 if (hit.CompareTag(Tags.Player))
                 {
                     CanInteract = true;

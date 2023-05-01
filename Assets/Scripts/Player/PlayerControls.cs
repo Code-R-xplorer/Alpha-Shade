@@ -46,15 +46,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""48e99163-1eb6-4bac-8de6-3a57a19f5c83"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""17c044c1-ec92-4115-b403-4878e3cfa53c"",
@@ -218,17 +209,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f063ee09-f55f-4610-82e0-06aea8b3ee0b"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -430,7 +410,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Controls = asset.FindActionMap("Controls", throwIfNotFound: true);
         m_Controls_Move = m_Controls.FindAction("Move", throwIfNotFound: true);
         m_Controls_Look = m_Controls.FindAction("Look", throwIfNotFound: true);
-        m_Controls_Jump = m_Controls.FindAction("Jump", throwIfNotFound: true);
         m_Controls_Sprint = m_Controls.FindAction("Sprint", throwIfNotFound: true);
         m_Controls_Crouch = m_Controls.FindAction("Crouch", throwIfNotFound: true);
         m_Controls_Interact = m_Controls.FindAction("Interact", throwIfNotFound: true);
@@ -508,7 +487,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IControlsActions m_ControlsActionsCallbackInterface;
     private readonly InputAction m_Controls_Move;
     private readonly InputAction m_Controls_Look;
-    private readonly InputAction m_Controls_Jump;
     private readonly InputAction m_Controls_Sprint;
     private readonly InputAction m_Controls_Crouch;
     private readonly InputAction m_Controls_Interact;
@@ -526,7 +504,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public ControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Controls_Move;
         public InputAction @Look => m_Wrapper.m_Controls_Look;
-        public InputAction @Jump => m_Wrapper.m_Controls_Jump;
         public InputAction @Sprint => m_Wrapper.m_Controls_Sprint;
         public InputAction @Crouch => m_Wrapper.m_Controls_Crouch;
         public InputAction @Interact => m_Wrapper.m_Controls_Interact;
@@ -553,9 +530,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnLook;
-                @Jump.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnJump;
                 @Sprint.started -= m_Wrapper.m_ControlsActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_ControlsActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_ControlsActionsCallbackInterface.OnSprint;
@@ -599,9 +573,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
@@ -692,7 +663,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);

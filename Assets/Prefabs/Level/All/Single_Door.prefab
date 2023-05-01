@@ -202,7 +202,6 @@ MonoBehaviour:
   investigatePoint: {fileID: 2927698799210354497}
   doorType: 0
   doorInteraction: 3
-  keyCard: {fileID: 0}
   keyCardReader: {fileID: 688073810466264432}
 --- !u!65 &4517365914232944851
 BoxCollider:

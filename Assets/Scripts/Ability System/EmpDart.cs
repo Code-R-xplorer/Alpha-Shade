@@ -23,7 +23,6 @@ namespace Ability_System
             if (uses <= 0 || inCooldown)
             {
                 if(used) return;
-                used = true;
             }
             RaycastHit hit;
             var transform1 = Camera.main.transform;
@@ -33,6 +32,8 @@ namespace Ability_System
             {
                 if (hit.collider.CompareTag("Ground"))
                 {
+                    used = true;
+                    inCooldown = true;
                     GameObject dart = Instantiate(dartPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                     dart.transform.SetParent(hit.collider.transform);
                     dart.GetComponent<Dart>().duration = stunDuration;

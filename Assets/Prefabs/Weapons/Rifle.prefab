@@ -83,7 +83,7 @@ MonoBehaviour:
     semiAutomatic: 0
     clipSize: 30
     currentAmmo: 0
-    fireRate: 0.5
+    fireRate: 0.2
     damage: 10
     range: 20
     firePoint: {fileID: 2944666680449024294}

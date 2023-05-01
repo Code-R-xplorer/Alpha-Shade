@@ -11,7 +11,7 @@ namespace Player
         private LayerMask _layerMask;
         private void Start()
         {
-            InputManager.Instance.OnClick += InteractEvent;
+            InputManager.Instance.OnStartInteract += InteractEvent;
             _layerMask = LayerMask.NameToLayer("UI");
         }
 

@@ -13,7 +13,7 @@ namespace Gun_System
         private int clipSize;
         
 
-        private void Start()
+        private void Awake()
         {
             verticalLayoutGroup = GetComponent<VerticalLayoutGroup>();
         }

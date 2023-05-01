@@ -88,6 +88,7 @@ namespace UI.RadialMenu
 
         private void ShowMainMenu(bool canceled)
         {
+            if (UIManager.Instance.ComputerScreenShown) return;
             isOpen = !canceled;
             InputManager.Instance.CursorLock(!isOpen);
             if (isOpen)

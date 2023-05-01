@@ -104,7 +104,8 @@ namespace Guards
         {
             if (_dead)
             {
-                if (!_deathSequence) StartCoroutine(DeathSequence());
+                Destroy(gameObject);
+                // if (!_deathSequence) StartCoroutine(DeathSequence());
             }
 
             if (stunned)

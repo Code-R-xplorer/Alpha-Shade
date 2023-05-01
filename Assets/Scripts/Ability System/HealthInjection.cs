@@ -20,8 +20,9 @@ namespace Ability_System
             if (uses <= 0 || inCooldown)
             {
                 if(used) return;
-                used = true;
             }
+            used = true;
+            inCooldown = true;
             AudioManager.Instance.PlayOneShot("healthUse");
             playerHealth.IncreaseHealth(healValue);
         }

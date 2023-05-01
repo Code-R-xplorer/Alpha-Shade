@@ -50,6 +50,11 @@ namespace Gun_System
             radialMenu.AddMenuItem(gun.name,index, gun.GetComponent<GunController>().gun);
         }
 
+        public void AmmoCollected(int amount)
+        {
+            clipCount += amount;
+        }
+
         public void SelectGun(int index)
         {
             if (prevActive == index) return;

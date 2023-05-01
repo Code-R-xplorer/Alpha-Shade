@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using TMPro;
 using UnityEngine;
 using Utilities;
@@ -19,6 +20,14 @@ namespace UI
         [SerializeField] private TextMeshProUGUI objectives;
 
         [SerializeField] private Animator objectivesAnimator;
+
+        [SerializeField] private List<GameObject> computerScreens;
+
+        [SerializeField] private GameObject crosshair;
+
+        [SerializeField] private TextMeshProUGUI timeText;
+
+        public bool ComputerScreenShown { get; private set; }
 
         private static readonly int FadeIn = Animator.StringToHash("ObjectivesFadeIn");
         private static readonly int FadeOut = Animator.StringToHash("ObjectivesFadeOut");
@@ -53,7 +62,8 @@ namespace UI
                 objectivesString += "\n";
             }
             objectives.text = objectivesString;
-            
+            StartCoroutine(QuickShowObjectives());
+
         }
 
         public void ToggleObjectives(bool show)
@@ -74,9 +84,19 @@ namespace UI
             objectivesAnimator.Play(FadeOut, -1, 0.0f);
         }
 
+        private IEnumerator QuickShowObjectives()
+        {
+            ToggleObjectives(true);
+            yield return new WaitForSeconds(2f);
+            ToggleObjectives(false);
+        }
+
         private void DisplayGameComplete()
         {
             hud.SetActive(false);
+            float time = GameManager.Instance.GetPlayTime();
+            timeText.text = $"Time: {TimeSpan.FromSeconds(time).Minutes}m :" +
+                            $" {TimeSpan.FromSeconds(time).Seconds}s";
             gameComplete.SetActive(true);
         }
         
@@ -84,6 +104,36 @@ namespace UI
         {
             hud.SetActive(false);
             gameOver.SetActive(true);
+        }
+
+        public void ShowComputerScreen(int id)
+        {
+            ToggleCrosshair(false);
+            computerScreens[id].SetActive(true);
+            ComputerScreenShown = true;
+            GameManager.Instance.TogglePlayer(false);
+            StateManager.Instance.SetState(StateManager.States.Normal);
+            InputManager.Instance.CursorLock(false);
+        }
+
+        private IEnumerator HideComputer(int id)
+        {
+            yield return new WaitForSeconds(3f);
+            GameManager.Instance.TogglePlayer(true);
+            ComputerScreenShown = false;
+            computerScreens[id].SetActive(false);
+            ToggleCrosshair(true);
+            InputManager.Instance.CursorLock(true);
+        }
+
+        public void HideComputerScreen(int id)
+        {
+            StartCoroutine(HideComputer(id));
+        }
+
+        private void ToggleCrosshair(bool enable)
+        {
+            crosshair.SetActive(enable);
         }
 
         

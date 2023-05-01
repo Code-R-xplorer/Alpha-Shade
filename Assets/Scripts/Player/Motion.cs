@@ -9,6 +9,7 @@ namespace Player
     {
         [SerializeField] private float walkSpeed;
         [SerializeField] private float sprintSpeed;
+        [SerializeField] private float crouchSpeed;
 
         [SerializeField] private float playerHeight = 2;
         [SerializeField] private float groundDistance = 0.4f;
@@ -24,8 +25,7 @@ namespace Player
         private const float SpeedMultiplier = 100f;
 
         private bool _isSprinting;
-
-        private bool _isGrounded;
+        private bool _isCrouching;
 
         private float _height;
         private CapsuleCollider _capsuleCollider;
@@ -43,11 +43,11 @@ namespace Player
             _height = _capsuleCollider.height;
             _rb = GetComponent<Rigidbody>();
             _input.OnSprint += Sprint;
-            _input.OnStartJump += Jump;
             _input.OnCrouch += Crouch;
             sprintSpeed *= SpeedMultiplier;
             walkSpeed *= SpeedMultiplier;
             jumpForce *= SpeedMultiplier;
+            crouchSpeed *= SpeedMultiplier;
             _totalStamina = maxStamina;
         }
         
@@ -57,12 +57,11 @@ namespace Player
         {
             float hMove = _input.MovementInput.x;
             float vMove = _input.MovementInput.y;
-            CheckGrounded();
 
             Vector3 direction = new Vector3(hMove, 0, vMove);
             direction.Normalize();
             
-            if (_rb.velocity.magnitude >= 0.2 & _isSprinting && !_staminaDepleted)
+            if (_rb.velocity.magnitude >= 0.2 && _isSprinting && !_staminaDepleted && !_isCrouching)
             {
                 if (_totalStamina > 0f)
                 {
@@ -74,6 +73,10 @@ namespace Player
                     _totalStamina = 0f;
                     _staminaDepleted = true;
                 }
+            }
+            else if (_isCrouching)
+            {
+                speed = crouchSpeed;
             }
             else
             {
@@ -94,12 +97,6 @@ namespace Player
             targetVelocity.y = _rb.velocity.y;
             _rb.velocity = targetVelocity;
         }
-        
-        private void CheckGrounded()
-        {
-            _isGrounded = Physics.CheckSphere(transform.position - new Vector3(0, playerHeight / 2, 0), groundDistance,
-                groundMask);
-        }
 
         private void Sprint(bool canceled)
         {
@@ -110,14 +107,6 @@ namespace Player
             }
             _isSprinting = !canceled;
         }
-        
-        private void Jump()
-        {
-            if (_isGrounded)
-            {
-                _rb.AddForce(transform.up * jumpForce);
-            }
-        }
 
         private void Crouch(bool canceled)
         {
@@ -126,12 +115,15 @@ namespace Player
                 _cameraManager.SwitchCameraPosition(1);
                 _capsuleCollider.height = _height * 0.5f;
                 _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+                _isCrouching = true;
             }
             else
             {
                 _cameraManager.SwitchCameraPosition(0);
                 _capsuleCollider.height = _height;
+                _isCrouching = false;
             }
+            _capsuleCollider.center = Vector3.down * (_height - _capsuleCollider.height) / 2.0f;
         }
 
         public string GetDisplayText()

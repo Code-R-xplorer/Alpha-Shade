@@ -1,9 +1,11 @@
-﻿using Player;
+﻿using System;
+using Player;
 using UnityEngine;
+using Motion = Player.Motion;
 
 namespace Utilities
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, IDisplayText
     {
         public static GameManager Instance;
 
@@ -11,7 +13,10 @@ namespace Utilities
         [SerializeField] private GameObject level0;
         [SerializeField] private GameObject level1;
         [SerializeField] private GameObject level2;
-        private GameObject player;
+        private GameObject _player;
+
+        private bool _recordTimePlayed = true;
+        private float _currentPlayTime;
 
         private void Awake()
         {
@@ -21,19 +26,42 @@ namespace Utilities
         private void Start()
         {
             GameEvents.Instance.OnPlayerDeath += PlayerDeath;
-            player = GameObject.FindWithTag(Tags.Player);
+            GameEvents.Instance.OnGameComplete += GameComplete;
+            _player = GameObject.FindWithTag(Tags.Player);
 
             level1.SetActive(false);
             level2.SetActive(false);
+            _currentPlayTime = 0f;
+        }
+
+        private void Update()
+        {
+            if (_recordTimePlayed)
+            {
+                _currentPlayTime = Time.time;
+            }
         }
 
         private void PlayerDeath()
         {
-            player.GetComponent<PlayerMovement>().enabled = false;
-            player.GetComponent<PlayerLook>().enabled = false;
+            TogglePlayer(false);
             InputManager.Instance.CursorLock(false);
+            _recordTimePlayed = false;
         }
 
+        public void TogglePlayer(bool enable)
+        {
+            _player.GetComponent<Motion>().enabled = enable;
+            _player.GetComponent<Look>().enabled = enable;
+        }
+
+        private void GameComplete()
+        {
+            TogglePlayer(false);
+            InputManager.Instance.CursorLock(false);
+            _recordTimePlayed = false;
+        }
+        
         public void LoadFloor(int floor)
         {
             switch (floor)
@@ -55,6 +83,16 @@ namespace Utilities
                     break;
             }
         }
-        
+
+        public string GetDisplayText()
+        {
+            return $"Time Played: {TimeSpan.FromSeconds(_currentPlayTime).Minutes}m :" +
+                   $" {TimeSpan.FromSeconds(_currentPlayTime).Seconds}s";
+        }
+
+        public float GetPlayTime()
+        {
+            return _currentPlayTime;
+        }
     }
 }

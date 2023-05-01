@@ -16,8 +16,6 @@ namespace Interactables
         private static readonly int SlidingSingleDoorAnim = Animator.StringToHash("Sliding_Single_Door");
         private static readonly int SlidingDoubleDoorAnim = Animator.StringToHash("Sliding_Double_Door");
         private static readonly int Speed = Animator.StringToHash("speed");
-        
-        private InputManager _inputManager;
 
         private bool _playerInBounds;
         private bool _open;
@@ -37,9 +35,8 @@ namespace Interactables
         void Start()
         {
             _animator = GetComponent<Animator>();
-            _inputManager = InputManager.Instance;
             _offMeshLink = GetComponent<OffMeshLink>();
-            _inputManager.OnStartInteract += CheckInteraction;
+            InputManager.Instance.OnStartInteract += CheckInteraction;
             if (doorInteraction == DoorInteractions.KeyCard)
             {
                 keyCardReader.SetActive(true);
@@ -208,7 +205,7 @@ namespace Interactables
 
         private void OnDestroy()
         {
-            _inputManager.OnStartInteract -= CheckInteraction;
+            InputManager.Instance.OnStartInteract -= CheckInteraction;
         }
     }
 }
