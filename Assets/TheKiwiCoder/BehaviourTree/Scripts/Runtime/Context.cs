@@ -49,6 +49,7 @@ namespace TheKiwiCoder {
             IsChasing,
             GenerateSearchPoints,
             Investigate,
+            Stunned,
             Default
         }
     }

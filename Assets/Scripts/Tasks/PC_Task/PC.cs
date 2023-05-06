@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Managers;
+using UI;
 using UnityEngine;
 using Utilities;
 
@@ -39,10 +40,11 @@ namespace Tasks.PC_Task
             email.SetActive(true);
         }
 
-        public void CompleteObjective(int objectiveID)
+        public void CompleteObjective(int objectiveID, bool hideScreen)
         {
-            UIManager.Instance.HideComputerScreen(pcID);
             ObjectivesManager.Instance.ObjectiveComplete(objectiveID);
+            if (!hideScreen) return;
+            UIManager.Instance.HideComputerScreen(pcID);
         }
         
     }

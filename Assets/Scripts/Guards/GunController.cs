@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
@@ -26,7 +27,7 @@ namespace Guards
         private void Start()
         {
             gun.currentAmmo = gun.clipSize;
-            _layerMask = LayerMask.GetMask("Guard");
+            _layerMask = LayerMask.GetMask("Guard", "Door");
 
         }
 

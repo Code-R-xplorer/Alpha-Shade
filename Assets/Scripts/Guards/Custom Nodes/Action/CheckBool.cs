@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,11 +26,19 @@ public class CheckBool : ActionNode
                 return blackboard.generateSearchPoints ? State.Success : State.Failure;
             case Context.BlackboardValues.Investigate:
                 return blackboard.investigate ? State.Success : State.Failure;
+            case Context.BlackboardValues.Stunned:
+                if (blackboard.stunned)
+                {
+                    context.animation.ChangeMasterState(Guards.Animation.MasterState.Normal);
+                    context.animation.ChangeState(Guards.Animation.AnimationState.Idle);
+                }
+                return blackboard.stunned ? State.Success : State.Failure;
             case Context.BlackboardValues.Default:
-                Debug.LogWarning("Bool can't be changed, no case provided");
-                return State.Failure;
+                  Debug.LogWarning("Bool can't be changed, no case provided");
+                  return State.Failure;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-        return State.Success;
     }
 
 }

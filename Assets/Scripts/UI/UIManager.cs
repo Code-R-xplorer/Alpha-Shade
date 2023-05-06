@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace UI
 
         [SerializeField] private GameObject gameComplete;
 
+        [SerializeField] private GameObject pauseMenu;
+
         [SerializeField] private TextMeshProUGUI objectives;
 
         [SerializeField] private Animator objectivesAnimator;
@@ -26,12 +29,15 @@ namespace UI
         [SerializeField] private GameObject crosshair;
 
         [SerializeField] private TextMeshProUGUI timeText;
+        
+        [SerializeField] private GameObject pauseVolume;
 
         public bool ComputerScreenShown { get; private set; }
 
         private static readonly int FadeIn = Animator.StringToHash("ObjectivesFadeIn");
         private static readonly int FadeOut = Animator.StringToHash("ObjectivesFadeOut");
 
+        private bool _objectivesShown;
         // private Color objectiveTextColor;
 
         private void Awake()
@@ -68,8 +74,11 @@ namespace UI
 
         public void ToggleObjectives(bool show)
         {
+            if (GameManager.Instance.tutorial) return;
+            _objectivesShown = show;
             if (show)
             {
+                Debug.Log("Shown");
                 objectivesAnimator.Play(FadeIn, -1, 0.0f);
             }
             else
@@ -86,6 +95,7 @@ namespace UI
 
         private IEnumerator QuickShowObjectives()
         {
+            if (GameManager.Instance.tutorial || _objectivesShown) yield break;
             ToggleObjectives(true);
             yield return new WaitForSeconds(2f);
             ToggleObjectives(false);
@@ -97,18 +107,21 @@ namespace UI
             float time = GameManager.Instance.GetPlayTime();
             timeText.text = $"Time: {TimeSpan.FromSeconds(time).Minutes}m :" +
                             $" {TimeSpan.FromSeconds(time).Seconds}s";
+            pauseVolume.SetActive(true);
             gameComplete.SetActive(true);
         }
         
         private void DisplayGameOver()
         {
             hud.SetActive(false);
+            pauseVolume.SetActive(true);
             gameOver.SetActive(true);
         }
 
         public void ShowComputerScreen(int id)
         {
             ToggleCrosshair(false);
+            ToggleObjectives(true);
             computerScreens[id].SetActive(true);
             ComputerScreenShown = true;
             GameManager.Instance.TogglePlayer(false);
@@ -123,6 +136,7 @@ namespace UI
             ComputerScreenShown = false;
             computerScreens[id].SetActive(false);
             ToggleCrosshair(true);
+            ToggleObjectives(false);
             InputManager.Instance.CursorLock(true);
         }
 
@@ -134,6 +148,17 @@ namespace UI
         private void ToggleCrosshair(bool enable)
         {
             crosshair.SetActive(enable);
+        }
+
+        public void ToggleHUD(bool show)
+        {
+            hud.SetActive(show);
+        }
+
+        public void TogglePauseMenu(bool show)
+        {
+            pauseMenu.SetActive(show);
+            hud.SetActive(!show);
         }
 
         

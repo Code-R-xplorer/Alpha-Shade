@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using UnityEngine;
 using Utilities;
 
@@ -15,6 +16,7 @@ namespace Interactables
         {
             if (!other.CompareTag(Tags.Player)) return;
             KeyCardManager.Instance.KeyCardCollected();
+            AudioManager.Instance.PlayOneShot("pickup");
             Destroy(gameObject);
         }
     }

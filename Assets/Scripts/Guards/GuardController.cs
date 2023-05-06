@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Managers;
 using Player;
 using TheKiwiCoder;
 using UnityEngine;
@@ -65,6 +66,7 @@ namespace Guards
             _agentSpeed = _navMeshAgent.speed;
             _playerHealth = _player.GetComponent<PlayerHealth>();
             guardActive = true;
+            blackboard.materialChanger = GetComponentInChildren<MaterialChanger>();
         }
 
         public void CanSeePlayer(bool canSeePlayer)
@@ -97,6 +99,30 @@ namespace Guards
 
             }
 
+            blackboard.investigate = false;
+        }
+
+        public bool Investigating()
+        {
+            return blackboard.investigate;
+        }
+
+        public void TriggerHear(Transform target)
+        {
+            if (blackboard.investigate) return;
+            NavMeshPath path = new NavMeshPath();
+            NavMesh.CalculatePath(transform.position,
+                target.position, NavMesh.AllAreas, path);
+            if (path.status == NavMeshPathStatus.PathComplete)
+            {
+                float pathLength = Utils.CalculatePathLength(path);
+                if (pathLength <= hearingDistance)
+                {
+                    blackboard.investigatePosition = target.position;
+                    blackboard.investigate = true;
+                    return;
+                }
+            }
             blackboard.investigate = false;
         }
 
@@ -161,9 +187,11 @@ namespace Guards
         private IEnumerator StunRoutine(float duration)
         {
             stunned = true;
+            blackboard.stunned = true;
             Debug.Log(duration);
             yield return new WaitForSeconds(duration);
             stunned = false;
+            blackboard.stunned = false;
             FreeGuard();
         }
 

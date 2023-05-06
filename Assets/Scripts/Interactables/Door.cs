@@ -1,9 +1,7 @@
-    using System;
-using System.Collections;
-using System.Collections.Generic;
-using TheKiwiCoder;
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Interactables
@@ -28,7 +26,9 @@ namespace Interactables
         [SerializeField] private DoorInteractions doorInteraction = DoorInteractions.Default;
         [SerializeField] private GameObject keyCardReader;
 
-        private bool _hasKeyCard;
+        public bool HasKeyCard { get; private set; }
+
+        public bool locked;
 
 
         // Start is called before the first frame update
@@ -41,35 +41,58 @@ namespace Interactables
             {
                 keyCardReader.SetActive(true);
             }
+
+            // if (GameManager.Instance.tutorial)
+            // {
+            //     LockDoor();
+            // }
         }
 
         private void CheckInteraction()
         {
+            if (locked) return;
             if (_playerInBounds)
             {
                 switch (doorInteraction)
                 {
                     case DoorInteractions.Interact:
-                        ToggleDoor(true);
+                        ToggleDoor();
                         break;
                     case DoorInteractions.Automatic:
                         break;
                     case DoorInteractions.KeyCard:
-                        if (!_hasKeyCard)
+                        if (!HasKeyCard)
                         {
-                            if (KeyCardManager.Instance.TryKeyCard(doorName)) _hasKeyCard = true;
+                            if (KeyCardManager.Instance.TryKeyCard(doorName)) HasKeyCard = true;
                         }
-                        if(_hasKeyCard) ToggleDoor(true);
+                        if(HasKeyCard) ToggleDoor();
                         else AudioManager.Instance.Play("doorLocked", transform);
                         break;
                     case DoorInteractions.Default:
-                        Debug.LogWarning("No Door Interaction Set!");
+                        // Debug.LogWarning("No Door Interaction Set!");
                         break;
                 }
             }
         }
 
-        private void ToggleDoor(bool playerTriggered)
+        public void LockDoor()
+        {
+            if(locked) return;
+            locked = true;
+            if(_open) ToggleDoor();
+        }
+
+        public void UnlockDoor()
+        {
+            locked = false;
+        }
+
+        public void OpenDoor()
+        {
+            if(!_open) ToggleDoor();
+        }
+
+        private void ToggleDoor()
         {
             if (_open)
             {
@@ -99,6 +122,7 @@ namespace Interactables
             }
             else
             {
+                if (locked) return;
                 _animator.SetFloat(Speed, 1);
                 AudioManager.Instance.Play("doorOpen", transform);
                 switch (doorType)
@@ -134,21 +158,17 @@ namespace Interactables
                     case DoorInteractions.Interact:
                         break;
                     case DoorInteractions.Automatic:
-                        ToggleDoor(true);
+                        ToggleDoor();
                         break;
                     case DoorInteractions.KeyCard:
                         break;
                     case DoorInteractions.Default:
-                        Debug.LogWarning("No Door Interaction Set!");
+                        // Debug.LogWarning("No Door Interaction Set!");
                         break;
                 }
-                _playerInBounds = true;
-                
-            }
 
-            if (other.CompareTag(Tags.Guard))
-            {
-                ToggleDoor(false);
+                _playerInBounds = true;
+
             }
         }
 
@@ -165,24 +185,19 @@ namespace Interactables
                 switch (doorInteraction)
                 {
                     case DoorInteractions.Interact:
-                        if(_open) ToggleDoor(true);
+                        if(_open) ToggleDoor();
                         break;
                     case DoorInteractions.Automatic:
-                        ToggleDoor(true);
+                        ToggleDoor();
                         break;
                     case DoorInteractions.KeyCard:
-                        if(_open) ToggleDoor(true);
+                        if(_open) ToggleDoor();
                         break;
                     case DoorInteractions.Default:
-                        Debug.LogWarning("No Door Interaction Set!");
+                        // Debug.LogWarning("No Door Interaction Set!");
                         break;
                 }
                 _playerInBounds = false;
-            }
-
-            if (other.CompareTag(Tags.Guard))
-            {
-                ToggleDoor(false);
             }
         }
 

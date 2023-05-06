@@ -18,7 +18,7 @@ namespace Tasks.PC_Task
             _prevEmail = emailID;
             if (objectiveEmailID == emailID)
             {
-                transform.parent.GetComponent<PC>().CompleteObjective(objectiveID);
+                transform.parent.GetComponent<PC>().CompleteObjective(objectiveID, true);
             }
         }
     }

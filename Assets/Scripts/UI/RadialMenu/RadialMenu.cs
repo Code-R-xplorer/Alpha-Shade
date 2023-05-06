@@ -2,6 +2,7 @@
 using System.Linq;
 using Ability_System;
 using Gun_System;
+using Managers;
 using UnityEngine;
 using Utilities;
 
@@ -88,7 +89,7 @@ namespace UI.RadialMenu
 
         private void ShowMainMenu(bool canceled)
         {
-            if (UIManager.Instance.ComputerScreenShown) return;
+            if (UIManager.Instance.ComputerScreenShown || GameManager.Instance.Paused) return;
             isOpen = !canceled;
             InputManager.Instance.CursorLock(!isOpen);
             if (isOpen)
@@ -97,6 +98,7 @@ namespace UI.RadialMenu
                 Time.timeScale = 0;
                 menuIndex = 0;
                 menus[0].ToggleMenu(isOpen);
+                GameManager.Instance.canPause = false;
             }
             else
             {
@@ -108,6 +110,7 @@ namespace UI.RadialMenu
                 }
                 infoTab.SetActive(false);
                 UIManager.Instance.ToggleObjectives(false);
+                GameManager.Instance.canPause = true;
             }
         }
 

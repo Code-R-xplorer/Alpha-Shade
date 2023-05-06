@@ -11,7 +11,7 @@ namespace Tasks.PC_Task
         public void ShowCorruptFile()
         {
             corruptFile.SetActive(true);
-            transform.parent.GetComponent<PC>().CompleteObjective(objectiveID);
+            transform.parent.GetComponent<PC>().CompleteObjective(objectiveID, false);
         }
     }
 }

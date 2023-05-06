@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 using Utilities;
 
@@ -29,6 +30,7 @@ namespace Interactables
         {
             if (!other.CompareTag(Tags.Player)) return;
             IDManager.Instance.IDCardCollected(this);
+            AudioManager.Instance.PlayOneShot("pickup");
             Destroy(gameObject);
         }
 

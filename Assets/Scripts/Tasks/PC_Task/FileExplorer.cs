@@ -41,7 +41,7 @@ namespace Tasks.PC_Task
                     _isLerping = false;
                     downloading.SetActive(false);
                     downloadComplete.SetActive(true);
-                    transform.parent.GetComponent<PC>().CompleteObjective(objectiveID);
+                    transform.parent.GetComponent<PC>().CompleteObjective(objectiveID, true);
                 }
 
                 if (downloadFail && _lerpingValue >= 0.9)
@@ -49,7 +49,7 @@ namespace Tasks.PC_Task
                     _isLerping = false;
                     downloading.SetActive(false);
                     downloadFailed.SetActive(true);
-                    transform.parent.GetComponent<PC>().CompleteObjective(objectiveID);
+                    transform.parent.GetComponent<PC>().CompleteObjective(objectiveID, true);
                 }
             }
 

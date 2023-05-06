@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Managers;
 using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -33,7 +34,7 @@ namespace Gun_System
             // gun = Utils.Clone(gun);
             gun.currentAmmo = gun.clipSize;
             // gun.firePoint = Camera.main.transform;
-            _layerMask = LayerMask.GetMask("Player");
+            _layerMask = LayerMask.GetMask("Player", "Door");
             
             gunUI.InitializeUI(gun.clipSize);
             

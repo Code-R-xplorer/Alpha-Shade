@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Managers;
+using UnityEngine;
 using Utilities;
 
 namespace Gun_System
@@ -10,7 +11,7 @@ namespace Gun_System
         {
             if (!other.CompareTag(Tags.Player)) return;
             GunManager.Instance.AmmoCollected(amount);
-            AudioManager.Instance.PlayOneShot("ammoPickup");
+            AudioManager.Instance.PlayOneShot("pickup");
             Destroy(gameObject);
         }
     }

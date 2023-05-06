@@ -1,4 +1,5 @@
 ﻿using System;
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
@@ -116,7 +117,6 @@ namespace Guards
                     break;
                 case AnimationState.Search:
                     if (_masterState == MasterState.Weapon) return;
-                    Debug.Log("Search");
                     bodyAimRig.weight = _bodyAimStartWeight;
                     headAimRig.weight = _headAimRigStartWeight;
                     aimRig.weight = _aimRigStartWeight;

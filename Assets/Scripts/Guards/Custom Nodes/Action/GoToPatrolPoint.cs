@@ -31,7 +31,7 @@ public class GoToPatrolPoint : ActionNode
             return State.Failure;
         }
 
-        if (blackboard.canSeePlayer || blackboard.investigate)
+        if (blackboard.canSeePlayer || blackboard.investigate || blackboard.stunned)
         {
             return State.Failure;
         }

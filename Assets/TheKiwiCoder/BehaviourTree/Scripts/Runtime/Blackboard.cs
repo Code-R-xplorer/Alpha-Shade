@@ -33,5 +33,9 @@ namespace TheKiwiCoder {
 
         public bool playerInRange;
 
+        public MaterialChanger materialChanger;
+
+        public bool stunned;
+
     }
 }

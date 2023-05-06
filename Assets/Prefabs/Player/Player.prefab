@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2.5
   sprintSpeed: 5
+  crouchSpeed: 0
   playerHeight: 2
   groundDistance: 0.4
   groundMask:
@@ -645,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Health Injection
   uses: 5
-  cooldown: 15
+  cooldown: 5
   selected: 0
   inCooldown: 0
   cooldownTime: 0
@@ -764,7 +765,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 1527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -829,7 +830,7 @@ GameObject:
   - component: {fileID: 2253595732769598902}
   - component: {fileID: 2253595732769598903}
   m_Layer: 8
-  m_Name: EMP Dart
+  m_Name: Shock Dart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,9 +863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45f9a87bc3147be8eee512ed9e863ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: EMP Dart
+  abilityName: Shock Dart
   uses: 5
-  cooldown: 30
+  cooldown: 10
   selected: 0
   inCooldown: 0
   cooldownTime: 0

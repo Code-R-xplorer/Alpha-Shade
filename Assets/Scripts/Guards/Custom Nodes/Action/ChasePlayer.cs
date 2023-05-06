@@ -28,7 +28,7 @@ public class ChasePlayer : ActionNode
             return State.Success;
         }
 
-        if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid) {
+        if (context.agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid || blackboard.stunned) {
             return State.Failure;
         }
 

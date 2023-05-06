@@ -58,6 +58,18 @@ MonoBehaviour:
   - rid: 2418071432884125737
   - rid: 2418071432884125738
   - rid: 2418071432884125739
+  - rid: 6021448001007648772
+  - rid: 6021448001007648773
+  - rid: 6021448001007648774
+  - rid: 6021448001007648776
+  - rid: 6021448063658229761
+  - rid: 6021448063658229765
+  - rid: 6021448063658229766
+  - rid: 6021448063658229767
+  - rid: 6021448063658229768
+  - rid: 6021448063658229769
+  - rid: 6021448063658229770
+  - rid: 6021448063658229771
   treeState: 0
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
@@ -73,8 +85,11 @@ MonoBehaviour:
     investigatePosition: {x: 0, y: 0, z: 0}
     homePosition: {x: 0, y: 0, z: 0}
     homeRotation: {x: 0, y: 0, z: 0, w: 1}
-  viewPosition: {x: 241.2, y: 9.2, z: 0}
-  viewScale: {x: 0.25, y: 0.25, z: 1}
+    playerInRange: 0
+    materialChanger: {fileID: 0}
+    stunned: 0
+  viewPosition: {x: 1474, y: -327, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -99,6 +114,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Stationary Guard Root Node
         drawGizmos: 0
         child:
@@ -124,6 +142,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Check Is Chasing
         drawGizmos: 0
         children:
@@ -151,6 +172,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Root Repeat
         drawGizmos: 0
         child:
@@ -163,7 +187,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 47d975b3c99f8db4286fd6d68dfe12ae
-        position: {x: 0, y: 284}
+        position: {x: 0, y: 271.35}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -178,9 +202,13 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Root Selector
         drawGizmos: 0
         children:
+        - rid: 6021448063658229767
         - rid: 2418071432884125697
         - rid: 2418071432884125704
         - rid: 2418071432884125728
@@ -206,6 +234,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -231,6 +262,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Is Chasing
         drawGizmos: 0
         blackboardValues: 1
@@ -255,6 +289,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -279,6 +316,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Is Chasing
         drawGizmos: 0
         newValue: 1
@@ -304,6 +344,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Chasing Player
         drawGizmos: 0
         children:
@@ -330,6 +373,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Is Chasing
         drawGizmos: 0
         blackboardValues: 1
@@ -354,6 +400,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Find Player
         drawGizmos: 0
         children:
@@ -380,10 +429,14 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Chase Player
         drawGizmos: 0
         children:
         - rid: 2418071432884125708
+        - rid: 6021448001007648773
         - rid: 2418071432884125709
         - rid: 2418071432884125710
         - rid: 2418071432884125711
@@ -393,7 +446,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 198822a68927de145a577eeb12c0a09e
-        position: {x: -340.00027, y: 1107.0001}
+        position: {x: -453, y: 1107}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -408,6 +461,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -432,9 +488,13 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         tolerance: 1
+        minDistanceSqr: 10
     - rid: 2418071432884125710
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
       data:
@@ -456,6 +516,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Generate Search Points
         drawGizmos: 0
         newValue: 1
@@ -481,6 +544,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
     - rid: 2418071432884125712
@@ -489,7 +555,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 0eb32cb5a6fe77f428aec322736ce0e1
-        position: {x: 545.9999, y: 943.00006}
+        position: {x: 546, y: 943}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -504,9 +570,13 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Search
         drawGizmos: 0
         children:
+        - rid: 6021448063658229765
         - rid: 2418071432884125713
         - rid: 2418071432884125724
     - rid: 2418071432884125713
@@ -530,6 +600,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -557,11 +630,15 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Searching
         drawGizmos: 0
         children:
         - rid: 2418071432884125715
         - rid: 2418071432884125717
+        - rid: 6021448001007648772
         - rid: 2418071432884125722
         - rid: 2418071432884125723
     - rid: 2418071432884125715
@@ -585,6 +662,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -610,6 +690,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -634,6 +717,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -659,6 +745,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         children:
@@ -686,6 +775,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Generate Search Points
         drawGizmos: 0
         blackboardValues: 2
@@ -710,6 +802,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         searchPoints: 5
@@ -735,6 +830,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Generate Search Points
         drawGizmos: 0
         newValue: 0
@@ -745,7 +843,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c4125718442e100428f0627298f4a92a
-        position: {x: 744.99976, y: 1451.0002}
+        position: {x: 840, y: 1451}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -760,6 +858,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         tolerance: 0.2
@@ -769,7 +870,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: c4e154eca2ee8e74e97955c960d80aec
-        position: {x: 939.9999, y: 1451.0002}
+        position: {x: 1035, y: 1451}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -784,6 +885,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         duration: 2.5
@@ -809,6 +913,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Search Clean Up
         drawGizmos: 0
         children:
@@ -835,6 +942,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
     - rid: 2418071432884125727
@@ -858,6 +968,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Is Chasing
         drawGizmos: 0
         newValue: 0
@@ -883,10 +996,14 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         children:
         - rid: 2418071432884125729
+        - rid: 6021448001007648776
         - rid: 2418071432884125730
         - rid: 2418071432884125731
         - rid: 2418071432884125732
@@ -911,6 +1028,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Investigate
         drawGizmos: 0
         blackboardValues: 3
@@ -920,7 +1040,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 2f66a4e350c6d0d48a934cff715e2aee
-        position: {x: 526.00006, y: 693}
+        position: {x: 654, y: 687}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -935,6 +1055,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         tolerance: 0.1
@@ -944,7 +1067,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: 1a9acba39fedc6e459a0cc9e67474eb8
-        position: {x: 726, y: 693}
+        position: {x: 819, y: 687}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -959,9 +1082,12 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
-        duration: 2.5
+        duration: 12
         guardPositions: 0
     - rid: 2418071432884125732
       type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
@@ -969,7 +1095,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: a5cfea340c63e81439052ebf22e9a1d2
-        position: {x: 916.0002, y: 693}
+        position: {x: 989, y: 687}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -984,6 +1110,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Investigate
         drawGizmos: 0
         newValue: 0
@@ -1009,6 +1138,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -1036,11 +1168,16 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         children:
         - rid: 2418071432884125735
         - rid: 2418071432884125736
+        - rid: 6021448063658229770
+        - rid: 6021448001007648774
         - rid: 2418071432884125739
     - rid: 2418071432884125735
       type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
@@ -1063,6 +1200,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -1088,6 +1228,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         child:
@@ -1113,6 +1256,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Can See Player
         drawGizmos: 0
         blackboardValues: 0
@@ -1137,6 +1283,9 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: Investigate
         drawGizmos: 0
         blackboardValues: 3
@@ -1146,7 +1295,7 @@ MonoBehaviour:
         state: 0
         started: 0
         guid: b8fd2eae4fecb2f4984d8d8cfcac0ed8
-        position: {x: 1539.8501, y: 892.00006}
+        position: {x: 1879, y: 892}
         blackboard:
           moveToPosition: {x: 0, y: 0, z: 0}
           canSeePlayer: 0
@@ -1161,6 +1310,340 @@ MonoBehaviour:
           investigatePosition: {x: 0, y: 0, z: 0}
           homePosition: {x: 0, y: 0, z: 0}
           homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
         description: 
         drawGizmos: 0
         tolerance: 0.1
+    - rid: 6021448001007648772
+      type: {class: ChangeMaterial, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 7b52bbf1ee16f5940855dbe89b76d63b
+        position: {x: 677, y: 1451}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        materials: 2
+    - rid: 6021448001007648773
+      type: {class: ChangeMaterial, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 59af9ea856d32bf42aefa3d7b3d00384
+        position: {x: -303, y: 1107}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        materials: 1
+    - rid: 6021448001007648774
+      type: {class: ChangeMaterial, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 14cee5a9a4e1e8a429528f1c1ebfd6a5
+        position: {x: 1708, y: 892}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        materials: 0
+    - rid: 6021448001007648776
+      type: {class: ChangeMaterial, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 68c7cce0e76397a449fbccd0691b4a1e
+        position: {x: 496, y: 687}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        materials: 3
+    - rid: 6021448063658229761
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 194274690655c204fb3d6fff73d8e26b
+        position: {x: -1368.6814, y: 603}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        blackboardValues: 4
+    - rid: 6021448063658229765
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 50d3df4f0b280ea42b3fc6be8742a378
+        position: {x: 207, y: 1227}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 6021448063658229766
+    - rid: 6021448063658229766
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: b13549a3cf81b644980af5e66095db96
+        position: {x: 114, y: 1361}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        blackboardValues: 4
+    - rid: 6021448063658229767
+      type: {class: Sequencer, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 187574e0e6050ca47be45536775c8c03
+        position: {x: -1144.6814, y: 454}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        children:
+        - rid: 6021448063658229761
+        - rid: 6021448063658229768
+        - rid: 6021448063658229769
+    - rid: 6021448063658229768
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 4a2e8cf990769db44a124182c8d0d04c
+        position: {x: -1206.6814, y: 603}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        newValue: 0
+        blackboardValues: 0
+    - rid: 6021448063658229769
+      type: {class: ChangeBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 2bf6609bda0431543a4ce31e6fe2f00f
+        position: {x: -1036.6815, y: 603}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        newValue: 0
+        blackboardValues: 1
+    - rid: 6021448063658229770
+      type: {class: Inverter, ns: TheKiwiCoder, asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: 42c7b9986290ee946816d18ef43ea6fe
+        position: {x: 1514, y: 892}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        child:
+          rid: 6021448063658229771
+    - rid: 6021448063658229771
+      type: {class: CheckBool, ns: , asm: Assembly-CSharp}
+      data:
+        state: 0
+        started: 0
+        guid: cd777dd9c07fd2d429120d46407e0d08
+        position: {x: 1514, y: 1047}
+        blackboard:
+          moveToPosition: {x: 0, y: 0, z: 0}
+          canSeePlayer: 0
+          isChasing: 0
+          playerPosition: {x: 0, y: 0, z: 0}
+          searchPositions: []
+          searchIndex: 0
+          generateSearchPoints: 0
+          patrolPoints: []
+          patrolIndex: 0
+          investigate: 0
+          investigatePosition: {x: 0, y: 0, z: 0}
+          homePosition: {x: 0, y: 0, z: 0}
+          homeRotation: {x: 0, y: 0, z: 0, w: 0}
+          playerInRange: 0
+          materialChanger: {fileID: 0}
+          stunned: 0
+        description: 
+        drawGizmos: 0
+        blackboardValues: 4

@@ -2537,7 +2537,6 @@ MonoBehaviour:
   stunned: 0
   accessLevel: 0
   guardActive: 0
-  logValues: 0
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -2646,6 +2645,7 @@ GameObject:
   - component: {fileID: 8876990539401195736}
   - component: {fileID: 8876990539401195685}
   - component: {fileID: 8876990539401195686}
+  - component: {fileID: 7543935345618379493}
   m_Layer: 7
   m_Name: ViewFrustum
   m_TagString: GuardVision
@@ -2754,6 +2754,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8876990539401195737}
   m_Mesh: {fileID: 4068373912626513877, guid: 1a1f0299e7daf334aa7c64f1a53120c3, type: 3}
+--- !u!114 &7543935345618379493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876990539401195737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cda4ce728b20c45b853e735f893f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 2100000, guid: 42296be8ee9944444a462ccdbb023d7b, type: 2}
+  chasing: {fileID: 2100000, guid: 842887e3401f9e44a917709471d4519a, type: 2}
+  searching: {fileID: 2100000, guid: 43fd626d97a29474b954aeded891bd9c, type: 2}
+  investigating: {fileID: 2100000, guid: 8491992a8f5dde64f94dfda433267da7, type: 2}
 --- !u!1001 &371682936
 PrefabInstance:
   m_ObjectHideFlags: 0

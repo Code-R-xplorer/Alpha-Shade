@@ -1,3 +1,5 @@
+using Managers;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
@@ -94,7 +96,7 @@ namespace Guards
             // Debug.DrawRay(guardEyes.position, ((position - guardEyes.position).normalized) * 100f, Color.blue, 10f);
             if (Physics.Raycast(guardEyes.position, (position - guardEyes.position).normalized, out var info, 100000f, _layerMask)) // Can the guard see something in between him and the player transform?
             {
-                return info.collider.CompareTag("Player") && !IDManager.Instance.CheckCorrectIDLevel(_guardController.accessLevel);
+                return info.collider.CompareTag("Player") && !IDManager.Instance.CheckCorrectIDLevel(_guardController.accessLevel) && !UIManager.Instance.ComputerScreenShown;
             }
             return false;
         }

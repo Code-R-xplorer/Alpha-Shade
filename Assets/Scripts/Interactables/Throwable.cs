@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Guards;
+using Managers;
 using Player;
 using UnityEngine;
 using Utilities;
@@ -27,6 +29,27 @@ namespace Interactables
                 _rb.AddForce(hand.forward * throwForce, ForceMode.Impulse);
             }
         }
+        
+        private Transform GetClosestGuard(Collider[] guards)
+        {
+            Transform bestTarget = null;
+            float closestDistanceSqr = Mathf.Infinity;
+            Vector3 currentPosition = transform.position;
+            foreach(Collider potentialTarget in guards)
+            {
+                if(!potentialTarget.CompareTag("Guard")) continue;
+                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if(dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget.transform;
+                }
+            }
+         
+            return bestTarget;
+        }
+
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -38,7 +61,15 @@ namespace Interactables
                     _hitGround = true;
                 }
                 _rb.drag = 100;
-                GameEvents.Instance.HeardSomething(transform, true);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 13f, LayerMask.GetMask("Guard"));
+                Debug.Log(colliders.Length);
+                Transform guard = GetClosestGuard(colliders);
+                if (guard == null)
+                {
+                    StartCoroutine(Despawn());
+                    return;
+                }
+                guard.GetComponent<GuardController>().TriggerHear(transform);
                 StartCoroutine(Despawn());
             }
 

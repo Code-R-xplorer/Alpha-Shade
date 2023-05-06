@@ -34,6 +34,7 @@ public class GuardPosition : ActionNode
         {
             context.transform.position = blackboard.homePosition;
             context.transform.rotation = blackboard.homeRotation;
+            context.animation.ChangeState(Guards.Animation.AnimationState.Idle);
             return State.Success;
         }
 
@@ -45,7 +46,7 @@ public class GuardPosition : ActionNode
         {
             return State.Failure;
         }
-
+        context.animation.ChangeState(Guards.Animation.AnimationState.Patrolling);
         return State.Running;
     }
 }

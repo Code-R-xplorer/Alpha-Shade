@@ -32,6 +32,11 @@ namespace Interactables
         {
             _spawnedObject.GetComponent<BoxCollider>().enabled = true;
         }
+
+        public bool IsOpen()
+        {
+            return _opened;
+        }
         
     }
 }
