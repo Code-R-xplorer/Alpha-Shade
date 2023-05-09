@@ -323,7 +323,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 960474772}
   m_HandleRect: {fileID: 160242765}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1664149615}
   m_HandleRect: {fileID: 1058892217}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
@@ -3133,14 +3133,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d932a2b34968d4f44811d30d33a91ed3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3793,7 +3793,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1989724279}
   m_HandleRect: {fileID: 808900931}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
@@ -4180,15 +4180,6 @@ MonoBehaviour:
     MaxDistance: 0
     RolloffFactor: 0
     AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
-  - Name: mainMenuTheme
-    Clip: {fileID: 8300000, guid: 2966b20e04fb2314199d1deb8b19b6e5, type: 3}
-    Volume: 1
-    Loop: 1
-    SpatialBlend: 0
-    MinDistance: 0
-    MaxDistance: 0
-    RolloffFactor: 0
-    AudioMixerGroup: {fileID: 460192661281682722, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
   - Name: pickup
     Clip: {fileID: 8300000, guid: 7e67b6572d59a62468ab7b9adeff3488, type: 3}
     Volume: 1
@@ -4198,6 +4189,42 @@ MonoBehaviour:
     MaxDistance: 0
     RolloffFactor: 0
     AudioMixerGroup: {fileID: -8426151827508925276, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: mainMenuTheme
+    Clip: {fileID: 8300000, guid: 2966b20e04fb2314199d1deb8b19b6e5, type: 3}
+    Volume: 0.5
+    Loop: 1
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: 460192661281682722, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: levelSelectTheme
+    Clip: {fileID: 8300000, guid: e562a64afa3da6e40885260a8685fd31, type: 3}
+    Volume: 0.5
+    Loop: 1
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: 460192661281682722, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: techLevelTheme
+    Clip: {fileID: 8300000, guid: 657738bc3dce0f54bb8f898684ff9da3, type: 3}
+    Volume: 0.2
+    Loop: 1
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: 460192661281682722, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
+  - Name: tutorialTheme
+    Clip: {fileID: 8300000, guid: 00c1fae8c80de714fa2e6ce3eca7a842, type: 3}
+    Volume: 0.2
+    Loop: 1
+    SpatialBlend: 0
+    MinDistance: 0
+    MaxDistance: 0
+    RolloffFactor: 0
+    AudioMixerGroup: {fileID: 460192661281682722, guid: 6fc3f160141a2174ba8bf89ba7559ceb, type: 2}
 --- !u!4 &1811747604
 Transform:
   m_ObjectHideFlags: 0
