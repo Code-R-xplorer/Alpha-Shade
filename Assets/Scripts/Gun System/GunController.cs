@@ -1,17 +1,14 @@
 using System;
 using System.Collections;
 using Managers;
-using Player;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
-using Animation = Player.Animation;
 
 namespace Gun_System
 {
     public class GunController : MonoBehaviour
     {
-        // [SerializeField] private GunData gun;
 
         [FormerlySerializedAs("Gun")] public Gun gun;
 
@@ -31,9 +28,7 @@ namespace Gun_System
             inputManager = InputManager.Instance;
             inputManager.OnFire += TriggerFire;
             inputManager.OnReload += Reload;
-            // gun = Utils.Clone(gun);
             gun.currentAmmo = gun.clipSize;
-            // gun.firePoint = Camera.main.transform;
             _layerMask = LayerMask.GetMask("Player", "Door");
             
             gunUI.InitializeUI(gun.clipSize);
@@ -84,13 +79,6 @@ namespace Gun_System
                 // animation.PlayShootAnim();
                 SpawnFX();
                 
-
-                // play the fire sound
-                // AudioSource.PlayClipAtPoint(data.fireSound, transform.position);
-
-                // shoot a raycast to detect hits
-                // RaycastHit hit = Physics.Raycast(data.firePoint.position, data.firePoint.right, data.range);
-                // Debug.Log("Fire");
                 Ray ray = new Ray(gun.firePoint.position, gun.firePoint.forward);
                 Debug.DrawRay(ray.origin, ray.direction * gun.range, Color.blue, 20f);
                 if (Physics.Raycast(ray, out var hit, gun.range, ~_layerMask))
@@ -115,8 +103,6 @@ namespace Gun_System
             }
             else
             {
-                // play the out of ammo sound
-                // AudioSource.PlayClipAtPoint(data.outOfAmmoSound, transform.position);
                 switch (gun.name)
                 {
                     case "Pistol":
@@ -169,7 +155,7 @@ namespace Gun_System
         }
         
     }
-    [System.Serializable]
+    [Serializable]
     public class Gun
     {
         public string name;

@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f9f4eb6ea640879bed3cb296b858a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipCount: 5
+  clipCount: 0
 --- !u!1 &2253595732738888466
 GameObject:
   m_ObjectHideFlags: 0
